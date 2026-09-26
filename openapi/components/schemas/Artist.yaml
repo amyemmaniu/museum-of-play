@@ -1,0 +1,4 @@
+type: object
+description: An artist whose work is in the collection.
+# TODO: define properties from the public.artists table.
+properties: {}

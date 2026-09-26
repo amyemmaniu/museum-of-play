@@ -10,8 +10,8 @@ post:
     - `redirectUris` defaults to an empty array. Note: When using the
     `authorization_code` grant type, 
       `redirectUris` must be provided (per RFC 7591 Section 2).
-    - `scopes` defaults to all available scopes (menu:read, menu:write,
-    orders:read, orders:write)
+    - `scopes` defaults to all available scopes (artworks:read, artworks:write,
+    artists:read, artists:write, exhibitions:read, exhibitions:write)
     - `grantTypes` defaults to both supported grant types (authorization_code,
     client_credentials)
 
@@ -33,13 +33,14 @@ post:
             value:
               name: auth
               redirectUris:
-                - https://api.cafe.redocly.com/callback
+                - https://api.museumofplay.example/callback
               scopes:
-                - menu:read
-                - menu:write
-                - orders:read
-                - orders:write
-                - revenue:read
+                - artworks:read
+                - artworks:write
+                - artists:read
+                - artists:write
+                - exhibitions:read
+                - exhibitions:write
               grantTypes:
                 - client_credentials
   responses:

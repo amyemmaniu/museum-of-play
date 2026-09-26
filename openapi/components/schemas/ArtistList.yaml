@@ -9,7 +9,7 @@ properties:
   items:
     type: array
     items:
-      $ref: ./MenuItem.yaml
+      $ref: ./Artist.yaml
 required:
   - object
   - page

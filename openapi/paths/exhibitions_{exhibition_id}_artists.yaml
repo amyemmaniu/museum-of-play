@@ -1,0 +1,27 @@
+parameters:
+  - $ref: ../components/parameters/ExhibitionId.yaml
+get:
+  tags:
+    - Exhibitions
+  summary: List artists in an exhibition
+  description: Retrieve the artists featured in a specific exhibition.
+  operationId: listExhibitionArtists
+  security: []
+  parameters:
+    - $ref: ../components/parameters/After.yaml
+    - $ref: ../components/parameters/Before.yaml
+    - $ref: ../components/parameters/Sort.yaml
+    - $ref: ../components/parameters/Limit.yaml
+  responses:
+    '200':
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ArtistList.yaml
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml

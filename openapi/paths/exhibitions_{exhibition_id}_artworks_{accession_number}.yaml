@@ -1,0 +1,49 @@
+parameters:
+  - $ref: ../components/parameters/ExhibitionId.yaml
+  - $ref: ../components/parameters/AccessionNumber.yaml
+put:
+  tags:
+    - Exhibitions
+  summary: Add an artwork to an exhibition
+  description: |
+    Feature an existing artwork in an exhibition.
+    This operation is idempotent - adding an artwork that is already featured has no effect.
+  operationId: addExhibitionArtwork
+  security:
+    - OAuth2:
+        - exhibitions:write
+  responses:
+    '204':
+      description: Artwork added to the exhibition.
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '403':
+      $ref: ../components/responses/Forbidden.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml
+delete:
+  tags:
+    - Exhibitions
+  summary: Remove an artwork from an exhibition
+  description: Remove a featured artwork from an exhibition. The artwork record itself isn't deleted.
+  operationId: removeExhibitionArtwork
+  security:
+    - OAuth2:
+        - exhibitions:write
+  responses:
+    '204':
+      description: Artwork removed from the exhibition.
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '403':
+      $ref: ../components/responses/Forbidden.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml

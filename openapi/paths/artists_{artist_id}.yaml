@@ -1,0 +1,83 @@
+parameters:
+  - $ref: ../components/parameters/ArtistId.yaml
+get:
+  tags:
+    - Artists
+  summary: Retrieve an artist
+  description: Retrieve a single artist by their artist ID.
+  operationId: getArtist
+  security: []
+  responses:
+    '200':
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Artist.yaml
+          # TODO: add a response example once Artist.yaml fields are defined.
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml
+patch:
+  tags:
+    - Artists
+  summary: Partially update an artist
+  description: |
+    Update an existing artist using JSON Merge Patch - only include fields to update.
+  operationId: updateArtist
+  security:
+    - OAuth2:
+        - artists:write
+  requestBody:
+    required: true
+    content:
+      application/merge-patch+json:
+        schema:
+          $ref: ../components/schemas/Artist.yaml
+        # TODO: add a request example once Artist.yaml fields are defined.
+  responses:
+    '200':
+      description: Artist updated successfully.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Artist.yaml
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '403':
+      $ref: ../components/responses/Forbidden.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml
+delete:
+  tags:
+    - Artists
+  summary: Delete an artist
+  description: |
+    Delete an existing artist.
+    Artists who are credited on an artwork or featured in an exhibition can't be deleted.
+  operationId: deleteArtist
+  security:
+    - OAuth2:
+        - artists:write
+  responses:
+    '204':
+      description: Artist deleted successfully.
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '403':
+      $ref: ../components/responses/Forbidden.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    '409':
+      $ref: ../components/responses/Conflict.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml

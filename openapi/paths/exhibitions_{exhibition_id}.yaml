@@ -1,0 +1,83 @@
+parameters:
+  - $ref: ../components/parameters/ExhibitionId.yaml
+get:
+  tags:
+    - Exhibitions
+  summary: Retrieve an exhibition
+  description: Retrieve a single exhibition by its exhibition ID.
+  operationId: getExhibition
+  security: []
+  responses:
+    '200':
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Exhibition.yaml
+          # TODO: add a response example once Exhibition.yaml fields are defined.
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml
+patch:
+  tags:
+    - Exhibitions
+  summary: Partially update an exhibition
+  description: |
+    Update an existing exhibition using JSON Merge Patch - only include fields to update.
+  operationId: updateExhibition
+  security:
+    - OAuth2:
+        - exhibitions:write
+  requestBody:
+    required: true
+    content:
+      application/merge-patch+json:
+        schema:
+          $ref: ../components/schemas/Exhibition.yaml
+        # TODO: add a request example once Exhibition.yaml fields are defined.
+  responses:
+    '200':
+      description: Exhibition updated successfully.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Exhibition.yaml
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '403':
+      $ref: ../components/responses/Forbidden.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml
+delete:
+  tags:
+    - Exhibitions
+  summary: Delete an exhibition
+  description: |
+    Delete an existing exhibition.
+    Remove all featured artists and artworks from the exhibition before deleting it.
+  operationId: deleteExhibition
+  security:
+    - OAuth2:
+        - exhibitions:write
+  responses:
+    '204':
+      description: Exhibition deleted successfully.
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '403':
+      $ref: ../components/responses/Forbidden.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    '409':
+      $ref: ../components/responses/Conflict.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml

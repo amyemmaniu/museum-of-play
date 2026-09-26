@@ -1,0 +1,59 @@
+get:
+  tags:
+    - Exhibitions
+  summary: List all exhibitions
+  description: Retrieve a collection of exhibitions with optional filtering and pagination.
+  operationId: listExhibitions
+  security: []
+  parameters:
+    - $ref: ../components/parameters/After.yaml
+    - $ref: ../components/parameters/Before.yaml
+    - $ref: ../components/parameters/Sort.yaml
+    - $ref: ../components/parameters/Filter.yaml
+    - $ref: ../components/parameters/Search.yaml
+    - $ref: ../components/parameters/Limit.yaml
+  responses:
+    '200':
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ExhibitionList.yaml
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml
+post:
+  tags:
+    - Exhibitions
+  summary: Create exhibition
+  description: Create a new exhibition.
+  operationId: createExhibition
+  security:
+    - OAuth2:
+        - exhibitions:write
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Exhibition.yaml
+        # TODO: add a request example once Exhibition.yaml fields are defined.
+  responses:
+    '201':
+      description: Exhibition created successfully.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Exhibition.yaml
+          # TODO: add a response example once Exhibition.yaml fields are defined.
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '403':
+      $ref: ../components/responses/Forbidden.yaml
+    '409':
+      $ref: ../components/responses/Conflict.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml

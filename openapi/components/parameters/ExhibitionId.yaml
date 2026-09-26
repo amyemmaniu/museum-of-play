@@ -1,0 +1,8 @@
+name: exhibition_id
+in: path
+description: ID of the exhibition to retrieve.
+required: true
+schema:
+  type: string
+  pattern: ^EXH-[0-9]{4}$
+example: EXH-0001

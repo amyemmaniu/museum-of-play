@@ -1,0 +1,59 @@
+get:
+  tags:
+    - Artworks
+  summary: List all artworks
+  description: Retrieve a collection of artworks with optional filtering and pagination.
+  operationId: listArtworks
+  security: []
+  parameters:
+    - $ref: ../components/parameters/After.yaml
+    - $ref: ../components/parameters/Before.yaml
+    - $ref: ../components/parameters/Sort.yaml
+    - $ref: ../components/parameters/Filter.yaml
+    - $ref: ../components/parameters/Search.yaml
+    - $ref: ../components/parameters/Limit.yaml
+  responses:
+    '200':
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ArtworkList.yaml
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml
+post:
+  tags:
+    - Artworks
+  summary: Add an artwork
+  description: Add a new artwork to the collection.
+  operationId: createArtwork
+  security:
+    - OAuth2:
+        - artworks:write
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Artwork.yaml
+        # TODO: add a request example once Artwork.yaml fields are defined.
+  responses:
+    '201':
+      description: Artwork added successfully.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Artwork.yaml
+          # TODO: add a response example once Artwork.yaml fields are defined.
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '403':
+      $ref: ../components/responses/Forbidden.yaml
+    '409':
+      $ref: ../components/responses/Conflict.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml

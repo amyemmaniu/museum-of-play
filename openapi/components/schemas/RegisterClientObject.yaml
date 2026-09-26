@@ -14,11 +14,12 @@ properties:
     items:
       type: string
       enum:
-        - menu:read
-        - menu:write
-        - orders:read
-        - orders:write
-        - revenue:read
+        - artworks:read
+        - artworks:write
+        - artists:read
+        - artists:write
+        - exhibitions:read
+        - exhibitions:write
     description: List of scopes.
   grantTypes:
     type: array

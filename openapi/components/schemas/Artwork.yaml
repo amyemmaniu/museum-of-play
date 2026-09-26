@@ -1,0 +1,4 @@
+type: object
+description: An artwork in the collection.
+# TODO: define properties from the public.artworks table.
+properties: {}

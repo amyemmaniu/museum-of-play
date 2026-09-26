@@ -1,0 +1,83 @@
+parameters:
+  - $ref: ../components/parameters/AccessionNumber.yaml
+get:
+  tags:
+    - Artworks
+  summary: Retrieve an artwork
+  description: Retrieve a single artwork by its accession number.
+  operationId: getArtwork
+  security: []
+  responses:
+    '200':
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Artwork.yaml
+          # TODO: add a response example once Artwork.yaml fields are defined.
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml
+patch:
+  tags:
+    - Artworks
+  summary: Partially update an artwork
+  description: |
+    Update an existing artwork using JSON Merge Patch - only include fields to update.
+  operationId: updateArtwork
+  security:
+    - OAuth2:
+        - artworks:write
+  requestBody:
+    required: true
+    content:
+      application/merge-patch+json:
+        schema:
+          $ref: ../components/schemas/Artwork.yaml
+        # TODO: add a request example once Artwork.yaml fields are defined.
+  responses:
+    '200':
+      description: Artwork updated successfully.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Artwork.yaml
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '403':
+      $ref: ../components/responses/Forbidden.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml
+delete:
+  tags:
+    - Artworks
+  summary: Delete an artwork
+  description: |
+    Remove an artwork from the collection.
+    Artworks that are featured in an exhibition can't be deleted.
+  operationId: deleteArtwork
+  security:
+    - OAuth2:
+        - artworks:write
+  responses:
+    '204':
+      description: Artwork deleted successfully.
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '403':
+      $ref: ../components/responses/Forbidden.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    '409':
+      $ref: ../components/responses/Conflict.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml

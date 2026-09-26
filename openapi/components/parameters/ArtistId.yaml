@@ -1,0 +1,8 @@
+name: artist_id
+in: path
+description: ID of the artist to retrieve.
+required: true
+schema:
+  type: string
+  pattern: ^ART-[A-Z]{3}-[0-9]{4}$
+example: ART-JST-0001

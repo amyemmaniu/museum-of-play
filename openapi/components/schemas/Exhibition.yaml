@@ -1,0 +1,4 @@
+type: object
+description: An exhibition at the museum.
+# TODO: define properties from the public.exhibitions table.
+properties: {}

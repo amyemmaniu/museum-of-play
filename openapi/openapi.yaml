@@ -1,49 +1,53 @@
 openapi: 3.1.0
 info:
-  title: Redocly Cafe
+  title: Museum of Play Collections API
   description: |
-    Demo API for cafe operators (not customers) to manage menus, orders, and revenue.
-    Create API credentials and try it yourself in a realistic OpenAPI workflow.
+    A REST API for accessing and managing the Museum of Play's collections, including exhibitions and artwork metadata.
+    This API allows developers to integrate with the museum's systems for various applications.
   version: 1.0.0
-  contact:
-    email: team@redocly.com
-    url: https://redocly.com/contact-us/
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
-  termsOfService: https://redocly.com/subscription-agreement
+  contact:
+    email: hello@museumofplay.example
+    url: https://museumofplay.example/contact-us/
 servers:
-  - url: https://api.cafe.redocly.com
-    description: Live server.
+  - url: https://api.museumofplay.example
+    description: Live server for the Museum of Play Collections API.
 tags:
   - name: Authorization
     description: Create a client to demo the API.
-  - name: Products
-    description: Operations related to products.
-  - name: Orders
-    description: Order management operations.
-  - name: Statistics
-    description: Statistics operations.
+  - name: Artists
+    description: Operations related to artists.
+  - name: Artworks
+    description: Operations related to artworks.
+  - name: Exhibitions
+    description: Exhibition management operations, including the artists and artworks featured in each exhibition.
 paths:
-  /menu:
-    $ref: paths/menu.yaml
-  /menu/{menuItemId}:
-    $ref: paths/menu_{menuItemId}.yaml
-  /menu-item-images/{menuItemId}:
-    $ref: paths/menu-item-images_{menuItemId}.yaml
-  /orders:
-    $ref: paths/orders.yaml
-  /orders/{orderId}:
-    $ref: paths/orders_{orderId}.yaml
-  /order-items:
-    $ref: paths/order-items.yaml
-  /revenue:
-    $ref: paths/revenue.yaml
   /oauth2/register:
     $ref: paths/oauth2_register.yaml
-webhooks:
-  order-notification:
-    $ref: webhooks/order-notification.yaml
+  /artists:
+    $ref: paths/artists.yaml
+  /artists/{artist_id}:
+    $ref: paths/artists_{artist_id}.yaml
+  /artworks:
+    $ref: paths/artworks.yaml
+  /artworks/{accession_number}:
+    $ref: paths/artworks_{accession_number}.yaml
+  /artworks/{accession_number}/image:
+    $ref: paths/artworks_{accession_number}_image.yaml
+  /exhibitions:
+    $ref: paths/exhibitions.yaml
+  /exhibitions/{exhibition_id}:
+    $ref: paths/exhibitions_{exhibition_id}.yaml
+  /exhibitions/{exhibition_id}/artists:
+    $ref: paths/exhibitions_{exhibition_id}_artists.yaml
+  /exhibitions/{exhibition_id}/artists/{artist_id}:
+    $ref: paths/exhibitions_{exhibition_id}_artists_{artist_id}.yaml
+  /exhibitions/{exhibition_id}/artworks:
+    $ref: paths/exhibitions_{exhibition_id}_artworks.yaml
+  /exhibitions/{exhibition_id}/artworks/{accession_number}:
+    $ref: paths/exhibitions_{exhibition_id}_artworks_{accession_number}.yaml
 components:
   securitySchemes:
     OAuth2:
@@ -51,24 +55,21 @@ components:
       description: OAuth2 authorization for API access.
       flows:
         authorizationCode:
-          authorizationUrl: https://api.cafe.redocly.com/oauth2/authorize
-          tokenUrl: https://api.cafe.redocly.com/oauth2/token
+          authorizationUrl: https://api.museumofplay.example/oauth2/authorize
+          tokenUrl: https://api.museumofplay.example/oauth2/token
           scopes:
-            menu:read: Read access to menu items and images
-            menu:write: Write access to menu items (create, delete)
-            orders:read: Read access to orders
-            orders:write: Write access to orders (create, update, delete)
-            revenue:read: Read access to revenue statistics
+            artworks:read: Read access to collections items and images
+            artworks:write: Write access to collections items (create, update, delete)
+            artists:read: Read access to artists
+            artists:write: Write access to artists (create, update, delete)
+            exhibitions:read: Read access to exhibitions
+            exhibitions:write: Write access to exhibitions and their featured artists and artworks
         clientCredentials:
-          tokenUrl: https://api.cafe.redocly.com/oauth2/token
+          tokenUrl: https://api.museumofplay.example/oauth2/token
           scopes:
-            menu:read: Read access to menu items and images
-            menu:write: Write access to menu items (create, delete)
-            orders:read: Read access to orders
-            orders:write: Write access to orders (create, update, delete)
-            revenue:read: Read access to revenue statistics
-    ApiKey:
-      type: apiKey
-      name: X-API-Key
-      in: header
-      description: API key for internal operations.
+            artworks:read: Read access to collections items and images
+            artworks:write: Write access to collections items (create, update, delete)
+            artists:read: Read access to artists
+            artists:write: Write access to artists (create, update, delete)
+            exhibitions:read: Read access to exhibitions
+            exhibitions:write: Write access to exhibitions and their featured artists and artworks

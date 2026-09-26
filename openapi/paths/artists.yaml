@@ -1,0 +1,59 @@
+get:
+  tags:
+    - Artists
+  summary: List all artists
+  description: Retrieve a collection of artists with optional filtering and pagination.
+  operationId: listArtists
+  security: []
+  parameters:
+    - $ref: ../components/parameters/After.yaml
+    - $ref: ../components/parameters/Before.yaml
+    - $ref: ../components/parameters/Sort.yaml
+    - $ref: ../components/parameters/Filter.yaml
+    - $ref: ../components/parameters/Search.yaml
+    - $ref: ../components/parameters/Limit.yaml
+  responses:
+    '200':
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ArtistList.yaml
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml
+post:
+  tags:
+    - Artists
+  summary: Create artist
+  description: Create a new artist.
+  operationId: createArtist
+  security:
+    - OAuth2:
+        - artists:write
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Artist.yaml
+        # TODO: add a request example once Artist.yaml fields are defined.
+  responses:
+    '201':
+      description: Artist created successfully.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Artist.yaml
+          # TODO: add a response example once Artist.yaml fields are defined.
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '403':
+      $ref: ../components/responses/Forbidden.yaml
+    '409':
+      $ref: ../components/responses/Conflict.yaml
+    '500':
+      $ref: ../components/responses/InternalServerError.yaml
