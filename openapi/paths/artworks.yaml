@@ -27,7 +27,7 @@ post:
   tags:
     - Artworks
   summary: Add an artwork
-  description: Add a new artwork to the collection.
+  description: Add a new artwork to the collections.
   operationId: addArtwork
   security:
     - OAuth2:
@@ -46,7 +46,15 @@ post:
         application/json:
           schema:
             $ref: ../components/schemas/Artwork.yaml
-          # TODO: add a response example once Artwork.yaml fields are defined.
+          examples:
+            ArtworkResponse:
+              value:
+                accession_number: '2021.0001'
+                title: Blue Hour
+                artist_id: ART-JST-0001
+                medium: Oil on canvas
+                dimensions: 24 x 36 in
+                creation_year: 2021
     '400':
       $ref: ../components/responses/BadRequest.yaml
     '401':

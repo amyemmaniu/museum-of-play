@@ -3,7 +3,7 @@ description: An exhibition at the museum.
 properties:
   exhibition_id:
     type: string
-    description: Internal unique identifier.
+    description: Internal unique identifier for the exhibition.
     pattern: ^EXH-[0-9]{4}$
     example: EXH-0001
   exhibition_name:
@@ -23,6 +23,8 @@ properties:
     format: date
     description: The date the exhibition opened.
   end_date:
-    type: string
+    type:
+      - string
+      - 'null'
     format: date
     description: The date the exhibition closed.

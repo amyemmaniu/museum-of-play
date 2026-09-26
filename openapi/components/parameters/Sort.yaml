@@ -1,8 +1,55 @@
 name: sort
-description: |-
-  To sort by id in descending order use `-id`.
-  To sort by id in ascending order use `id`.
 in: query
+description: |-
+  Sorts the results by the specified field.
+  Results are sorted in ascending order by default.
+  To sort in descending order, prefix the field with `-` (for example, `-creation_year`).
+
+  **Fields sorted depend on the endpoint:**
+  - **Artists:** `artist_id`, `artist_name`, `birth_year`, `death_year`, `gender`, `nationality`, `based_in_place`
+  - **Artworks:** `accession_number`, `medium`, `title`, `artist_id`, `dimensions`, `creation_year`, `runtime`
+  - **Exhibitions:** `exhibition_id`, `start_date`, `end_date`, `exhibition_name`, `curator`, `type`, `location`
 required: false
 schema:
   type: string
+  enum:
+    - artist_id
+    - -artist_id
+    - artist_name
+    - -artist_name
+    - birth_year
+    - -birth_year
+    - death_year
+    - -death_year
+    - gender
+    - -gender
+    - nationality
+    - -nationality
+    - based_in_place
+    - -based_in_place
+    - accession_number
+    - -accession_number
+    - medium
+    - -medium
+    - title
+    - -title
+    - dimensions
+    - -dimensions
+    - creation_year
+    - -creation_year
+    - runtime
+    - -runtime
+    - exhibition_id
+    - -exhibition_id
+    - start_date
+    - -start_date
+    - end_date
+    - -end_date
+    - exhibition_name
+    - -exhibition_name
+    - curator
+    - -curator
+    - type
+    - -type
+    - location
+    - -location

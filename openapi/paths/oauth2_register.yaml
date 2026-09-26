@@ -33,7 +33,7 @@ post:
             value:
               name: auth
               redirectUris:
-                - https://api.museumofplay.example/callback
+                - http://localhost:3000/callback
               scopes:
                 - artworks:read
                 - artworks:write

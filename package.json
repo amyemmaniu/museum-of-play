@@ -1,5 +1,5 @@
 {
-  "name": "acme-api",
+  "name": "museum-of-play",
   "version": "1.0.0",
   "dependencies": {
     "@redocly/cli": "latest"
@@ -7,6 +7,7 @@
   "private": true,
   "scripts": {
     "start": "redocly preview --product redoc",
-    "test": "redocly lint"
+    "test": "redocly lint",
+    "bundle": "redocly bundle openapi/openapi.yaml -o dist/openapi.yaml"
   }
 }

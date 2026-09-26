@@ -36,11 +36,12 @@ properties:
     items:
       type: string
       enum:
-        - menu:read
-        - menu:write
-        - orders:read
-        - orders:write
-        - revenue:read
+        - artists:read
+        - artists:write
+        - artworks:read
+        - artworks:write
+        - exhibitions:read
+        - exhibitions:write
     description: List of scopes (registered metadata).
   grantTypes:
     type: array

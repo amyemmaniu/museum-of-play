@@ -26,9 +26,9 @@ get:
 post:
   tags:
     - Exhibitions
-  summary: Create exhibition
-  description: Create a new exhibition.
-  operationId: createExhibition
+  summary: Add an exhibition
+  description: Add an exhibition to the collections.
+  operationId: addExhibition
   security:
     - OAuth2:
         - exhibitions:write
@@ -46,7 +46,16 @@ post:
         application/json:
           schema:
             $ref: ../components/schemas/Exhibition.yaml
-          # TODO: add a response example once Exhibition.yaml fields are defined.
+          examples:
+            ExhibitionResponse:
+              value:
+                exhibition_id: EXH-0001
+                exhibition_name: 'Julia St-Croix: Blue Hour'
+                curator: Alex Morgan
+                type: solo
+                location: Gallery 1
+                start_date: '2026-03-01'
+                end_date: '2026-06-30'
     '400':
       $ref: ../components/responses/BadRequest.yaml
     '401':

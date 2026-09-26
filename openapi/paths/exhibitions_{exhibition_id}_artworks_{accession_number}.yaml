@@ -29,7 +29,7 @@ delete:
   tags:
     - Exhibitions
   summary: Remove an artwork from an exhibition
-  description: Remove a featured artwork from an exhibition. The artwork record itself isn't deleted.
+  description: Remove a featured artwork from an exhibition. The artwork record itself is not deleted.
   operationId: removeExhibitionArtwork
   security:
     - OAuth2:

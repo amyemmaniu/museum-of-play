@@ -4,9 +4,9 @@ description: |-
   Performs a case-insensitive text search across relevant fields in the collection.
 
   **Fields searched depend on the endpoint:**
-  - **Artists:** `artist_name`, `artist_id`
-  - **Artworks:** `name`, `accession_number`, `medium`, `location`, `creation_year`, `artist_name`, `artist_id`
-  - **Exhibitions:** `name`, `exhibition_id`, `description`, `location`, `start_date`, `end_date`, `artist.name`, `artist.id`
+  - **Artists:** `artist_id`, `artist_name`, `gender`, `nationality`, `based_in_place`
+  - **Artworks:** `accession_number`, `medium`, `title`, `artist_id`, `dimensions`
+  - **Exhibitions:** `exhibition_id`, `exhibition_name`, `curator`, `type`, `location`
 
   Returns items where any of the searchable fields contain the search term as a substring.
 required: false

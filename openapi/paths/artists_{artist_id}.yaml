@@ -14,7 +14,16 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/Artist.yaml
-          # TODO: add a response example once Artist.yaml fields are defined.
+          examples:
+            ArtistResponse:
+              value:
+                artist_id: ART-JST-0001
+                artist_name: Julia St-Croix
+                birth_year: 1985
+                death_year: null
+                gender: Female
+                nationality: Canadian
+                based_in_place: Toronto, Canada
     '400':
       $ref: ../components/responses/BadRequest.yaml
     '404':

@@ -1,6 +1,5 @@
-# See https://redocly.com/docs/cli/configuration/ for more information.
 apis:
-  sample@v1: 
+  museum-of-play: 
     root: openapi/openapi.yaml
 extends:
   - recommended
