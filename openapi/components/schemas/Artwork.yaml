@@ -1,4 +1,31 @@
 type: object
 description: An artwork in the collection.
-# TODO: define properties from the public.artworks table.
-properties: {}
+properties:
+  accession_number:
+    type: string
+    description: Internal unique identifier.
+    pattern: ^[0-9]{4}\.[0-9]{4}$
+    example: '2021.0001'
+  title:
+    type: string
+    description: The title of the artwork.
+  artist_id:
+    type: string
+    description: ID of the artist who created the work.
+    pattern: ^ART-[A-Z]{3}-[0-9]{4}$
+    example: ART-JST-0001
+  medium:
+    type: string
+    description: The medium in which the artwork was created.
+  dimensions:
+    type: string
+    description: The dimensions of the artwork, formatted as length x width.
+  creation_year:
+    type: integer
+    format: int32
+    description: The year in which the artwork was created.
+  runtime:
+    type: string
+    format: duration
+    description: Runtime for videos and live performance art, formatted as an ISO 8601 duration.
+    example: PT1H30M

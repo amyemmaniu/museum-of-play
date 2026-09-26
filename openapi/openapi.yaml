@@ -34,8 +34,6 @@ paths:
     $ref: paths/artworks.yaml
   /artworks/{accession_number}:
     $ref: paths/artworks_{accession_number}.yaml
-  /artworks/{accession_number}/image:
-    $ref: paths/artworks_{accession_number}_image.yaml
   /exhibitions:
     $ref: paths/exhibitions.yaml
   /exhibitions/{exhibition_id}:
@@ -58,18 +56,18 @@ components:
           authorizationUrl: https://api.museumofplay.example/oauth2/authorize
           tokenUrl: https://api.museumofplay.example/oauth2/token
           scopes:
-            artworks:read: Read access to collections items and images
-            artworks:write: Write access to collections items (create, update, delete)
-            artists:read: Read access to artists
-            artists:write: Write access to artists (create, update, delete)
-            exhibitions:read: Read access to exhibitions
-            exhibitions:write: Write access to exhibitions and their featured artists and artworks
+            artworks:read: Read access to collections items and images.
+            artworks:write: Write access to collections items (create, update, delete).
+            artists:read: Read access to artists.
+            artists:write: Write access to artists (create, update, delete).
+            exhibitions:read: Read access to exhibitions.
+            exhibitions:write: Write access to exhibitions and their featured artists and artworks.
         clientCredentials:
           tokenUrl: https://api.museumofplay.example/oauth2/token
           scopes:
-            artworks:read: Read access to collections items and images
-            artworks:write: Write access to collections items (create, update, delete)
-            artists:read: Read access to artists
-            artists:write: Write access to artists (create, update, delete)
-            exhibitions:read: Read access to exhibitions
-            exhibitions:write: Write access to exhibitions and their featured artists and artworks
+            artworks:read: Read access to collections items and images.
+            artworks:write: Write access to collections items (create, update, delete).
+            artists:read: Read access to artists.
+            artists:write: Write access to artists (create, update, delete).
+            exhibitions:read: Read access to exhibitions.
+            exhibitions:write: Write access to exhibitions and their featured artists and artworks.

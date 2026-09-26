@@ -1,4 +1,30 @@
 type: object
 description: An artist whose work is in the collection.
-# TODO: define properties from the public.artists table.
-properties: {}
+properties:
+  artist_id:
+    type: string
+    description: Internal unique identifier.
+    pattern: ^ART-[A-Z]{3}-[0-9]{4}$
+    example: ART-JST-0001
+  artist_name:
+    type: string
+    description: Primary display/search query name.
+  birth_year:
+    type: integer
+    format: int32
+    description: Year of artist's birth.
+  death_year:
+    type:
+      - integer
+      - 'null'
+    format: int32
+    description: Year of artist's death; `null` if artist is still alive.
+  gender:
+    type: string
+    description: Artist's gender.
+  nationality:
+    type: string
+    description: Artist's nationality.
+  based_in_place:
+    type: string
+    description: Location where the artist's practice is currently based.

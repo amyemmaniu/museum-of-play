@@ -7,7 +7,7 @@ put:
   summary: Add an artwork to an exhibition
   description: |
     Feature an existing artwork in an exhibition.
-    This operation is idempotent - adding an artwork that is already featured has no effect.
+    This operation is idempotent; adding an artwork that is already featured has no effect.
   operationId: addExhibitionArtwork
   security:
     - OAuth2:

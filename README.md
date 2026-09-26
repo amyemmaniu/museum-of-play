@@ -16,4 +16,4 @@ Artworks are identified by their accession number. Accession numbers start with 
 
 # Acknowledgements
 
-The Museum of Play Collections API is based on the OpenAPI specification and built on top of Redocly's openapi-starter repository.
+The Museum of Play Collections API is based on the OpenAPI specification and built on top of Redocly's [open-api](https://github.com/Redocly/cafe-api) repository.

@@ -28,7 +28,7 @@ post:
     - Artworks
   summary: Add an artwork
   description: Add a new artwork to the collection.
-  operationId: createArtwork
+  operationId: addArtwork
   security:
     - OAuth2:
         - artworks:write
