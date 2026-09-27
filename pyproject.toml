@@ -1,0 +1,14 @@
+[project]
+name = "museum-of-play"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[standard]>=0.141.1",
+    "psycopg-pool>=3.3.3",
+    "psycopg[binary]>=3.3.6",
+    "python-dotenv>=1.2.3",
+    "pyyaml>=6.0.3",
+]
+
+[tool.fastapi]
+entrypoint = "backend.app.main:app"
