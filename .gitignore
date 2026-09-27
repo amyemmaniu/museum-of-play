@@ -1,5 +1,9 @@
-# Dir for bundles
+# Files with the following extensions are not committed to GitHub. `dist` is the directory for bundles.
 dist
 node_modules
 .env
 __pycache__/
+.neon
+.env.local
+.agents/skills/
+skills-lock.json

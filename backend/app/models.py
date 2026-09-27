@@ -31,14 +31,14 @@ from typing import Any, Generic, Literal, TypeVar  # Building blocks for type hi
 from pydantic import BaseModel, Field
 
 # ID FORMAT RULES
-# These are "regular expressions": patterns describing what a valid value looks like.
+# These are regular expressions (regex): patterns describing what a valid value looks like.
 # They're the same patterns as the ID parameters and schemas in openapi/components.
 # How to read them: ^ means "start", $ means "end", [A-Z] is any capital letter,
-# [0-9] is any digit, {4} means "exactly 4 of the previous thing", and \. is a literal period.
-# The r before the quotes tells Python to treat backslashes as ordinary characters.
+# [0-9] is any digit and {4} means "exactly 4 of the previous thing".
+# The `r` before the quotes tells Python to treat backslashes as ordinary characters.
 ARTIST_ID_PATTERN = r"^ART-[A-Z]{3}-[0-9]{4}$"          # e.g., ART-JST-0001
-ACCESSION_NUMBER_PATTERN = r"^[0-9]{4}\.[0-9]{4}$"      # e.g., 2021.0001
-EXHIBITION_ID_PATTERN = r"^EXH-[0-9]{4}$"               # e.g., EXH-0001
+ACCESSION_NUMBER_PATTERN = r"^[0-9]{4}\-[0-9]{4}$"      # e.g., 2021-0001
+EXHIBITION_ID_PATTERN = r"^EXH-[0-9]{5}$"               # e.g., EXH-00001
 # HH:MM:SS, up to 23:59:59. The | means "or": the hour is 00-19 or 20-23.
 RUNTIME_PATTERN = r"^([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$"
 

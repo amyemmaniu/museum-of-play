@@ -4,8 +4,8 @@ properties:
   accession_number:
     type: string
     description: Internal unique identifier.
-    pattern: ^[0-9]{4}\.[0-9]{4}$
-    example: '2021.0001'
+    pattern: ^[0-9]{4}-[0-9]{4}$
+    example: '2021-0001'
   title:
     type: string
     description: The title of the artwork.

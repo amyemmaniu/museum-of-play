@@ -12,7 +12,7 @@ Exhibition IDs start with the prefix _EXH-_, and then a unique four-digit number
 
 ## Accession Numbers
 
-Artworks are identified by their accession number. Accession numbers start with the year an artwork was acquired, then a period, then a sequential number.
+Artworks are identified by their accession number. Accession numbers start with the year an artwork was acquired, then a hyphen, then a unique five-digit number.
 
 # Acknowledgements
 

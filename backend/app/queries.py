@@ -71,7 +71,7 @@ def encode_cursor(offset: int) -> str:
 def decode_cursor(cursor: str) -> int:
     """Turn a cursor string back into a row position, or return 400 if it's not a valid cursor."""
     # `try:` runs the indented code; if it fails with the error named in `except`,
-    # the `except` block runs instead of the whole request crashing.
+    # then the `except` block runs instead of the whole request crashing.
     try:
         # The reverse of encode_cursor; int(...) turns the text back into a number.
         offset = int(base64.urlsafe_b64decode(cursor.encode()).decode())
