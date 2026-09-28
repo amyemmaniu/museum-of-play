@@ -17,7 +17,7 @@ get:
           examples:
             ExhibitionResponse:
               value:
-                exhibition_id: EXH-00001
+                exhibition_id: EXH-0001
                 exhibition_name: 'Julia St-Croix: Blue Hour'
                 curator: Alex Morgan
                 type: solo

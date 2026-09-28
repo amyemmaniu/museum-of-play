@@ -4,5 +4,5 @@ description: Accession number of the artwork to retrieve, add, remove, or update
 required: true
 schema:
   type: string
-  pattern: ^[0-9]{4}-[0-9]{4}$
-example: '2021-0001'
+  pattern: ^[0-9]{4}\.[0-9]{4}$
+example: '2021.0001'

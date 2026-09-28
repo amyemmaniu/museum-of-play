@@ -56,7 +56,7 @@ def problem_response(
         # The standard phrase for the status code, such as "Not Found" for 404.
         title=HTTPStatus(status).phrase,
         status=status,
-        # The path that failed, such as /artworks/2021-0001.
+        # The path that failed, such as /artworks/2021.0001.
         instance=request.url.path,
         details=details,
     )

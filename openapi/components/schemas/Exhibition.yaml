@@ -4,8 +4,8 @@ properties:
   exhibition_id:
     type: string
     description: Internal unique identifier for the exhibition.
-    pattern: ^EXH-[0-9]{5}$
-    example: EXH-00001
+    pattern: ^EXH-[0-9]{4}$
+    example: EXH-0001
   exhibition_name:
     type: string
     description: The name of the exhibition.

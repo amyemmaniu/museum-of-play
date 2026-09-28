@@ -4,8 +4,8 @@ properties:
   accession_number:
     type: string
     description: Internal unique identifier.
-    pattern: ^[0-9]{4}-[0-9]{4}$
-    example: '2021-0001'
+    pattern: ^[0-9]{4}\.[0-9]{4}$
+    example: '2021.0001'
   title:
     type: string
     description: The title of the artwork.
@@ -19,7 +19,8 @@ properties:
     description: The medium in which the artwork was created.
   dimensions:
     type: string
-    description: The dimensions of the artwork, formatted as length x width.
+    description: The dimensions of the artwork in centimeters, formatted as length x width.
+    example: '240 x 360'
   creation_year:
     type: integer
     format: int32

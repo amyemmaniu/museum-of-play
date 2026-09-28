@@ -17,11 +17,11 @@ get:
           examples:
             ArtworkResponse:
               value:
-                accession_number: '2021-0001'
+                accession_number: '2021.0001'
                 title: Blue Hour
                 artist_id: ART-JST-0001
                 medium: Oil on canvas
-                dimensions: 24 x 36 in
+                dimensions: 24 x 36
                 creation_year: 2021
     '400':
       $ref: ../components/responses/BadRequest.yaml

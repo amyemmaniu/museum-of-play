@@ -4,5 +4,5 @@ description: ID of the exhibition to retrieve, add, remove, or update.
 required: true
 schema:
   type: string
-  pattern: ^EXH-[0-9]{5}$
-example: EXH-00001
+  pattern: ^EXH-[0-9]{4}$
+example: EXH-0001
