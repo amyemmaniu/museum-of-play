@@ -1,4 +1,40 @@
 :root {
-	background-color: $color-background;
-	color: $color-white;
+	body {
+		background-color: $color-background;
+		color: $color-white;
+	}
+
+	h1 {
+		font-size: $font_size_h1-mobile;
+		font-family: $font_family_heading;
+	}
+
+	h2 {
+		font-size: $font_size_h2;
+		font-family: $font_family_body;
+	}
+
+	h3 {
+		font-size: $font_size_h3;
+		font-family: $font_family_body;
+	}
+
+	p {
+		font-size: $font_size_body;
+		font-family: $font_family_body;
+	}
+
+	a {
+		color: $color_primary;
+	}
+
+	a:hover {
+		color: $color_accent;
+	}
+
+	@media (min-width: 768px) {
+		h1 {
+			font-size: $font_size_h1-desktop;
+		}
+	}
 }

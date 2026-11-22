@@ -1,0 +1,39 @@
+---
+const { PlanType, Price, Description } = Astro.props;
+---
+
+<div class="membership-card">
+	<h1>{PlanType}</h1>
+	<p class="price">{Price}</p>
+	<p class="per-month">/month</p>
+	<p>{Description}</p>
+</div>
+
+<style lang="scss">
+	.price {
+		color: $color_black;
+		font-size: $font_size_heading;
+		font-family: $font_family_heading;
+		text-align: center;
+		justify-content: center;
+	}
+
+	.membership-card h1 {
+		color: $color_black;
+		font-size: $font_size_h2;
+		font-family: $font_family_body;
+	}
+
+	.per-month {
+		text-align: center;
+		justify-content: center;
+		font-size: $font_size_body;
+		font-family: $font_family_body;
+	}
+
+	.membership-card p {
+		text-align: center;
+		font-size: $font_size_body;
+		font-family: $font_family_body;
+	}
+</style>
