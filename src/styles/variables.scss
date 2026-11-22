@@ -1,0 +1,40 @@
+// Colors
+$color_black: #000000;
+$color_white: #FFFFFF;
+$color_gray: #959595;
+$color_dark-gray: #484646;
+$color_primary: #1A1782;
+$color_secondary: #EA1404;
+$color_tertiary: #4E8252;
+$color_accent: #D1D658;
+$color_neutral: #FDF3CF;
+
+// Fonts
+$font_family_body: 'Rubik', sans-serif;
+$font_family_heading: 'Kode Mono', sans-serif;
+
+// Font Sizes
+$font_size_body: 1rem; // 16px
+$font_size_h1-mobile: 2.5rem; // 40px
+$font_size_h1-desktop: 4rem; // 64px
+$font_size_h2: 2.25rem; // 36px
+$font_size_h3: 1.5rem; // 24px
+
+// Spacing
+$spacing_extra-small: 0.5rem; // 8px
+$spacing_small: 1.25rem; // 20px
+$spacing_medium: 1.5rem; // 24px
+$spacing_large: 1.75rem; // 28px
+$spacing_grid: 4rem; // 64px
+
+// Border Widths
+$border_width_thin: 2px;
+$border_width_small-icon: 4px;
+$border_width_large-icon: 6px;
+
+// Border Radii
+$border_radius_body: 8px;
+$border_radius_card: 20px;
+
+// Box Shadow for Cards
+$box_shadow_card: 0px 4px 8px rgba(0, 0, 0, 0.1);

@@ -12,6 +12,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/kode-mono": "^5.3.0",
+    "@fontsource/rubik": "^5.3.0",
     "astro": "^7.4.13"
   }
 }

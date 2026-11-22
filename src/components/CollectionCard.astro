@@ -1,0 +1,24 @@
+---
+const { Title, Img, ImgAltText } = Astro.props;
+---
+
+<!DOCTYPE html>
+	<div class="collection-card">
+		<h2>{Title}</h2>
+		<img src={Img} alt={ImgAltText}/>
+	</div>
+
+	<style lang="scss">
+		.collection-card {
+			background-color: $color_black;
+			padding-top: $spacing_extra-small;
+			padding-bottom: $spacing_extra-small;
+			padding-left: 12px;
+			padding-right: 12px;
+		}
+
+		.collection-card:hover {
+			text-decoration: underline;
+		}
+	</style>
+</html>

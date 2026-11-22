@@ -1,0 +1,37 @@
+---
+const { Type, Title, Img, ImgAltText, Date } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html>
+	<body>
+			<div class="view-card">
+					<p class="badge">{Type}</p>
+					<h2>{Title}</h2>
+					<img src={Img} alt={ImgAltText}/>
+					<p>{Date}</p>
+			</div>
+	</body>
+</html>
+
+<style lang="scss">
+	.view-card {
+		background-color: $color_white;
+		padding-top: $spacing_extra-small;
+		padding-bottom: $spacing_extra-small;
+		padding-left: 12px;
+		padding-right: 12px;
+		box-shadow: $box_shadow_card;
+	}
+
+	.badge {
+		background-color: $color_white;
+		color: $color_black;
+		font-family: $font_family_body;
+		padding-top: $spacing_extra-small;
+		padding-bottom: $spacing_extra-small;
+		padding-left: $spacing_extra-small;
+		padding-right: $spacing_extra-small;
+		border-radius: $border_radius_body;
+	}
+</style>
