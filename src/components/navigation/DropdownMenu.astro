@@ -1,0 +1,87 @@
+---
+import DropdownItem from "./DropdownItem.astro";
+
+const { Label, Items = [] } = Astro.props;
+---
+
+<details class="dropdown-menu">
+	<summary class="navbar-button">{Label}</summary>
+	<div class="dropdown-items">
+		{Items.map((Item: string) => <DropdownItem Text={Item} />)}
+	</div>
+</details>
+
+<style lang="scss">
+	.dropdown-menu {
+		width: 100%;
+	}
+
+	.navbar-button {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 50px;
+		padding: $spacing_extra-small;
+		box-sizing: border-box;
+		background-color: $color_black;
+		color: $color_white;
+		font-family: $font_family_heading;
+		font-size: 1.25rem; // 20px
+		font-weight: bold;
+		text-align: left;
+		cursor: pointer;
+		list-style: none;
+	}
+
+	.navbar-button::-webkit-details-marker {
+		display: none;
+	}
+
+	// Caret: downward triangle when closed, upward triangle when open
+	.navbar-button::after {
+		content: "";
+		flex-shrink: 0;
+		width: 0;
+		height: 0;
+		margin-right: 0.1rem;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-top: 18px solid $color_white;
+	}
+
+	.dropdown-menu[open] .navbar-button::after {
+		border-top: none;
+		border-bottom: 18px solid $color_white;
+	}
+
+	.dropdown-items {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+
+	// Browser: the menu shrinks to its label (no caret) and its items drop down over the page
+	@media (min-width: 768px) {
+		.dropdown-menu {
+			position: relative;
+			width: auto;
+		}
+
+		.navbar-button {
+			justify-content: center;
+		}
+
+		.navbar-button::after {
+			display: none;
+		}
+
+		.dropdown-items {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			min-width: 100%;
+			width: max-content;
+			z-index: 10;
+		}
+	}
+</style>

@@ -2,17 +2,14 @@
 const { Type, Title, Img, ImgAltText, Date } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html>
-	<body>
-			<div class="view-card">
-					<p class="badge">{Type}</p>
-					<h2>{Title}</h2>
-					<img src={Img} alt={ImgAltText}/>
-					<p>{Date}</p>
-			</div>
-	</body>
-</html>
+<body>
+		<div class="view-card">
+				<p class="badge">{Type}</p>
+				<h2>{Title}</h2>
+				<img src={Img} alt={ImgAltText}/>
+				<p>{Date}</p>
+		</div>
+</body>
 
 <style lang="scss">
 	.view-card {

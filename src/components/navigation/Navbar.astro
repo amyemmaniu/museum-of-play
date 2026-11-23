@@ -1,0 +1,54 @@
+---
+import DropdownMenu from "./DropdownMenu.astro";
+---
+
+<nav class="navbar">
+	<DropdownMenu Label="Visit" Items={["Plan Your Visit", "Membership"]} />
+	<DropdownMenu Label="Explore" Items={["On View"]} />
+	<DropdownMenu Label="Learn" Items={["Residencies", "Fellowships", "Blog"]} />
+	<DropdownMenu Label="About" Items={["Mission, Vision, and Values", "Leadership"]} />
+	<a class="navbar-link" href="/support">Support</a>
+</nav>
+
+<style lang="scss">
+	.navbar {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		background-color: $color_black;
+	}
+
+	.navbar-link {
+		display: flex;
+		align-items: center;
+		height: 50px;
+		padding: $spacing_extra-small;
+		box-sizing: border-box;
+		background-color: $color_black;
+		color: $color_white;
+		font-family: $font_family_heading;
+		font-size: 1.25rem; // 20px
+		font-weight: bold;
+		text-decoration: none;
+	}
+
+	.navbar-link:hover {
+		text-decoration: underline;
+	}
+
+	// Browser: items sit in a single row
+	@media (min-width: 768px) {
+		.navbar {
+			flex-direction: row;
+			align-items: flex-start;
+			gap: 2.5rem; // 40px
+			height: 50px;
+			padding: 0 25px;
+			box-sizing: border-box;
+		}
+
+		.navbar-link {
+			justify-content: center;
+		}
+	}
+</style>

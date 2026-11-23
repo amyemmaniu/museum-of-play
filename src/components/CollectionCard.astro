@@ -1,23 +1,63 @@
 ---
+import { Image } from 'astro:assets';
+
 const { Title, Img, ImgAltText } = Astro.props;
 ---
 
-<!DOCTYPE html>
-	<div class="collection-card">
-		<h2>{Title}</h2>
-		<img src={Img} alt={ImgAltText}/>
+<div class="collection-card">
+	<h2>{Title}</h2>
+	<div class="collection-card-image">
+		<Image src={Img} alt={ImgAltText} width={700} />
 	</div>
+</div>
 
-	<style lang="scss">
+<style lang="scss">
+	.collection-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.68rem; // 10.9px
+		width: 100%;
+		box-sizing: border-box;
+		background-color: $color_black;
+		padding: 0.68rem 0.91rem; // 10.9px 14.5px
+	}
+
+	.collection-card h2 {
+		margin: 0;
+		width: 100%;
+		color: $color_white;
+		font-family: $font_family_body;
+		font-size: 1.4535rem; // 23.3px
+		font-weight: normal;
+		text-align: center;
+	}
+
+	.collection-card-image {
+		width: 100%;
+		aspect-ratio: 4032 / 3024;
+	}
+
+	.collection-card-image :global(img) {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.collection-card:hover {
+		text-decoration: underline;
+	}
+
+	// Browser: larger padding, gap and title, as in the Browser prototype
+	@media (min-width: 768px) {
 		.collection-card {
-			background-color: $color_black;
-			padding-top: $spacing_extra-small;
-			padding-bottom: $spacing_extra-small;
-			padding-left: 12px;
-			padding-right: 12px;
+			gap: 15px;
+			padding: 15px 20px;
 		}
 
-		.collection-card:hover {
-			text-decoration: underline;
+		.collection-card h2 {
+			font-size: 2rem; // 32px
 		}
-	</style>
+	}
+</style>

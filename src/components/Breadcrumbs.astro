@@ -1,0 +1,74 @@
+---
+// Crumbs: ordered list of { Title, Link }, from the top-level page to the current page.
+// The last crumb is the current page: it is bold, not a link, and has no separator.
+const { Crumbs = [] } = Astro.props;
+const lastIndex = Crumbs.length - 1;
+---
+
+<nav aria-label="Breadcrumb">
+	<ol class="breadcrumb-trail">
+		{Crumbs.map((Crumb: { Title: string; Link: string }, index: number) =>
+			index === lastIndex ? (
+				<li class="breadcrumb current" aria-current="page">{Crumb.Title}</li>
+			) : (
+				<li class="breadcrumb">
+					<a href={Crumb.Link}>{Crumb.Title}</a>
+					<span class="separator" aria-hidden="true">/</span>
+				</li>
+			)
+		)}
+	</ol>
+</nav>
+
+<style lang="scss">
+	.breadcrumb-trail {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: $spacing_extra-small;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font-family: $font_family_body;
+		font-size: 0.875rem; // 14px
+		// Mobile: the trail hugs its content and wraps onto new lines inside the screen width
+		width: fit-content;
+		max-width: 100%;
+	}
+
+	// Browser: the trail fills the screen width
+	@media (min-width: 768px) {
+		.breadcrumb-trail {
+			width: 100%;
+		}
+	}
+
+	.breadcrumb {
+		display: flex;
+		align-items: center;
+		gap: $spacing_extra-small;
+		white-space: nowrap;
+		font-weight: normal;
+	}
+
+	a {
+		color: $color_primary;
+		text-decoration: none;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+
+	.separator {
+		color: $color_black;
+	}
+
+	// The current page's title may wrap onto multiple lines on narrow screens
+	.current {
+		min-width: 0;
+		color: $color_primary;
+		font-weight: bold;
+		white-space: normal;
+	}
+</style>
