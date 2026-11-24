@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+
+// Img must be an imported image (not a string path) so Astro can optimize it
 const { Type, Title, Img, ImgAltText, Date } = Astro.props;
 ---
 
@@ -6,7 +9,7 @@ const { Type, Title, Img, ImgAltText, Date } = Astro.props;
 		<div class="view-card">
 				<p class="badge">{Type}</p>
 				<h2>{Title}</h2>
-				<img src={Img} alt={ImgAltText}/>
+				<Image src={Img} alt={ImgAltText} width={700} />
 				<p>{Date}</p>
 		</div>
 </body>
@@ -29,6 +32,8 @@ const { Type, Title, Img, ImgAltText, Date } = Astro.props;
 		padding-bottom: $spacing_extra-small;
 		padding-left: $spacing_extra-small;
 		padding-right: $spacing_extra-small;
+		border-width: $border_width_button;
 		border-radius: $border_radius_body;
+		border-color: $color_black;
 	}
 </style>

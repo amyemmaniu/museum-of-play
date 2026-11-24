@@ -1,39 +1,80 @@
 ---
-const { PlanType, Price, Description } = Astro.props;
+const { PlanName, Price, BorderColor, Description } = Astro.props;
 ---
 
-<div class="membership-card">
-	<h1>{PlanType}</h1>
-	<p class="price">{Price}</p>
-	<p class="per-month">/month</p>
-	<p>{Description}</p>
+<div class="membership-card" style={`--border-color: ${BorderColor}`}>
+	<h2>{PlanName}</h2>
+	<div class="price-per-month">
+		<p class="price">${Price}</p>
+		<p class="per-month">/month</p>
+	</div>
+	<p class="description">{Description}</p>
 </div>
 
 <style lang="scss">
-	.price {
-		color: $color_black;
-		font-size: $font_size_heading;
-		font-family: $font_family_heading;
-		text-align: center;
-		justify-content: center;
+	.membership-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		box-sizing: border-box;
+		width: 100%;
+		max-width: 448px;
+		min-height: 432px;
+		padding: 2rem; // 32px
+		border: $border_radius_card solid;
+		border-color: var(--border-color);
+		border-radius: $border_radius_card;
+		background-color: $color_white;
 	}
 
-	.membership-card h1 {
+	.membership-card h2 {
+		margin: 0;
 		color: $color_black;
 		font-size: $font_size_h2;
 		font-family: $font_family_body;
+		font-weight: normal;
+		text-align: center;
+	}
+
+	.price-per-month {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-end;
+		justify-content: center;
+	}
+
+	.price {
+		margin: 0;
+		color: $color_black;
+		font-size: $font_size_h1-mobile;
+		font-family: $font_family_heading;
 	}
 
 	.per-month {
-		text-align: center;
-		justify-content: center;
+		margin: 0 0 0.5rem;
+		color: $color_black;
 		font-size: $font_size_body;
 		font-family: $font_family_body;
 	}
 
-	.membership-card p {
-		text-align: center;
+	.description {
+		margin: 0;
+		color: $color_black;
 		font-size: $font_size_body;
 		font-family: $font_family_body;
+		text-align: center;
+	}
+
+	@media (min-width: 768px) {
+		.price {
+			font-size: clamp(1.75rem, 4vw, 4rem); // up to 64px
+		}
+	}
+
+	@media (min-width: 1200px) {
+		.price {
+			font-size: $font_size_h1-desktop;
+		}
 	}
 </style>

@@ -1,12 +1,17 @@
 ---
-const { Text } = Astro.props;
+const { Text, Link } = Astro.props;
 ---
 
 <div class="dropdown-item">
-	<p>{Text}</p>
+	{Link ? <a href={Link}><p>{Text}</p></a> : <p>{Text}</p>}
 </div>
 
 <style lang="scss">
+	a {
+		display: block;
+		text-decoration: none;
+	}
+
 	p {
 		margin: 0;
 		color: $color_white;
@@ -14,7 +19,11 @@ const { Text } = Astro.props;
 		font-size: $font_size_body;
 		font-family: $font_family_body;
 		text-align: center;
-		padding: 0.75rem 0.625rem; // 12px 10px
+		padding: 0.75rem 0.625rem;
+	}
+
+	a:hover p {
+		text-decoration: underline;
 	}
 
 	@media (min-width: 768px) {

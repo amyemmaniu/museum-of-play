@@ -7,7 +7,11 @@ const { Label, Items = [] } = Astro.props;
 <details class="dropdown-menu">
 	<summary class="navbar-button">{Label}</summary>
 	<div class="dropdown-items">
-		{Items.map((Item: string) => <DropdownItem Text={Item} />)}
+		{Items.map((Item: string | { Text: string; Link?: string }) =>
+			typeof Item === "string"
+				? <DropdownItem Text={Item} />
+				: <DropdownItem Text={Item.Text} Link={Item.Link} />
+		)}
 	</div>
 </details>
 

@@ -16,11 +16,11 @@ const { Title, Img, ImgAltText } = Astro.props;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 0.68rem; // 10.9px
+		gap: 0.68rem;
 		width: 100%;
 		box-sizing: border-box;
 		background-color: $color_black;
-		padding: 0.68rem 0.91rem; // 10.9px 14.5px
+		padding: 0.68rem 0.91rem;
 	}
 
 	.collection-card h2 {
@@ -28,7 +28,7 @@ const { Title, Img, ImgAltText } = Astro.props;
 		width: 100%;
 		color: $color_white;
 		font-family: $font_family_body;
-		font-size: 1.4535rem; // 23.3px
+		font-size: 1.4535rem;
 		font-weight: normal;
 		text-align: center;
 	}
@@ -49,7 +49,6 @@ const { Title, Img, ImgAltText } = Astro.props;
 		text-decoration: underline;
 	}
 
-	// Browser: larger padding, gap and title, as in the Browser prototype
 	@media (min-width: 768px) {
 		.collection-card {
 			gap: 15px;
@@ -57,7 +56,7 @@ const { Title, Img, ImgAltText } = Astro.props;
 		}
 
 		.collection-card h2 {
-			font-size: 2rem; // 32px
+			font-size: 2rem;
 		}
 	}
 </style>

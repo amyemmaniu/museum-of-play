@@ -1,16 +1,46 @@
 ---
 import DropdownMenu from "./DropdownMenu.astro";
+import logo from "../../assets/logo.svg";
 ---
 
-<nav class="navbar">
-	<DropdownMenu Label="Visit" Items={["Plan Your Visit", "Membership"]} />
-	<DropdownMenu Label="Explore" Items={["On View"]} />
-	<DropdownMenu Label="Learn" Items={["Residencies", "Fellowships", "Blog"]} />
-	<DropdownMenu Label="About" Items={["Mission, Vision, and Values", "Leadership"]} />
-	<a class="navbar-link" href="/support">Support</a>
-</nav>
+<header class="header">
+	<a class="logo-link" href="/">
+		<img class="logo" src={logo.src} alt="Museum of Play logo" />
+	</a>
+
+	<nav class="navbar">
+		<DropdownMenu Label="Visit" Items={["Plan Your Visit", { Text: "Membership", Link: "/membership" }]} />
+		<DropdownMenu Label="Explore" Items={["On View"]} />
+		<DropdownMenu Label="Learn" Items={["Residencies", "Fellowships", "Blog"]} />
+		<DropdownMenu Label="About" Items={["Mission, Vision, and Values", "Leadership"]} />
+		<a class="navbar-link" href="/support">Support</a>
+	</nav>
+</header>
 
 <style lang="scss">
+	.header {
+		display: flex;
+		flex-direction: column;
+		top: 0;
+		width: 100%;
+		box-sizing: border-box;
+		padding: 10px;
+		background-color: $color_black;
+	}
+
+	.logo-link {
+		display: block;
+		width: 356px;
+		max-width: 100%;
+	}
+
+	.logo {
+		display: block;
+		width: 356px;
+		max-width: 100%;
+		height: 48px;
+	}
+
 	.navbar {
 		display: flex;
 		flex-direction: column;
@@ -36,12 +66,24 @@ import DropdownMenu from "./DropdownMenu.astro";
 		text-decoration: underline;
 	}
 
-	// Browser: items sit in a single row
 	@media (min-width: 768px) {
+		.header {
+			flex-direction: row;
+			align-items: flex-start;
+			justify-content: space-between;
+			height: 70px;
+		}
+
+		.logo-link {
+			flex-shrink: 0;
+		}
+
 		.navbar {
 			flex-direction: row;
 			align-items: flex-start;
+			justify-content: flex-end;
 			gap: 2.5rem; // 40px
+			width: auto;
 			height: 50px;
 			padding: 0 25px;
 			box-sizing: border-box;

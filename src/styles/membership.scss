@@ -1,0 +1,80 @@
+// Lets components receive a Sass color as a CSS value, e.g. BorderColor="var(--color_secondary)"
+:root {
+	--color_secondary: #{$color_secondary};
+	--color_tertiary: #{$color_tertiary};
+	--color_accent: #{$color_accent};
+}
+
+.membership-card-group {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+	padding: 0 $spacing_small;
+}
+
+.membership-comparison-table {
+	overflow-x: auto;
+	padding: 0 $spacing_small;
+}
+
+.membership-comparison-table table {
+	width: 100%;
+	min-width: 1092px; // four 273px columns
+	border-collapse: collapse;
+	table-layout: fixed;
+	font-family: $font_family_body;
+	font-size: $font_size_body;
+}
+
+.membership-comparison-table th,
+.membership-comparison-table td {
+	height: 50px;
+	box-sizing: border-box;
+	padding: $spacing_extra-small;
+	border: $border_width_button solid $color_black;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.membership-comparison-table thead th {
+	color: $color_white;
+	background-color: $color_black;
+	font-weight: bold;
+}
+
+.membership-comparison-table tbody th {
+	text-align: left;
+	font-weight: normal;
+}
+
+// Checkmark scaled down to fit the 50px-tall table cell
+.membership-comparison-table td img {
+	display: inline-block;
+	width: 32px;
+	height: auto;
+	vertical-align: middle;
+}
+
+@media (min-width: 768px) {
+	.membership-card-group {
+		flex-direction: row;
+		align-items: stretch;
+		justify-content: center;
+	}
+
+	.membership-card-group > * {
+		flex: 1 1 0;
+		min-width: 0;
+	}
+
+	.membership-comparison-table {
+		overflow-x: visible;
+	}
+
+	.membership-comparison-table table {
+		min-width: 0;
+		max-width: 1101px;
+		margin: 0 auto;
+	}
+}
