@@ -1,7 +1,13 @@
 ---
 import '../styles/global.scss';
-import Navbar from '../components/navigation/Navbar.astro';
+import favicon from '../assets/favicon.svg';
+import '@fontsource/rubik/400.css';
+import '@fontsource/rubik/400-italic.css';
+import '@fontsource/rubik/700.css';
+import '@fontsource/kode-mono/400.css';
+import '@fontsource/kode-mono/700.css';
 import '../styles/learn.scss';
+import Navbar from '../components/navigation/Navbar.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { Image } from 'astro:assets';
 import residenciesImage from '../assets/images/learn_page_residencies.jpg';
@@ -18,12 +24,14 @@ const crumbs = [
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={favicon.src} />
 		<Navbar></Navbar>
 	</head>
 	<h1>Learn</h1>
 	<body>
 		<Breadcrumbs Crumbs={crumbs} />
 		<p>The Museum of Play offers a variety of ways for students, researchers, and creatives to learn about our collections.</p>
+
 		<div class="learn-sections">
 			<div class="residencies-section">
 				<Image src={residenciesImage} alt="A painter's studio with stained wood accents"></Image>
@@ -38,6 +46,7 @@ const crumbs = [
 				<a href="/residencies">Learn more about residencies &gt;</a>
 				</div>
 			</div>
+
 			<div class="fellowships-section">
 				<Image src={fellowshipsImage} alt="People sitting around a display panel in a wide-open atrium"></Image>
 				<div class="section-content">
@@ -61,6 +70,7 @@ const crumbs = [
 						At the end of the program, Sandbox Scholars present their work to curatorial staff and the public.
 					</li>
 				</ul>
+				
 				<a href="/fellowships">Learn more about fellowships &gt;</a>
 				</div>
 			</div>

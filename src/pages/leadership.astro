@@ -1,0 +1,123 @@
+---
+import '../styles/global.scss';
+import favicon from '../assets/favicon.svg';
+import '@fontsource/rubik/400.css';
+import '@fontsource/rubik/400-italic.css';
+import '@fontsource/rubik/700.css';
+import '@fontsource/kode-mono/400.css';
+import '@fontsource/kode-mono/700.css';
+import '../styles/leadership.scss';
+import Navbar from '../components/navigation/Navbar.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { Image } from 'astro:assets';
+import noemieLeclairHeadshot from '../assets/images/headshot_noemie-leclair.jpg';
+import melinaHuangHeadshot from '../assets/images/headshot_melina-huang.jpg';
+import phoenixEharaHeadshot from '../assets/images/headshot_phoenix-ehara.jpg';
+import athenaOtsokoHeadshot from '../assets/images/headshot_athena-otsoko.jpg';
+import gabrielAndersonHeadshot from '../assets/images/headshot_gabriel-anderson.jpg';
+import peanutHeadshot from '../assets/images/headshot_peanut.jpg';
+
+const crumbs = [
+	{ Title: "Home", Link: "/" },
+	{ Title: "About", Link: "/about" },
+	{ Title: "Leadership", Link: "" },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={favicon.src} />
+		<Navbar></Navbar>
+	</head>
+	<h1>Leadership</h1>
+	<body>
+		<Breadcrumbs Crumbs={crumbs} />
+
+		<div class="leadership-cards">
+			<div class="leadership-card">
+				<Image src={noemieLeclairHeadshot} alt="A black-and-white headshot of a Caucasian woman resting her chin against the heel of her left hand." />
+				<div class="leadership-info">
+					<h3>Noémie Leclair (she/her)</h3>
+					<p class="title">Director</p>
+					<p>
+						Noémie Leclair boasts over twelve years of experience supporting fine arts institutions such as the Frye Art Museum,
+						the Henry Art Gallery, and the Seattle Art Museum. She earned a doctorate in Digital Arts and Experimental Media from
+						the University of Washington in 2024. She has served as the Museum of Play's director since 2015.
+					</p>
+				</div>
+			</div>
+
+			<div class="leadership-card">
+				<Image src={melinaHuangHeadshot} alt="A black-and-white headshot of an Asian woman with her hair pushed over her left shoulder." />
+				<div class="leadership-info">
+					<h3>Melina Huang (she/her)</h3>
+					<p class="title">Curator, New Media Art</p>
+					<p>
+						Melina Huang has been a curator for the Museum of Play since 2018. She earned a Bachelor of Arts
+						and a Master of Arts in History from Case Western Reserve University. She has organized several of
+						the museum’s most popular exhibitions, including May 2023’s <i>Gisella Breihan: Seeing Beyond Belief</i>.
+						Prior to coming to the Museum of Play, she taught art history at the University of California, Davis.
+					</p>
+				</div>
+			</div>
+
+			<div class="leadership-card">
+				<Image src={phoenixEharaHeadshot} alt="A black-and-white headshot of an Asian woman wearing makeup and earrings." />
+				<div class="leadership-info">
+					<h3>Phoenix Ehara (they/them)</h3>
+					<p class="title">Chief Communications Officer</p>
+					<p>
+						Phoenix Ehara was named Chief Communications Officer in 2022. They received a Bachelor of Arts
+						degree in English from the University of Southern California and a Master of Library
+						and Information Science degree from the University of Washington. They manage the museum’s
+						Bureau of Communications, which maintains the blog, publishes press releases, and creates social media posts.
+					</p>
+				</div>
+			</div>
+
+			<div class="leadership-card">
+				<Image src={athenaOtsokoHeadshot} alt="A black-and-white headshot of a brunette Caucasian woman." />
+				<div class="leadership-info">
+					<h3>Athena Otsoko (she/her)</h3>
+					<p class="title">Education & Public Engagement Coordinator</p>
+					<p>
+						Athena Otsoko has served as the museum’s Education and Public Engagement Coordinator since 2023.
+						She earned a Bachelor of Science in Cognitive Science from the University of California,
+						Santa Cruz, and a Master of Communication in Digital Media from the University of Washington.
+					</p>
+				</div>
+			</div>
+
+			<div class="leadership-card">
+				<Image src={gabrielAndersonHeadshot} alt="A black-and-white headshot of an African American man wearing a baseball cap." />
+				<div class="leadership-info">
+					<h3>Gabriel Anderson (he/him)</h3>
+					<p class="title">Events Manager</p>
+					<p>
+						Gabriel Anderson has served as the museum’s Events Manager since 2019. He holds a Bachelor of Arts in
+						Economics from Harvard University and a Master of Business Administration from Stanford University.
+						Prior to working with the Museum of Play, he was an Event Manager for Microsoft.
+						He has led several popular public outreach events at the museum, including the annual
+						Cocktails & Cockatiels Night with Birds Connect Seattle.
+					</p>
+				</div>
+			</div>
+
+			<div class="leadership-card">
+				<Image src={peanutHeadshot} alt="A black-and-white close-up of a tabby cat."/>
+				<div class="leadership-info">
+					<h3>Peanut (she/her)</h3>
+					<p class="title">Chief Morale Officer</p>
+					<p>
+						Peanut is a British shorthair tabby who has served as the museum’s Chief Morale Officer
+						—and unofficial mascot—since 2023. Her playful and outgoing nature has kept museum staff’s spirits
+						high and patrons’ engagement even higher. She has starred in many of the museum’s promotional
+						materials, including social media posts and promotional videos.
+					</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

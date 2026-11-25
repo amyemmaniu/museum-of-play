@@ -1,11 +1,17 @@
 ---
 import '../styles/global.scss';
+import favicon from '../assets/favicon.svg';
+import '@fontsource/rubik/400.css';
+import '@fontsource/rubik/400-italic.css';
+import '@fontsource/rubik/700.css';
+import '@fontsource/kode-mono/400.css';
+import '@fontsource/kode-mono/700.css';
+import '../styles/membership.scss';
 import Navbar from '../components/navigation/Navbar.astro';
 import MembershipCard from '../components/MembershipCard.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { Image } from 'astro:assets';
 import checkmark from '../assets/checkmark.svg';
-import '../styles/membership.scss';
 
 const crumbs = [
 	{ Title: "Home", Link: "/" },
@@ -28,6 +34,7 @@ const comparisonRows: { Benefit: string; Values: (boolean | string)[] }[] = [
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={favicon.src} />
 		<Navbar></Navbar>
 	</head>
 	<body>

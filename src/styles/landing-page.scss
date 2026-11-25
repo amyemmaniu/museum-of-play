@@ -2,7 +2,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center; // mobile: both centered
-	gap: $spacing_small;
+	gap: $spacing_small; // space between the h3 and the link
+	padding-top: $spacing_small;
 	text-align: center;
 }
 
@@ -126,12 +127,16 @@
 		text-align: right;
 	}
 
+	.call-to-action h3 {
+		width: 12.5vw; // 1/8 of the viewport width
+	}
+
 	// Browser: the view cards sit in a single row
 	.view-cards {
 		flex-direction: row;
 		flex-wrap: nowrap;
 		justify-content: center;
-		align-items: flex-start;
+		align-items: stretch; // equal card heights
 		gap: 3vw;
 	}
 
