@@ -1,0 +1,79 @@
+---
+import '../styles/global.scss';
+import Navbar from '../components/navigation/Navbar.astro';
+import '../styles/learn.scss';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { Image } from 'astro:assets';
+import residenciesImage from '../assets/images/learn_page_residencies.jpg';
+import fellowshipsImage from '../assets/images/learn_page_fellowships.jpg';
+import blogImage from '../assets/images/learn_page_blog.jpg';
+
+const crumbs = [
+	{ Title: "Home", Link: "/" },
+	{ Title: "Learn", Link: "" },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<Navbar></Navbar>
+	</head>
+	<h1>Learn</h1>
+	<body>
+		<Breadcrumbs Crumbs={crumbs} />
+		<p>The Museum of Play offers a variety of ways for students, researchers, and creatives to learn about our collections.</p>
+		<div class="learn-sections">
+			<div class="residencies-section">
+				<Image src={residenciesImage} alt="A painter's studio with stained wood accents"></Image>
+				<div class="section-content">
+				<p>
+					We're dedicated to supporting the next generation of artists and designers.
+					Our residencies allow creatives unparalleled access to the museum's collections and curatorial expertise.
+				</p>
+				<p>
+					Residency applications are open from September of each year and close in November.
+				</p>
+				<a href="/residencies">Learn more about residencies &gt;</a>
+				</div>
+			</div>
+			<div class="fellowships-section">
+				<Image src={fellowshipsImage} alt="People sitting around a display panel in a wide-open atrium"></Image>
+				<div class="section-content">
+				<p>
+					Fellowships empower academic researchers in the fields of ludology, art history, design, and digital media.
+					Three different kinds of fellowships are available.
+				</p>
+				<ul>
+					<li>
+						<b>Homo Ludens Fellowship: </b>A two year-long postdoctoral and early-career (&lt;3 years of work experience) program
+						in which fellows pursue an independent research project and contribute to
+						an exhibition, lecture series, or book-length manuscript.
+					</li>
+					<li>
+						<b>Magic Circle Fellowship: </b>A year-long program for master's and doctoral candidates whoses theses or dissertations
+						engage play, games, or toys through a critical lens.
+					</li>
+					<li>
+						<b>Sandbox Scholars Fellowship: </b>A year-long program for undergraduate college students studying HCI, digital humanities,
+						anthropology, and related fields. Each fellow is paired with a mentor who guides an independent research project.
+						At the end of the program, Sandbox Scholars present their work to curatorial staff and the public.
+					</li>
+				</ul>
+				<a href="/fellowships">Learn more about fellowships &gt;</a>
+				</div>
+			</div>
+			<div class="blog-section">
+				<Image src={blogImage} alt="People working at their desks in an open-concept office space"></Image>
+				<div class="section-content">
+				<p>
+					The Museum of Play's blog offers an inside look into new and upcoming exhibitions, insight into the history
+					behind popular games and toys, behind-the-scenes glances at artists' processes, and more.
+				</p>
+				<a href="/blog">Read the blog &gt;</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,107 @@
+---
+import '../styles/global.scss';
+import Navbar from '../components/navigation/Navbar.astro';
+import ViewCard from '../components/ViewCard.astro';
+import CollectionCard from '../components/CollectionCard.astro';
+import { Image } from 'astro:assets';
+import checkmark from '../assets/checkmark.svg';
+import Slideshow from '../components/Slideshow.astro';
+import boardGamesImage from '../assets/images/explore_collections_board-games.jpg';
+import cardGamesImage from '../assets/images/explore_collections_card-games.jpg';
+import toysImage from '../assets/images/explore_collections_toys.jpg';
+import freeEntryImage from '../assets/images/membership_promo_free-entry.jpg';
+import parkingImage from '../assets/images/membership_promo_parking.jpg';
+import giftShopImage from '../assets/images/gift-shop.jpg';
+import previewsImage from '../assets/images/membership_promo_previews.jpg';
+import playByTheRulesImage from '../assets/images/explore_collections_card-games.jpg';
+import chloeBraunImage from '../assets/images/on_view_chloe-braun.jpg';
+import malloryBlackwellImage from '../assets/images/on_view_mallory-blackwell.jpg';
+
+const promoSlides = [
+	{ Img: freeEntryImage, ImgAltText: "Visitors looking at a large painting in a gallery" },
+	{ Img: parkingImage, ImgAltText: "Cars parked in a covered parking garage" },
+	{ Img: giftShopImage, ImgAltText: "A wall of shelves displaying small colorful building pieces and objects" },
+	{ Img: previewsImage, ImgAltText: "A crowd of people seated in front of colorful framed artworks, listening to a speaker" },
+];
+
+import '../styles/landing-page.scss';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<Navbar></Navbar>
+	</head>
+	<body>
+		<div class="call-to-action">
+			<h3>Admission is free for students and children under 6</h3>
+			<a href="/plan-your-visit">Plan your visit today &gt;</a>
+		</div>
+
+		<h1>Check Out What's New</h1>
+
+		<div class="view-cards">
+		<ViewCard Type="Exhibition"
+			Title="Play by the Rules: Politics, Society, and Board Games"
+			Img={playByTheRulesImage}
+			ImgAltText="Playing cards and game pieces on a yellow background"
+			Date="November 18, 2026–March 7, 2027">
+		</ViewCard>
+
+		<ViewCard Type="Exhibition"
+			Title="Chloë Braun: a sky that stretches into infinity"
+			Img={chloeBraunImage}
+			ImgAltText="A black and white photograph of a domed ceiling with a circular skylight"
+			Date="Permanent Installation">
+		</ViewCard>
+
+		<ViewCard Type="Exhibition"
+			Title="Mallory Blackwell: DISC/ONNECT"
+			Img={malloryBlackwellImage}
+			ImgAltText="A photograph of a vintage console in a blue-painted room"
+			Date="Permanent Installation">
+		</ViewCard>
+		</div>
+
+		<a href="#">See what else is on view &gt;</a>
+
+		<section class="explore-collections">
+			<h1>Explore Our Collections</h1>
+
+			<div class="collection-cards">
+				<CollectionCard Title="Board Games"
+					Img={boardGamesImage}
+					ImgAltText="A colorful Parcheesi board with a deck of cards and game pieces">
+				</CollectionCard>
+
+				<CollectionCard Title="Card Games"
+					Img={cardGamesImage}
+					ImgAltText="Playing cards and game pieces on a yellow background">
+				</CollectionCard>
+
+				<CollectionCard Title="Toys"
+					Img={toysImage}
+					ImgAltText="A collection of colorful toys arranged against a light blue background">
+				</CollectionCard>
+			</div>
+		</section>
+
+		<div class="membership-promo">
+			<div class="promo-slideshow">
+				<Slideshow Slides={promoSlides} />
+			</div>
+			<div class="promo-content">
+				<h1>Play more. Learn more. Explore more. Become a member today.</h1>
+				<p>Memberships starting from $35.99 per month. A membership can pay for itself in as few as 3 visits!</p>
+				<ul>
+					<li><Image src={checkmark} alt="" />Free entry to all exhibits and events</li>
+					<li><Image src={checkmark} alt="" />3 free parking validations per month</li>
+					<li><Image src={checkmark} alt="" />Discounts on all gift shop items</li>
+					<li><Image src={checkmark} alt="" />Members-only exhibit previews</li>
+				</ul>
+				<button class="purchase-membership-button" onclick="document.location='/membership'">Purchase Membership</button>
+			</div>
+		</div>
+	</body>
+</html>

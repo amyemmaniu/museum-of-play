@@ -1,0 +1,121 @@
+---
+import DropdownItem from "./DropdownItem.astro";
+
+// Link: when given, the label itself is a link (e.g. "Learn" -> /learn) rather than a toggle button
+const { Label, Link, Items = [] } = Astro.props;
+---
+
+<div class="dropdown-menu">
+	{Link
+		? <a class="navbar-button" href={Link}>{Label}</a>
+		: <button class="navbar-button" type="button" aria-expanded="false">{Label}</button>}
+	<div class="dropdown-items">
+		{Items.map((Item: string | { Text: string; Link?: string }) =>
+			typeof Item === "string"
+				? <DropdownItem Text={Item} />
+				: <DropdownItem Text={Item.Text} Link={Item.Link} />
+		)}
+	</div>
+</div>
+
+<script>
+	// Phone layout has no hover: tapping a toggle button expands/collapses its menu
+	document.querySelectorAll<HTMLButtonElement>("button.navbar-button").forEach((button) => {
+		button.addEventListener("click", () => {
+			const menu = button.closest(".dropdown-menu");
+			const isOpen = menu?.classList.toggle("open") ?? false;
+			button.setAttribute("aria-expanded", String(isOpen));
+		});
+	});
+</script>
+
+<style lang="scss">
+	.dropdown-menu {
+		width: 100%;
+	}
+
+	.navbar-button {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 50px;
+		width: 100%;
+		padding: $spacing_extra-small;
+		border: none;
+		box-sizing: border-box;
+		background-color: $color_black;
+		color: $color_white;
+		font-family: $font_family_heading;
+		font-size: 1.25rem; // 20px
+		font-weight: bold;
+		text-align: left;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	.navbar-button:hover {
+		color: $color_white; // overrides global a:hover (accent) so only the underline changes
+		background-color: $color_black; // overrides global button:hover so the background stays put
+		text-decoration: underline;
+	}
+
+	// Caret (toggle buttons only): downward triangle when closed, upward triangle when open
+	button.navbar-button::after {
+		content: "";
+		flex-shrink: 0;
+		width: 0;
+		height: 0;
+		margin-right: 0.1rem;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-top: 18px solid $color_white;
+	}
+
+	.dropdown-menu.open button.navbar-button::after {
+		border-top: none;
+		border-bottom: 18px solid $color_white;
+	}
+
+	.dropdown-items {
+		display: none;
+		flex-direction: column;
+		width: 100%;
+	}
+
+	.dropdown-menu.open .dropdown-items {
+		display: flex;
+	}
+
+	// Browser: the menu shrinks to its label (no caret) and its items drop down over the page on hover/focus
+	@media (min-width: 768px) {
+		.dropdown-menu {
+			position: relative;
+			width: auto;
+		}
+
+		.navbar-button {
+			justify-content: center;
+		}
+
+		.navbar-button {
+			width: auto;
+		}
+
+		.navbar-button::after {
+			display: none;
+		}
+
+		.dropdown-menu:hover .dropdown-items,
+		.dropdown-menu:focus-within .dropdown-items {
+			display: flex;
+		}
+
+		.dropdown-items {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			width: 250px;
+			z-index: 10;
+		}
+	}
+</style>

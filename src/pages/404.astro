@@ -1,0 +1,32 @@
+---
+import '../styles/global.scss';
+import Navbar from '../components/navigation/Navbar.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<Navbar></Navbar>
+	</head>
+	<body>
+		<div class="not-found">
+			<p>404</p>
+			<p>Oops! Looks like that page isn't available right now.</p>
+			<p>Why not check out <a href="/on-view">what's new</a> or read <a href="/blog">our blog</a>?</p>
+		</div>
+	</body>
+
+	<style lang="scss">
+		.not-found p {
+			font-size: $font_size_h1-mobile;
+			font-family: $font_family_heading;
+		}
+
+		@media (min-width: 768px) {
+			.not-found p {
+				font-size: $font_size_h1-desktop;
+			}
+		}
+	</style>
+</html>

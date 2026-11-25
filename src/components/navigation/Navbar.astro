@@ -1,0 +1,101 @@
+---
+import DropdownMenu from "./DropdownMenu.astro";
+import logo from "../../assets/logo.svg";
+---
+
+<header class="header">
+	<a class="logo-link" href="/">
+		<img class="logo" src={logo.src} alt="Museum of Play logo" />
+	</a>
+
+	<nav class="navbar">
+		<DropdownMenu Label="Visit" Items={["Plan Your Visit", { Text: "Membership", Link: "/membership" }]} />
+		<DropdownMenu Label="Explore" Items={["On View"]} />
+		<DropdownMenu Label="Learn" Link="/learn" Items={["Residencies", "Fellowships", "Blog"]} />
+		<DropdownMenu Label="About" Items={["Mission, Vision, and Values", "Leadership"]} />
+		<a class="navbar-link" href="/support">Support</a>
+	</nav>
+</header>
+
+<style lang="scss">
+	.header {
+		display: flex;
+		flex-direction: column;
+		top: 0;
+		width: 100%;
+		box-sizing: border-box;
+		padding: 10px;
+		margin-left: 0px;
+		margin-right: 0px;
+		position: sticky;
+		z-index: 100;
+		background-color: $color_black;
+	}
+
+	.logo-link {
+		display: block;
+		width: 356px;
+		max-width: 100%;
+	}
+
+	.logo {
+		display: block;
+		width: 356px;
+		max-width: 100%;
+		height: 48px;
+	}
+
+	.navbar {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		background-color: $color_black;
+	}
+
+	.navbar-link {
+		display: flex;
+		align-items: center;
+		height: 50px;
+		padding: $spacing_extra-small;
+		box-sizing: border-box;
+		background-color: $color_black;
+		color: $color_white;
+		font-family: $font_family_heading;
+		font-size: 1.25rem; // 20px
+		font-weight: bold;
+		text-decoration: none;
+	}
+
+	.navbar-link:hover {
+		color: $color_white;
+		text-decoration: underline;
+	}
+
+	@media (min-width: 768px) {
+		.header {
+			flex-direction: row;
+			align-items: flex-start;
+			justify-content: space-between;
+			height: 70px;
+		}
+
+		.logo-link {
+			flex-shrink: 0;
+		}
+
+		.navbar {
+			flex-direction: row;
+			align-items: flex-start;
+			justify-content: flex-end;
+			gap: 2.5rem; // 40px
+			width: auto;
+			height: 50px;
+			padding: 0 25px;
+			box-sizing: border-box;
+		}
+
+		.navbar-link {
+			justify-content: center;
+		}
+	}
+</style>

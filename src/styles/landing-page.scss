@@ -1,18 +1,206 @@
+.call-to-action {
+	display: flex;
+	flex-direction: column;
+	align-items: center; // mobile: both centered
+	gap: $spacing_small;
+	text-align: center;
+}
+
+.call-to-action h3 {
+	margin: 0;
+}
+
+.h1 {
+	font-family: $font_family_heading;
+	font-size: $font_size_h1-mobile;
+}
+
+.view-cards {
+	display: flex;
+	flex-direction: column;
+	gap: $spacing_medium;
+}
+
+.explore-collections {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: $spacing_medium;
+	padding: 0 $spacing_small;
+}
+
+.explore-collections h1 {
+	margin: 0;
+	width: 100%;
+	color: $color_black;
+	font-family: $font_family_heading;
+	font-size: $font_size_h1-mobile;
+	font-weight: normal;
+	text-align: center;
+}
+
+.collection-cards {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+	width: 100%;
+}
+
 .membership-promo {
+	display: flex;
+	flex-direction: column;
+	gap: $spacing_extra-small;
+	box-sizing: border-box;
+	width: calc(100% - 60.75px);
+	margin: $spacing_grid auto 0;
+	padding: 10px;
 	background-color: $color_black;
 }
 
+.membership-promo .promo-content {
+	display: flex;
+	flex-direction: column;
+	gap: $spacing_extra-small;
+}
+
 .membership-promo h1 {
+	margin: 0;
 	color: $color_white;
+	font-family: $font_family_body;
+	font-size: $font_size_body;
+	font-weight: normal;
 }
 
 .membership-promo p {
+	margin: 0;
 	color: $color_white;
+	font-size: 0.625rem;
+}
+
+.membership-promo ul {
+	display: flex;
+	flex-direction: column;
+	gap: $spacing_extra-small;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.membership-promo li {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	color: $color_white;
+	font-family: $font_family_body;
+	font-size: 0.75rem; // 12px
+	font-weight: bold;
+}
+
+.membership-promo li img {
+	flex-shrink: 0;
+	width: 22.5px;
+	height: auto;
+}
+
+.membership-promo .promo-slideshow {
+	width: 100%;
+	height: 207px;
 }
 
 .purchase-membership-button {
+	width: 100%;
+	padding: $spacing_extra-small;
+	border: none;
+	border-radius: $border_radius_body;
 	color: $color_white;
 	background-color: $color_tertiary;
-	font-size: $font_size_h2;
-	width: 100%;
+	font-family: $font_family_body;
+	font-size: $font_size_body;
+}
+
+@media (min-width: 768px) {
+	// Browser: the call to action sits on the far right, with the link just below it
+	.call-to-action {
+		align-items: flex-end;
+		text-align: right;
+	}
+
+	// Browser: the view cards sit in a single row
+	.view-cards {
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: flex-start;
+		gap: 3vw;
+	}
+
+	.view-cards > * {
+		flex: 1 1 0;
+		min-width: 0;
+		max-width: 30vw;
+	}
+
+	.explore-collections {
+		gap: 4vh;
+		padding: 0 5vw;
+	}
+
+	// Browser: all collection cards sit in a single row
+	.collection-cards {
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: flex-start;
+		gap: 3vw;
+	}
+
+	.collection-cards > * {
+		flex: 1 1 0;
+		min-width: 0;
+		max-width: 30vw;
+	}
+
+	.membership-promo {
+		width: calc(100% - 2 * #{$spacing_grid});
+		max-width: 1257px;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		column-gap: 2.5rem;
+		padding: $spacing_small;
+	}
+
+	.membership-promo .promo-content {
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	.membership-promo h1 {
+		font-size: $font_size_h2;
+	}
+
+	.membership-promo p {
+		font-size: $font_size_body;
+	}
+
+	.membership-promo ul {
+		gap: 1rem;
+	}
+
+	.membership-promo li {
+		gap: 12px;
+		font-size: $font_size_h3;
+	}
+
+	.membership-promo li img {
+		width: 45px;
+	}
+
+	.membership-promo .promo-slideshow {
+		height: 100%;
+	}
+
+	.purchase-membership-button {
+		font-size: 2rem;
+	}
 }

@@ -1,12 +1,25 @@
 :root {
 	body {
-		background-color: $color-background;
-		color: $color-white;
+		box-sizing: border-box;
+		min-height: 100vh; // short pages still fill the screen, with the padding included
+		padding-bottom: 50px; // space at the very bottom of every page
+		margin: 0; // removes the default gap around the page so the header is flush with the edges
+		background-color: $color_white;
+		color: $color_black;
 	}
 
 	h1 {
 		font-size: $font_size_h1-mobile;
 		font-family: $font_family_heading;
+	}
+
+	// Gap between a page's h1 and the breadcrumb trail right below it
+	h1:has(+ nav[aria-label="Breadcrumb"]) {
+		margin-bottom: $spacing_small;
+	}
+
+	h1 + nav[aria-label="Breadcrumb"] {
+		margin-top: 0;
 	}
 
 	h2 {
@@ -17,19 +30,27 @@
 	h3 {
 		font-size: $font_size_h3;
 		font-family: $font_family_body;
+		font-weight: bold;
 	}
 
-	p {
+	p,
+	li {
 		font-size: $font_size_body;
 		font-family: $font_family_body;
 	}
 
 	a {
 		color: $color_primary;
+		font-size: $font_size_body;
+		font-family: $font_family_body;
 	}
 
 	a:hover {
 		color: $color_accent;
+	}
+
+	button:hover {
+		background-color: $color_accent;
 	}
 
 	@media (min-width: 768px) {
@@ -37,4 +58,11 @@
 			font-size: $font_size_h1-desktop;
 		}
 	}
+}
+
+/* Side margins for all page content; the header (navbar) stays full width.
+:where() keeps specificity at zero so components can still set their own margins (e.g. margin: auto) */
+:where(body > :not(header)) {
+	margin-left: $spacing_page-margin;
+	margin-right: $spacing_page-margin;
 }

@@ -1,0 +1,43 @@
+---
+const { Text, Link } = Astro.props;
+---
+
+<div class="dropdown-item">
+	{Link ? <a href={Link}><p>{Text}</p></a> : <p>{Text}</p>}
+</div>
+
+<style lang="scss">
+	a {
+		display: block;
+		text-decoration: none;
+	}
+
+	p {
+		margin: 0;
+		color: $color_white;
+		background-color: $color_black;
+		font-size: $font_size_body;
+		font-family: $font_family_body;
+		text-align: center;
+		padding: 0.75rem 0.625rem;
+	}
+
+	.dropdown-item:hover {
+		text-decoration: underline;
+	}
+
+	@media (min-width: 768px) {
+		.dropdown-item {
+			width: 250px;
+		}
+
+		p {
+			box-sizing: border-box;
+			overflow-wrap: break-word; // long labels wrap onto more lines instead of widening the item
+			color: $color_black;
+			background-color: $color_gray;
+			text-align: left;
+			padding-left: $spacing_extra-small;
+		}
+	}
+</style>
