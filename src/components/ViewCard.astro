@@ -5,14 +5,12 @@ import { Image } from 'astro:assets';
 const { Type, Title, Img, ImgAltText, Date } = Astro.props;
 ---
 
-<body>
-		<div class="view-card">
-				<p class="badge">{Type}</p>
-				<h2>{Title}</h2>
-				<Image src={Img} alt={ImgAltText} width={700} />
-				<p>{Date}</p>
-		</div>
-</body>
+<div class="view-card">
+	<p class="badge">{Type}</p>
+	<h3>{Title}</h3>
+	<Image src={Img} alt={ImgAltText} width={700} />
+	<p>{Date}</p>
+</div>
 
 <style lang="scss">
 	.view-card {
@@ -24,6 +22,14 @@ const { Type, Title, Img, ImgAltText, Date } = Astro.props;
 		box-shadow: $box_shadow_card;
 	}
 
+	.view-card:hover h3 {
+		text-decoration: underline;
+	}
+
+	.view-card h3 {
+		font-weight: normal;
+	}
+
 	.badge {
 		background-color: $color_white;
 		color: $color_black;
@@ -32,8 +38,14 @@ const { Type, Title, Img, ImgAltText, Date } = Astro.props;
 		padding-bottom: $spacing_extra-small;
 		padding-left: $spacing_extra-small;
 		padding-right: $spacing_extra-small;
-		border-width: $border_width_button;
+		width: fit-content;
+		border: 1px solid $color_black;
 		border-radius: $border_radius_body;
-		border-color: $color_black;
+	}
+
+	.view-card :global(img) {
+		display: block;
+		width: 100%;
+		height: auto;
 	}
 </style>

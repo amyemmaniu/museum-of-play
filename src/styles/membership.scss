@@ -1,5 +1,6 @@
 // Lets components receive a Sass color as a CSS value, e.g. BorderColor="var(--color_secondary)"
 :root {
+	--color_primary: #{$color_primary};
 	--color_secondary: #{$color_secondary};
 	--color_tertiary: #{$color_tertiary};
 	--color_accent: #{$color_accent};

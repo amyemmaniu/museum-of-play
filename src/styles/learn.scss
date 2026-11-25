@@ -1,10 +1,44 @@
 .learn-sections {
 	display: flex;
 	flex-direction: column;
+	margin-top: $spacing_grid;
+}
+
+.learn-sections img {
+	display: block;
+	max-width: 100%;
+	height: auto;
 }
 
 @media (min-width: 768px) {
 	.learn-sections {
+		gap: $spacing_grid; // Vertical spacing between sections
+	}
+
+	.residencies-section,
+	.fellowships-section,
+	.blog-section {
+		display: flex;
+		align-items: flex-start;
+		gap: $spacing_grid; // Horizontal spacing between image and content
+	}
+
+	.residencies-section img,
+	.fellowships-section img,
+	.blog-section img,
+	.section-content {
+		flex: 1 1 0;
+		min-width: 0;
+	}
+
+	// Image comes first in the markup: reverse for image on the right
+	.residencies-section,
+	.blog-section {
+		flex-direction: row-reverse;
+	}
+
+	// Image on the left
+	.fellowships-section {
 		flex-direction: row;
 	}
 }

@@ -11,7 +11,7 @@ import logo from "../../assets/logo.svg";
 	<nav class="navbar">
 		<DropdownMenu Label="Visit" Items={["Plan Your Visit", { Text: "Membership", Link: "/membership" }]} />
 		<DropdownMenu Label="Explore" Items={["On View"]} />
-		<DropdownMenu Label="Learn" Items={[{ Text: "Learn", Link: "/learn" }, "Residencies", "Fellowships", "Blog"]} />
+		<DropdownMenu Label="Learn" Link="/learn" Items={["Residencies", "Fellowships", "Blog"]} />
 		<DropdownMenu Label="About" Items={["Mission, Vision, and Values", "Leadership"]} />
 		<a class="navbar-link" href="/support">Support</a>
 	</nav>
@@ -25,6 +25,10 @@ import logo from "../../assets/logo.svg";
 		width: 100%;
 		box-sizing: border-box;
 		padding: 10px;
+		margin-left: 0px;
+		margin-right: 0px;
+		position: sticky;
+		z-index: 100;
 		background-color: $color_black;
 	}
 
@@ -63,6 +67,7 @@ import logo from "../../assets/logo.svg";
 	}
 
 	.navbar-link:hover {
+		color: $color_white;
 		text-decoration: underline;
 	}
 

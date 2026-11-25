@@ -22,12 +22,18 @@ const { Text, Link } = Astro.props;
 		padding: 0.75rem 0.625rem;
 	}
 
-	a:hover p {
+	.dropdown-item:hover {
 		text-decoration: underline;
 	}
 
 	@media (min-width: 768px) {
+		.dropdown-item {
+			width: 250px;
+		}
+
 		p {
+			box-sizing: border-box;
+			overflow-wrap: break-word; // long labels wrap onto more lines instead of widening the item
 			color: $color_black;
 			background-color: $color_gray;
 			text-align: left;

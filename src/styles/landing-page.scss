@@ -1,11 +1,24 @@
 .call-to-action {
 	display: flex;
-	align-items: right;
+	flex-direction: column;
+	align-items: center; // mobile: both centered
+	gap: $spacing_small;
+	text-align: center;
 }
 
-.call-to-action a {
+.call-to-action h3 {
+	margin: 0;
+}
+
+.h1 {
+	font-family: $font_family_heading;
+	font-size: $font_size_h1-mobile;
+}
+
+.view-cards {
 	display: flex;
-	align-items: right;
+	flex-direction: column;
+	gap: $spacing_medium;
 }
 
 .explore-collections {
@@ -107,29 +120,45 @@
 }
 
 @media (min-width: 768px) {
+	// Browser: the call to action sits on the far right, with the link just below it
 	.call-to-action {
-		align-items: center;
+		align-items: flex-end;
+		text-align: right;
 	}
 
-	.call-to-action a {
-		align-items: center;
+	// Browser: the view cards sit in a single row
+	.view-cards {
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: flex-start;
+		gap: 3vw;
+	}
+
+	.view-cards > * {
+		flex: 1 1 0;
+		min-width: 0;
+		max-width: 30vw;
 	}
 
 	.explore-collections {
-		padding: 0 $spacing_small;
+		gap: 4vh;
+		padding: 0 5vw;
 	}
 
+	// Browser: all collection cards sit in a single row
 	.collection-cards {
 		flex-direction: row;
+		flex-wrap: nowrap;
 		justify-content: center;
 		align-items: flex-start;
-		gap: $spacing_grid;
+		gap: 3vw;
 	}
 
 	.collection-cards > * {
 		flex: 1 1 0;
 		min-width: 0;
-		max-width: 464px;
+		max-width: 30vw;
 	}
 
 	.membership-promo {
