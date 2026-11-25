@@ -22,6 +22,11 @@
 		margin-top: 0;
 	}
 
+	// Space below the breadcrumb trail, before the page content
+	nav[aria-label="Breadcrumb"] {
+		padding-bottom: $spacing_grid;
+	}
+
 	h2 {
 		font-size: $font_size_h2;
 		font-family: $font_family_body;

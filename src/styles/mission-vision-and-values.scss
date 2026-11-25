@@ -1,0 +1,38 @@
+.banner {
+	display: block;
+	// the page's side margins are on the image itself, so subtract them to keep it on screen
+	max-width: calc(100% - 2 * #{$spacing_page-margin});
+	height: auto;
+	margin-bottom: $spacing_grid;
+}
+
+// The mission, vision, and values divs: stacked vertically, spanning the page width
+.statements {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: $spacing_extra-large;
+	// full width inside the same left/right margins as the banner image
+	width: calc(100% - 2 * #{$spacing_page-margin});
+}
+
+.statements > div {
+	width: 100%;
+}
+
+.statements h2 {
+	margin: 0 0 $spacing_large;
+}
+
+.statements h3,
+.statements p {
+	margin: 0;
+}
+
+.statements h3 {
+	margin-bottom: $spacing_extra-small;
+}
+
+.value + .value {
+	margin-top: $spacing_medium;
+}

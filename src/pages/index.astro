@@ -1,5 +1,12 @@
 ---
 import '../styles/global.scss';
+import favicon from '../assets/favicon.svg';
+import '@fontsource/rubik/400.css';
+import '@fontsource/rubik/400-italic.css';
+import '@fontsource/rubik/700.css';
+import '@fontsource/kode-mono/400.css';
+import '@fontsource/kode-mono/700.css';
+import '../styles/landing-page.scss';
 import Navbar from '../components/navigation/Navbar.astro';
 import ViewCard from '../components/ViewCard.astro';
 import CollectionCard from '../components/CollectionCard.astro';
@@ -23,14 +30,13 @@ const promoSlides = [
 	{ Img: giftShopImage, ImgAltText: "A wall of shelves displaying small colorful building pieces and objects" },
 	{ Img: previewsImage, ImgAltText: "A crowd of people seated in front of colorful framed artworks, listening to a speaker" },
 ];
-
-import '../styles/landing-page.scss';
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={favicon.src} />
 		<Navbar></Navbar>
 	</head>
 	<body>

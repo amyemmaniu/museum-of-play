@@ -1,5 +1,11 @@
 ---
 import '../styles/global.scss';
+import favicon from '../assets/favicon.svg';
+import '@fontsource/rubik/400.css';
+import '@fontsource/rubik/400-italic.css';
+import '@fontsource/rubik/700.css';
+import '@fontsource/kode-mono/400.css';
+import '@fontsource/kode-mono/700.css';
 import Navbar from '../components/navigation/Navbar.astro';
 ---
 
@@ -7,6 +13,7 @@ import Navbar from '../components/navigation/Navbar.astro';
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={favicon.src} />
 		<Navbar></Navbar>
 	</head>
 	<body>
@@ -21,6 +28,8 @@ import Navbar from '../components/navigation/Navbar.astro';
 		.not-found p {
 			font-size: $font_size_h1-mobile;
 			font-family: $font_family_heading;
+			text-align: center;
+			justify-content: center;
 		}
 
 		@media (min-width: 768px) {

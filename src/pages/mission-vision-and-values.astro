@@ -1,0 +1,95 @@
+---
+import '../styles/global.scss';
+import favicon from '../assets/favicon.svg';
+import '@fontsource/rubik/400.css';
+import '@fontsource/rubik/400-italic.css';
+import '@fontsource/rubik/700.css';
+import '@fontsource/kode-mono/400.css';
+import '@fontsource/kode-mono/700.css';
+import '../styles/mission-vision-and-values.scss';
+import Navbar from '../components/navigation/Navbar.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { Image } from 'astro:assets';
+import banner from '../assets/images/banner_mission-vision-and-values.png';
+
+const crumbs = [
+	{ Title: "Home", Link: "/" },
+	{ Title: "About", Link: "/about" },
+	{ Title: "Mission, Vision, and Values", Link: "" },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={favicon.src} />
+		<Navbar></Navbar>
+	</head>
+	<h1>Mission, Vision, and Values</h1>
+	<body>
+		<Breadcrumbs Crumbs={crumbs} />
+		<Image class="banner" src={banner} alt="A geometric glass dome adjacent to a reflective glass building at a metropolitan intersection." />
+
+		<div class="statements">
+			<div class="our-mission">
+				<h2>Our Mission</h2>
+				<p>
+					The Museum of Play fosters creativity, academic enrichment,
+					and community by exploring the history and impact of games and other forms of play.
+				</p>
+			</div>
+
+			<div class="our-vision">
+				<h2>Our Vision</h2>
+				<p>
+					Through powerful and imaginative art, the Museum of Play seeks to redefine what it means to play.
+				</p>
+			</div>
+
+			<div class="our-values">
+				<h2>Our Values</h2>
+
+				<div class="value">
+					<h3>Creativity</h3>
+					<p>
+						We value art of all genres for how they fuel critical and creative thinking—
+						crucial tools for managing everyday challenges and tackling major issues that global societies face today.
+					</p>
+				</div>
+
+				<div class="value">
+					<h3>Compassion</h3>
+					<p>
+						We approach difficult topics with care. We understand that art can expose audiences
+						to different perspectives, which in turn gives rise to compassion for everyone’s unique worldview.
+					</p>
+				</div>
+
+				<div class="value">
+					<h3>Scholarship</h3>
+					<p>
+						We seek out young artists whose talents we can hone. We engage in interdisciplinary research
+						initiatives to blaze new trails in design, interactive media, social sciences, and other disciplines.
+					</p>
+				</div>
+
+				<div class="value">
+					<h3>Innovation</h3>
+					<p>
+						We believe the future of art rests in being bold and unafraid to blaze new trails and
+						experiment with form, function, and aesthetic.
+					</p>
+				</div>
+
+				<div class="value">
+					<h3>Inclusion</h3>
+					<p>
+						We uphold policies that value diversity, equity, and inclusion at all levels of the institution.
+						We believe art is for everyone.
+					</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

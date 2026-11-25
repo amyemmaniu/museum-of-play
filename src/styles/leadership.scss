@@ -1,0 +1,62 @@
+// Mobile (default): one column of cards, each card's elements stacked and centered
+.leadership-cards {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: $spacing_grid;
+}
+
+.leadership-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	text-align: center;
+}
+
+.leadership-card img {
+	display: block;
+	width: 100%;
+	max-width: 20rem;
+	height: auto;
+	margin-bottom: $spacing_extra-large; // space between the image and the heading
+}
+
+.leadership-info {
+	width: 100%;
+}
+
+.leadership-card h3,
+.leadership-card p {
+	margin: 0;
+}
+
+.leadership-card h3 {
+	margin-bottom: $spacing_extra-small; // space between the heading and the title
+}
+
+.leadership-card .title {
+	margin-bottom: $spacing_small; // space between the title and the paragraph after it
+}
+
+// Browser: image on the left, text on the right; cards stay in one column
+@media (min-width: 768px) {
+	.leadership-cards {
+		padding: 0 12vw;
+	}
+
+	.leadership-card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+		column-gap: $spacing_grid; // horizontal space between image and other content
+		row-gap: 0;
+		align-items: start; // text block sits at the top, beside the image
+		text-align: left;
+		justify-content: center;
+	}
+
+	.leadership-card img {
+		max-width: none;
+		margin-bottom: 0;
+	}
+}
