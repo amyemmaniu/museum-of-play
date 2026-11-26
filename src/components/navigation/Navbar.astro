@@ -11,7 +11,7 @@ import logo from "../../assets/logo.svg";
 	<nav class="navbar">
 		<DropdownMenu Label="Visit" Items={[{ Text: "Plan Your Visit" , Link: "/plan-your-visit"}, { Text: "Membership", Link: "/membership" }]} />
 		<DropdownMenu Label="Explore" Items={["On View"]} />
-		<DropdownMenu Label="Learn" Link="/learn" Items={["Residencies", "Fellowships", "Blog"]} />
+		<DropdownMenu Label="Learn" Link="/learn" Items={[{ Text: "Residencies", Link : "/residencies" }, { Text: "Fellowships", Link: "/fellowships" }, { Text: "Blog", Link: "/blog" }]} />
 		<DropdownMenu Label="About" Items={[{ Text: "Mission, Vision, and Values", Link: "/mission-vision-and-values" }, { Text: "Leadership", Link: "/leadership" }]} />
 		<a class="navbar-link" href="/support">Support</a>
 	</nav>

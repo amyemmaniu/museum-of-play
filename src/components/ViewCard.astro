@@ -16,7 +16,6 @@ const { Type, Title, Img, ImgAltText, Date } = Astro.props;
 	.view-card {
 		display: flex;
 		flex-direction: column;
-		gap: $spacing_extra-small; // same spacing between badge, title, image, and date on every card
 		box-sizing: border-box;
 		background-color: $color_white;
 		padding-top: $spacing_extra-small;
@@ -50,11 +49,28 @@ const { Type, Title, Img, ImgAltText, Date } = Astro.props;
 	.view-card :global(img) {
 		display: block;
 		width: 100%;
-		height: auto; // keeps each image's own aspect ratio
+		height: auto; // overrides the height attribute so aspect-ratio decides the height
+		aspect-ratio: 4 / 3; // every image is the same size on every card
+		object-fit: cover; // scaled proportionally and cropped to fit, never stretched
 	}
 
 	.view-card h3,
 	.view-card p {
 		margin: 0;
+	}
+
+	// Space between the badge and the title
+	.view-card .badge {
+		margin-bottom: $spacing_extra-small;
+	}
+
+	// Space between the title and the image
+	.view-card h3 {
+		margin-bottom: $spacing_extra-small;
+	}
+
+	// Space between the image and the date
+	.view-card :global(img) + p {
+		margin-top: $spacing_extra-small;
 	}
 </style>

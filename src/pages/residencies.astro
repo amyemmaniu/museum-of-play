@@ -1,0 +1,93 @@
+---
+import '../styles/global.scss';
+import favicon from '../assets/favicon.svg';
+import '@fontsource/rubik/400.css';
+import '@fontsource/rubik/400-italic.css';
+import '@fontsource/rubik/700.css';
+import '@fontsource/kode-mono/400.css';
+import '@fontsource/kode-mono/700.css';
+import '../styles/residencies.scss';
+import Navbar from '../components/navigation/Navbar.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const crumbs = [
+	{ Title: "Home", Link: "/" },
+	{ Title: "Learn", Link: "/learn" },
+	{ Title: "Residencies", Link: "" },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={favicon.src} />
+		<Navbar></Navbar>
+	</head>
+	<h1>Residencies</h1>
+	<body>
+		<Breadcrumbs Crumbs={crumbs} />
+
+		<div class="forward">
+			<p>
+				We’re dedicated to supporting the next generation of artists and designers. Our residencies allow creatives
+				unparalleled access to the museum’s collections and curatorial expertise. Each quarter, we accept 2 – 4
+				artists-in-residence to create works of all different media that further the Museum of Play’s mission and vision.
+				Past artists-in-residence have had the chance to chance to exhibit their works in solo and group exhibitions, join
+				lectures on topics related to their practices, and interact with visitors during exhibit previews and opening nights.
+			</p>
+		</div>
+
+		<div class="amenities">
+			<h2>Amenities</h2>
+			<p>Artists-in-residence get access to the following amenities while in residence at the Museum of Play:</p>
+			<ul>
+				<li>Stipends of $4,000, with an additional $1,500 materials budget</li>
+				<li>Fully equipped studio space, including WiFi, printer, and Cricut®</li>
+				<li>Supervised access to collections</li>
+			</ul>
+		</div>
+
+		<div class="application-process">
+			<div class="application-step">
+				<h2>Application Process</h2>
+				<h3>Cover Letter</h3>
+				<p>Draft a cover letter (less than 1,500 words total) that includes:</p>
+				<ul>
+					<li>Your full name, email, phone number, and address</li>
+					<li>Your current professional affiliation(s)</li>
+					<li>A brief description of your practice</li>
+					<li>An explanation of how being a resident at the Museum of Play will impact your practice</li>
+				</ul>
+			</div>
+
+			<div class="application-step">
+				<h3>Supplemental Materials</h3>
+				<p>You may include the following materials to support your application:</p>
+				<ul>
+					<li>Curriculum vitae</li>
+					<li>Up to 2 letters of reference, submitted separately via email by the references</li>
+				</ul>
+			</div>
+
+			<div class="application-step">
+				<h3>Deadlines</h3>
+				<ul>
+					<li><b>Spring (March – May): </b>December 12</li>
+					<li><b>Summer (June – August): </b>March 12</li>
+					<li><b>Fall (September – November): </b>June 12</li>
+					<li><b>Winter (December – February): </b>September 12</li>
+				</ul>
+			</div>
+
+			<div class="application-step">
+				<h3>Application Review</h3>
+				<p>
+					Your application will be reviewed by our Research Team, a dedicated, interdisciplinary team of scholars,
+					curators, and scientists. Successful residency applicants will be notified at least 3 weeks prior to
+					the start of their respective programs.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

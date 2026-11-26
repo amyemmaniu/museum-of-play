@@ -16,6 +16,11 @@
 	font-size: $font_size_h1-mobile;
 }
 
+.view-more-link {
+	display: block; // so the top margin applies
+	margin-top: $spacing_small; // space below the view cards
+}
+
 .view-cards {
 	display: flex;
 	flex-direction: column;
