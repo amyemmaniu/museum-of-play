@@ -1,0 +1,46 @@
+---
+import '../styles/global.scss';
+import favicon from '../assets/favicon.svg';
+import '@fontsource/rubik/400.css';
+import '@fontsource/rubik/400-italic.css';
+import '@fontsource/rubik/700.css';
+import '@fontsource/kode-mono/400.css';
+import '@fontsource/kode-mono/700.css';
+import '../styles/on-view.scss';
+import Navbar from '../components/navigation/Navbar.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Filter from "../components/Filter.astro";
+import ViewCard from "../components/ViewCard.astro";
+import { getCollection } from 'astro:content';
+
+// The 6 most recent blog posts, newest first
+const recentPosts = (await getCollection('on-view'))
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+	.slice(0, 6);
+
+// MM/DD/YYYY (UTC, so the day never shifts with the user's time zone)
+const formatDate = (date: Date) => {
+	const mm = String(date.getUTCMonth() + 1).padStart(2, '0');
+	const dd = String(date.getUTCDate()).padStart(2, '0');
+	return `${mm}/${dd}/${date.getUTCFullYear()}`;
+};
+
+const crumbs = [
+	{ Title: "Home", Link: "/" },
+	{ Title: "Explore", Link: "/explore" },
+	{ Title: "On View", Link: "" },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={favicon.src} />
+		<Navbar></Navbar>
+	</head>
+	<h1>On View</h1>
+	<body>
+		
+	</body>
+</html>

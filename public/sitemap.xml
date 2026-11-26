@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url><loc>https://example.com/</loc></url>
+	<url><loc>https://example.com/plan-your-visit/</loc></url>
+	<url><loc>https://example.com/membership/</loc></url>
+	<url><loc>https://example.com/on-view/</loc></url>
+	<url><loc>https://example.com/learn/</loc></url>
+	<url><loc>https://example.com/residencies/</loc></url>
+	<url><loc>https://example.com/fellowships/</loc></url>
+	<url><loc>https://example.com/blog/</loc></url>
+	<url>
+		<loc>https://example.com/blog/in-conversation_anneliese-blackwell/</loc>
+		<lastmod>2026-11-01</lastmod>
+	</url>
+	<url>
+		<loc>https://example.com/blog/sable-sparrow/</loc>
+		<lastmod>2026-11-01</lastmod>
+	</url>
+	<url><loc>https://example.com/mission-vision-and-values/</loc></url>
+	<url><loc>https://example.com/leadership/</loc></url>
+</urlset>

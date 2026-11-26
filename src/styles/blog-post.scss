@@ -1,0 +1,9 @@
+// Post images fit on screen (mobile and browser) and are downscaled proportionally, never distorted
+.post-image {
+	display: block;
+	// the page's side margins are on the image itself, so subtract them to keep it on screen
+	max-width: calc(100% - 2 * #{$spacing_page-margin});
+	height: auto;
+	margin-top: $spacing_grid;
+	margin-bottom: $spacing_grid;
+}

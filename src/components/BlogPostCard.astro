@@ -1,0 +1,82 @@
+---
+import { Image } from 'astro:assets';
+
+// Link: where the card goes when clicked (the blog post's page)
+const { Title, Img, ImgAltText, Date, Link } = Astro.props;
+---
+
+<a class="blog-post-card-link" href={Link}>
+	<div class="blog-post-card">
+		<h2>{Title}</h2>
+		<p class="date">
+			<b>{Date}</b>
+		</p>
+		<div class="blog-post-card-image">
+			<Image src={Img} alt={ImgAltText} width={700} />
+		</div>
+	</div>
+</a>
+
+<style lang="scss">
+	.blog-post-card-link {
+		display: block;
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.blog-post-card {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch; // title and date span the card width so they stay left-aligned
+		gap: $spacing_small; // between the title, date, and image
+		width: 100%;
+		box-sizing: border-box;
+		background-color: $color_white;
+		box-shadow: $box-shadow_card;
+		padding: 16px; // around the whole card
+	}
+
+	.blog-post-card h2 {
+		margin: 0;
+		width: 100%;
+		color: $color_black;
+		font-family: $font_family_body;
+		font-size: $font_size_h3;
+		font-weight: normal;
+		line-height: 1.2;
+		min-height: 2.4em; // always reserves two lines, so a wrapping title doesn't change the card's height
+		text-align: left;
+	}
+
+	.blog-post-card .date {
+		margin: 0;
+		color: $color_black;
+		text-align: left;
+	}
+
+	.blog-post-card-image {
+		width: 100%; // image fills the card's width, up to the maximums below
+		max-width: 671px;
+		max-height: 447.39px; // same maximum size and proportions, so images line up in a grid
+		aspect-ratio: 671 / 447.39;
+		position: relative;
+		overflow: hidden;
+		align-self: center; // centered when the card is wider than the maximum image width
+	}
+
+	// the image fills the fixed-shape box exactly (cropped, not stretched), whatever its own shape
+	.blog-post-card-image :global(img) {
+		position: absolute;
+		inset: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.blog-post-card:hover {
+		h2 {
+			text-decoration: underline;
+		}
+	}
+</style>

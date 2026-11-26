@@ -31,6 +31,8 @@ const { Type, Title, Img, ImgAltText, Date } = Astro.props;
 
 	.view-card h3 {
 		font-weight: normal;
+		line-height: 1.2;
+		min-height: 2.4em; // always reserves two lines, so every card's title takes the same height
 	}
 
 	.badge {
