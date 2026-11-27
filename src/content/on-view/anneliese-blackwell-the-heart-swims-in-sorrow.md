@@ -1,10 +1,14 @@
 ---
-title: "In Conversation With Anneliese Blackwell"
-date: 2026-11-01
+title: "Anneliese Blackwell: The Heart Swims in Sorrow"
+date: 2024-05-06
+endDate: 2024-11-18
 category: "Exhibit"
 images:
-  - src: ../../assets/images/banner_anneliese-blackwell.png
-    alt: "A forest background with blurry light from lamp posts"
+  - src: ../../assets/images/on_view_anneliese-blackwell-the-heart-swims-in-sorrow.png
+    alt: "A forest background with blurry light emanating from lamp posts"
+banner:
+  src: ../../assets/images/banner_anneliese-blackwell.png
+  alt: "Placeholder alt text for the Anneliese Blackwell exhibition banner"
 ---
 
 “There’s this recurring nightmare I have in which everyone in my life is disappointed with me. When my mind pulls me into that dream, it’s like I’m staring into a mirror in the dark, watching my reflection become more and more contorted until I can no longer recognize the person staring back at me.

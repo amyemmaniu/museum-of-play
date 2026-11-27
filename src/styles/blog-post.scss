@@ -7,3 +7,15 @@
 	margin-top: $spacing_grid;
 	margin-bottom: $spacing_grid;
 }
+
+// Date and author, right below the image(s): $spacing_grid under the image (its bottom margin), $spacing_small between the two lines
+.post-meta {
+	display: flex;
+	flex-direction: column;
+	gap: $spacing_small;
+	margin-bottom: $spacing_grid;
+}
+
+.post-meta p {
+	margin: 0;
+}

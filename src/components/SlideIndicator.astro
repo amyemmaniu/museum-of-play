@@ -1,0 +1,36 @@
+---
+// Count: number of dots (one per slide)
+// Current: index of the dot that starts out highlighted (default: the first)
+const { Count = 0, Current = 0 } = Astro.props;
+---
+
+<div class="slide-indicator" aria-hidden="true">
+	{Array.from({ length: Count }, (_, index) => (
+		<span class="dot" class:list={{ active: index === Current }}></span>
+	))}
+</div>
+
+<style lang="scss">
+	// Gray pill holding the dots
+	.slide-indicator {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: $spacing_extra-small;
+		width: fit-content;
+		padding: $spacing_extra-small $spacing_small;
+		border-radius: 999px;
+		background-color: rgba($color_gray, 0.35);
+	}
+
+	.dot {
+		width: 1.25rem;
+		height: 1.25rem;
+		border-radius: 50%;
+		background-color: $color_gray;
+	}
+
+	.dot.active {
+		background-color: $color_dark-gray;
+	}
+</style>

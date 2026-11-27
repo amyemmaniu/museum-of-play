@@ -1,0 +1,76 @@
+// Intro text, donation chart, and statistics: stacked on mobile, side by side on browser
+.frontmatter {
+	display: flex;
+	flex-direction: column;
+	gap: $spacing_large; // vertical on mobile
+}
+
+.frontmatter p {
+	margin: 0;
+}
+
+.donation-chart img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+// Carousel sections: a heading, then the cards with their arrows and indicator
+.areas-that-benefit,
+.gifts-in-action {
+	display: flex;
+	flex-direction: column;
+	gap: $spacing_medium; // between the heading and the cards
+	margin-top: $spacing_grid; // between the frontmatter, this section, and the next
+}
+
+.areas-that-benefit h2,
+.gifts-in-action h2 {
+	margin: 0;
+	font-size: $font_size_h1-mobile;
+	font-weight: normal;
+}
+
+@media (min-width: 768px) {
+	.frontmatter {
+		flex-direction: row;
+		align-items: flex-start;
+		gap: $spacing_large; // horizontal on browser
+	}
+
+	.frontmatter > * {
+		flex: 1 1 0;
+		min-width: 0;
+	}
+
+	.areas-that-benefit h2,
+	.gifts-in-action h2 {
+		font-size: $font_size_h3;
+	}
+}
+
+// Statistics: each number with its caption, stacked
+.statistics {
+	display: flex;
+	flex-direction: column;
+	gap: $spacing_small; // between the stat blocks, and before the last note
+	box-sizing: border-box;
+	padding: 26px;
+	background-color: $color_neutral;
+}
+
+.statistics h1,
+.statistics p {
+	margin: 0;
+}
+
+// Space between a number and the caption right below it
+.statistics h1 + p {
+	margin-top: $spacing_extra-small;
+}
+
+@media (min-width: 768px) {
+	.statistics {
+		padding: 40px;
+	}
+}

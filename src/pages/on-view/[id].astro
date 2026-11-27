@@ -1,0 +1,47 @@
+---
+import '../../styles/global.scss';
+import favicon from '../../assets/favicon.svg';
+import '@fontsource/rubik/400.css';
+import '@fontsource/rubik/400-italic.css';
+import '@fontsource/rubik/700.css';
+import '@fontsource/kode-mono/400.css';
+import '@fontsource/kode-mono/700.css';
+import '../../styles/blog-post.scss';
+import Navbar from '../../components/navigation/Navbar.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+
+// One page per on-view item, at /on-view/<item id>/
+export async function getStaticPaths() {
+	const items = await getCollection('on-view');
+	return items.map((item) => ({ params: { id: item.id }, props: { item } }));
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+
+const crumbs = [
+	{ Title: "Home", Link: "/" },
+	{ Title: "On View", Link: "/on-view" },
+	{ Title: item.data.title, Link: "" },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={favicon.src} />
+		<title>{item.data.title}</title>
+		<Navbar></Navbar>
+	</head>
+	<h1>{item.data.title}</h1>
+	<body>
+		<Breadcrumbs Crumbs={crumbs} />
+		{(item.data.banner ? [item.data.banner] : item.data.images).map((image) => (
+			<Image class="post-image" src={image.src} alt={image.alt} />
+		))}
+		<Content />
+	</body>
+</html>

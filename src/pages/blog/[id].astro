@@ -44,10 +44,13 @@ const crumbs = [
 	<h1>{post.data.title}</h1>
 	<body>
 		<Breadcrumbs Crumbs={crumbs} />
-		<p><b>{date}</b></p>
 		{post.data.images.map((image) => (
 			<Image class="post-image" src={image.src} alt={image.alt} />
 		))}
+		<div class="post-meta">
+			<p><b>{date}</b></p>
+			<p>By: {post.data.author}</p>
+		</div>
 		<Content />
 	</body>
 </html>

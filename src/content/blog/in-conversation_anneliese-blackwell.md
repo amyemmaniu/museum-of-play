@@ -1,6 +1,7 @@
 ---
 title: "In Conversation With Anneliese Blackwell"
-date: 2026-11-01
+date: 2024-05-03
+author: "Oliver Peretti, Contributor"
 category: "Exhibit"
 images:
   - src: ../../assets/images/blog_cover_anneliese-blackwell.png
@@ -41,6 +42,8 @@ In celebration of her new solo exhibition, British multidisciplinary artist Anne
 
 **A.H.B:** My art is centered around creating and interpreting images, whether those images are crafted from text, cinematography, or choreography. In that sense, although all these different art forms presented their own unique challenges and opportunities, they are also more alike than one may think. My previous works enabled me to connect with a lot of great people in the performing arts industry, and I used those connections to expand my practice into the disparate media of films and dance.
 
+<div style="text-align: center">
 -###-
 
-[/on-view/anneliese-blackwell-the-heart-swims-in-sorrow](Anneliese Blackwell: The Heart Swims in Sorrow) will be on view from May 6 to November 18, 2024.
+[Anneliese Blackwell: The Heart Swims in Sorrow](/on-view/anneliese-blackwell-the-heart-swims-in-sorrow) will be on view from May 6 to November 18, 2024.
+</div>

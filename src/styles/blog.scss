@@ -34,7 +34,7 @@
 	justify-content: center;
 }
 
-// Blog post cards: one column on mobile, a wrapping grid on browser
+// Blog post cards: one column on mobile, rows of 3 on browser
 .blog-post-cards {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -44,8 +44,10 @@
 @media (min-width: 768px) {
 	.blog-controls {
 		flex-direction: row;
+		flex-wrap: wrap;
 		align-items: flex-start;
 		justify-content: space-between; // filter on the far left, search bar on the far right
+		gap: $spacing_grid; // vertical and horizontal
 	}
 
 	.blog-filter {
@@ -61,8 +63,8 @@
 	}
 
 	.blog-post-cards {
-		// as many equal columns as fit; $spacing_grid between them horizontally and vertically
-		grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+		// rows of 3 equal cards; $spacing_grid between them horizontally and vertically
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: $spacing_grid;
 	}
 }

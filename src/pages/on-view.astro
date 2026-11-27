@@ -13,17 +13,28 @@ import Filter from "../components/Filter.astro";
 import ViewCard from "../components/ViewCard.astro";
 import { getCollection } from 'astro:content';
 
-// The 6 most recent blog posts, newest first
-const recentPosts = (await getCollection('on-view'))
+// The 9 most recent exhibits and events, newest first
+const recentItems = (await getCollection('on-view'))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-	.slice(0, 6);
+	.slice(0, 9);
 
-// MM/DD/YYYY (UTC, so the day never shifts with the user's time zone)
-const formatDate = (date: Date) => {
-	const mm = String(date.getUTCMonth() + 1).padStart(2, '0');
-	const dd = String(date.getUTCDate()).padStart(2, '0');
-	return `${mm}/${dd}/${date.getUTCFullYear()}`;
-};
+// Month spelled out, e.g. "November 18, 2026" (UTC, so the day never shifts with the user's time zone)
+const formatDate = (date: Date) =>
+	date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+
+// Filter choices (each one is shown with a checkbox)
+const toItems = (labels: string[]) => labels.map((Text) => ({ Text, Checkbox: true }));
+const ageGroups = toItems(["25+", "18 – 24", "12 – 17", "3 – 11"]);
+const types = toItems(["Exhibit", "Event"]);
+const times = toItems(["Current", "Upcoming", "Past"]);
+
+// Card date line: "Permanent Installation", a date range, or a single date
+const dateLine = (item: { date: Date; endDate?: Date; permanent: boolean }) =>
+	item.permanent
+		? 'Permanent Installation'
+		: item.endDate
+			? `${formatDate(item.date)} – ${formatDate(item.endDate)}`
+			: formatDate(item.date);
 
 const crumbs = [
 	{ Title: "Home", Link: "/" },
@@ -41,6 +52,33 @@ const crumbs = [
 	</head>
 	<h1>On View</h1>
 	<body>
-		
+		<Breadcrumbs Crumbs={crumbs} />
+		<div class="on-view-controls">
+			<div class="on-view-filters">
+				<div class="on-view-filter">
+					<Filter Label="Age Group" Items={ageGroups} />
+				</div>
+				<div class="on-view-filter">
+					<Filter Label="Type" Items={types} />
+				</div>
+				<div class="on-view-filter">
+					<Filter Label="Time" Items={times} />
+				</div>
+			</div>
+			<input class="on-view-search" type="search" placeholder="Search by keyword or name" aria-label="Search by keyword or name" />
+		</div>
+
+		<div class="on-view-cards">
+			{recentItems.map((item) => (
+				<ViewCard
+					Type={item.data.category}
+					Title={item.data.title}
+					Img={item.data.images[0].src}
+					ImgAltText={item.data.images[0].alt}
+					Date={dateLine(item.data)}
+					Link={`/on-view/${item.id}/`}
+				/>
+			))}
+		</div>
 	</body>
 </html>

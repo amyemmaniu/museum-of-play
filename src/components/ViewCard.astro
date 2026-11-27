@@ -2,15 +2,17 @@
 import { Image } from 'astro:assets';
 
 // Img must be an imported image (not a string path) so Astro can optimize it
-const { Type, Title, Img, ImgAltText, Date } = Astro.props;
+// Link (optional): where the whole card goes when clicked
+const { Type, Title, Img, ImgAltText, Date, Link } = Astro.props;
+const Tag = Link ? 'a' : 'div';
 ---
 
-<div class="view-card">
+<Tag class="view-card" href={Link}>
 	<p class="badge">{Type}</p>
 	<h3>{Title}</h3>
 	<Image src={Img} alt={ImgAltText} width={700} />
 	<p>{Date}</p>
-</div>
+</Tag>
 
 <style lang="scss">
 	.view-card {
@@ -23,6 +25,14 @@ const { Type, Title, Img, ImgAltText, Date } = Astro.props;
 		padding-left: 12px;
 		padding-right: 12px;
 		box-shadow: $box_shadow_card;
+		color: inherit;
+		text-decoration: none;
+	}
+
+	// Overrides the global a:hover (accent): the text stays black, only the title underlines
+	.view-card:hover {
+		color: $color_black;
+		text-decoration: none;
 	}
 
 	.view-card:hover h3 {

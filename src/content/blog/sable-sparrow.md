@@ -1,10 +1,11 @@
 ---
 title: "Sable Sparrow Takes the Stage!"
-date: 2026-11-01
+date: 2024-03-21
+author: "Placeholder Author, Contributor"
 category: "Event"
 images:
   - src: ../../assets/images/blog_cover_sable-sparrow.jpg
-    alt: "Placeholder alt text for the Sable Sparrow post image"
+    alt: "Steaming plates of food placed on a circular wooden table"
 ---
 
-Placeholder post body.
+

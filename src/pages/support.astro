@@ -1,0 +1,116 @@
+---
+import '../styles/global.scss';
+import favicon from '../assets/favicon.svg';
+import '@fontsource/rubik/400.css';
+import '@fontsource/rubik/400-italic.css';
+import '@fontsource/rubik/700.css';
+import '@fontsource/kode-mono/400.css';
+import '@fontsource/kode-mono/700.css';
+import '../styles/support.scss';
+import Navbar from '../components/navigation/Navbar.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { Image } from 'astro:assets';
+import donationChart from '../assets/images/donation-chart.png';
+import NewsCarousel from '../components/NewsCarousel.astro';
+import collectionsImage from '../assets/images/explore_collections_toys.jpg'; // placeholder: swap in the real collections photo
+import educationImage from '../assets/images/sandbox-scholars.jpg';
+import expansionImage from '../assets/images/news_cover_expansion.jpg';
+import lectureImage from '../assets/images/lecture.jpg';
+
+const areasThatBenefit = [
+	{
+		Title: "Collections and Digital Archives",
+		Snippet: [
+			"The Museum of Play is home to over 5,000 historical and contemporary toys, games, and other artifacts of play, as well as a growing number of design documentation and written works about play.",
+			"By dedicating your donation to our collections and archives, you can help preserve these important artifacts for decades to come.",
+		],
+		Img: collectionsImage,
+		ImgAltText: "Brown backlit shelves stacked with small toys",
+	},
+	{
+		Title: "Education and Public Outreach",
+		Snippet: [
+			"The Museum of Play offers residencies and fellowships each quarter that help budding researchers and career academics alike blaze new trails in multimedia art, ludology, and other fields.",
+			"By dedicating your donation to our educational programming, you can help ensure impactful research reaches new audiences.",
+		],
+		Img: educationImage,
+		ImgAltText: "A presentation in a dimly lit room",
+	},
+];
+
+const giftsInAction = [
+	{
+		Title: "Oriel Gallery East Expansion",
+		Snippet: [
+			"Thanks to the generosity of local businesses and visitors, the Museum of Play has been able to open the new Oriel Gallery East on the second floor.",
+			"The new gallery will enable the museum to showcase even more poignant works of art from creators both local and worldwide.",
+		],
+		Img: expansionImage,
+		ImgAltText: "A gallery space with overhead lights and brightly colored paintings on the wall",
+		Link: "/blog/oriel-gallery-east-expansion/",
+	},
+	{
+		Title: "This House is Not a Home",
+		Snippet: "A lecture on themes of home, loneliness, and belonging, moderated by German American multimedia artist Gisella Breihan.",
+		Img: lectureImage,
+		ImgAltText: "A crowd seated in a tiered lecture hall facing a projection screen",
+		Link: "/on-view/this-house-is-not-a-home/",
+	},
+];
+
+const crumbs = [
+	{ Title: "Home", Link: "/" },
+	{ Title: "Support", Link: "" },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={favicon.src} />
+		<Navbar></Navbar>
+	</head>
+	<h1>Support</h1>
+	<body>
+		<Breadcrumbs Crumbs={crumbs} />
+		<div class="frontmatter">
+			<p>
+				Your support helps fund new exhibits, research initiatives, and experiments.
+				In previous years, donations from people like you have helped fund exciting
+				exhibits and thought-provoking lectures.
+			</p>
+
+			<div class="donation-chart">
+				<Image src={donationChart} alt="A donut chart showing the breakdown of how donations were used in 2026" />
+				<p>*Per 2026 Annual Report</p>
+			</div>
+
+			<div class="statistics">
+				<div id="game-artifacts">
+					<h1>576</h1>
+					<p>game artifacts collected</p>
+				</div>
+				<div id="grants-awarded">
+					<h1>127</h1>
+					<p>grants awarded</p>
+				</div>
+				<div id="exhibits-and-events-supported">
+					<h1>14</h1>
+					<p>new exhibits and educational events supported</p>
+				</div>
+				<p>*Per 2026 Annual Report</p>
+			</div>
+		</div>
+
+		<div class="areas-that-benefit">
+			<h2>Areas that Benefit From Support</h2>
+			<NewsCarousel Cards={areasThatBenefit} />
+		</div>
+
+		<div class="gifts-in-action">
+			<h2>Your Gifts in Action</h2>
+			<NewsCarousel Cards={giftsInAction} />
+		</div>
+	</body>
+</html>

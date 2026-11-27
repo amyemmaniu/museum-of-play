@@ -74,6 +74,12 @@ const { Title, Img, ImgAltText, Date, Link } = Astro.props;
 		object-fit: cover;
 	}
 
+	// Overrides the global a:hover (accent): the text stays black, only the title underlines
+	.blog-post-card-link:hover {
+		color: $color_black;
+		text-decoration: none;
+	}
+
 	.blog-post-card:hover {
 		h2 {
 			text-decoration: underline;
