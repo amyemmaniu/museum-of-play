@@ -8,6 +8,7 @@ import '@fontsource/kode-mono/400.css';
 import '@fontsource/kode-mono/700.css';
 import '../styles/on-view.scss';
 import Navbar from '../components/navigation/Navbar.astro';
+import FontPreload from '../components/FontPreload.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Filter from "../components/Filter.astro";
 import ViewCard from "../components/ViewCard.astro";
@@ -27,6 +28,9 @@ const toItems = (labels: string[]) => labels.map((Text) => ({ Text, Checkbox: tr
 const ageGroups = toItems(["25+", "18 – 24", "12 – 17", "3 – 11"]);
 const types = toItems(["Exhibit", "Event"]);
 const times = toItems(["Current", "Upcoming", "Past"]);
+
+// YYYY-MM-DD, which the Time filter compares with today's date
+const isoDate = (date: Date) => date.toISOString().slice(0, 10);
 
 // Card date line: "Permanent Installation", a date range, or a single date
 const dateLine = (item: { date: Date; endDate?: Date; permanent: boolean }) =>
@@ -48,6 +52,7 @@ const crumbs = [
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href={favicon.src} />
+		<FontPreload />
 		<Navbar></Navbar>
 	</head>
 	<h1>On View</h1>
@@ -77,8 +82,21 @@ const crumbs = [
 					ImgAltText={item.data.images[0].alt}
 					Date={dateLine(item.data)}
 					Link={`/on-view/${item.id}/`}
+					data-title={item.data.title}
+					data-category={item.data.category}
+					data-age-groups={item.data.ageGroups.join('|')}
+					data-keywords={item.data.keywords.join(' ')}
+					data-start={isoDate(item.data.date)}
+					data-end={item.data.endDate ? isoDate(item.data.endDate) : ''}
+					data-permanent={String(item.data.permanent)}
 				/>
 			))}
 		</div>
+		<p class="no-results" hidden>Nothing on view matches your search or filters.</p>
 	</body>
 </html>
+
+<script>
+	import { setupCardFilter } from '../scripts/filter-cards';
+	setupCardFilter('.on-view-cards', '.on-view-search');
+</script>

@@ -3,6 +3,7 @@ title: "In Conversation With Anneliese Blackwell"
 date: 2024-05-03
 author: "Oliver Peretti, Contributor"
 category: "Exhibit"
+keywords: ["interview", "artist", "film", "exhibition"]
 images:
   - src: ../../assets/images/blog_cover_anneliese-blackwell.png
     alt: "Four contemporary dancers posing over a green background with a dithered texture"

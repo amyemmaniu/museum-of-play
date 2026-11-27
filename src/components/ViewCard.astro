@@ -3,11 +3,11 @@ import { Image } from 'astro:assets';
 
 // Img must be an imported image (not a string path) so Astro can optimize it
 // Link (optional): where the whole card goes when clicked
-const { Type, Title, Img, ImgAltText, Date, Link } = Astro.props;
+const { Type, Title, Img, ImgAltText, Date, Link, ...attrs } = Astro.props; // attrs: extra attributes (e.g. data-*) for the card element
 const Tag = Link ? 'a' : 'div';
 ---
 
-<Tag class="view-card" href={Link}>
+<Tag class="view-card" href={Link} {...attrs}>
 	<p class="badge">{Type}</p>
 	<h3>{Title}</h3>
 	<Image src={Img} alt={ImgAltText} width={700} />

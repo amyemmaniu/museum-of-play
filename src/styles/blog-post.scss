@@ -4,7 +4,7 @@
 	// the page's side margins are on the image itself, so subtract them to keep it on screen
 	max-width: calc(100% - 2 * #{$spacing_page-margin});
 	height: auto;
-	margin-top: $spacing_grid;
+	margin-top: 0; // the page layout already puts $spacing_grid above it
 	margin-bottom: $spacing_grid;
 }
 

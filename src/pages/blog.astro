@@ -8,6 +8,7 @@ import '@fontsource/kode-mono/400.css';
 import '@fontsource/kode-mono/700.css';
 import '../styles/blog.scss';
 import Navbar from '../components/navigation/Navbar.astro';
+import FontPreload from '../components/FontPreload.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Filter from "../components/Filter.astro";
 import BlogPostCard from "../components/BlogPostCard.astro";
@@ -17,6 +18,9 @@ import { getCollection } from 'astro:content';
 const recentPosts = (await getCollection('blog'))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 	.slice(0, 6);
+
+// Category filter choices: every category used by a post (from each post's .md file)
+const categories = [...new Set(recentPosts.map((post) => post.data.category).filter((c): c is string => !!c))].sort();
 
 // MM/DD/YYYY (UTC, so the day never shifts with the user's time zone)
 const formatDate = (date: Date) => {
@@ -37,6 +41,7 @@ const crumbs = [
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href={favicon.src} />
+		<FontPreload />
 		<Navbar></Navbar>
 	</head>
 	<h1>Blog</h1>
@@ -44,7 +49,7 @@ const crumbs = [
 		<Breadcrumbs Crumbs={crumbs} />
 		<div class="blog-controls">
 			<div class="blog-filter">
-				<Filter Label="Category" Items={[{ Text: "Exhibit", Checkbox: true }, { Text: "Expansion", Checkbox: true }, { Text: "Residency", Checkbox: true }]} />
+				<Filter Label="Category" Items={categories.map((Text) => ({ Text, Checkbox: true }))} />
 			</div>
 			<input class="blog-search" type="search" placeholder="Search by keyword or name" aria-label="Search by keyword or name" />
 		</div>
@@ -57,8 +62,17 @@ const crumbs = [
 					ImgAltText={post.data.images[0].alt}
 					Date={formatDate(post.data.date)}
 					Link={`/blog/${post.id}/`}
+					data-title={post.data.title}
+					data-category={post.data.category ?? ''}
+					data-keywords={post.data.keywords.join(' ')}
 				/>
 			))}
 		</div>
+		<p class="no-results" hidden>No posts match your search or filters.</p>
 	</body>
 </html>
+
+<script>
+	import { setupCardFilter } from '../scripts/filter-cards';
+	setupCardFilter('.blog-post-cards', '.blog-search');
+</script>

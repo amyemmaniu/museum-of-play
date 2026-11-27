@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	<url><loc>https://example.com/</loc></url>
-	<url><loc>https://example.com/plan-your-visit/</loc></url>
-	<url><loc>https://example.com/membership/</loc></url>
-	<url><loc>https://example.com/on-view/</loc></url>
-	<url><loc>https://example.com/learn/</loc></url>
-	<url><loc>https://example.com/residencies/</loc></url>
-	<url><loc>https://example.com/fellowships/</loc></url>
-	<url><loc>https://example.com/blog/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/plan-your-visit/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/membership/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/on-view/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/learn/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/residencies/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/fellowships/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/blog/</loc></url>
 	<url>
-		<loc>https://example.com/blog/in-conversation_anneliese-blackwell/</loc>
+		<loc>https://museum-of-play.workers.dev/blog/in-conversation_anneliese-blackwell/</loc>
 		<lastmod>2026-11-01</lastmod>
 	</url>
 	<url>
-		<loc>https://example.com/blog/sable-sparrow/</loc>
+		<loc>https://museum-of-play.workers.dev/blog/sable-sparrow/</loc>
 		<lastmod>2026-11-01</lastmod>
 	</url>
-	<url><loc>https://example.com/mission-vision-and-values/</loc></url>
-	<url><loc>https://example.com/leadership/</loc></url>
-	<url><loc>https://example.com/blog/2025-sandbox-scholars-showcase/</loc></url>
-	<url><loc>https://example.com/blog/2026-open-call-for-residency-applications/</loc></url>
-	<url><loc>https://example.com/blog/oriel-gallery-east-expansion/</loc></url>
-	<url><loc>https://example.com/on-view/2025-sandbox-scholars-showcase/</loc></url>
-	<url><loc>https://example.com/on-view/anneliese-blackwell-the-heart-swims-in-sorrow/</loc></url>
-	<url><loc>https://example.com/on-view/camila-lucia-munoz-protocols-of-play/</loc></url>
-	<url><loc>https://example.com/on-view/chloe-braun-a-sky-that-stretches-into-infinity/</loc></url>
-	<url><loc>https://example.com/on-view/gisella-breihan-seeing-beyond-belief/</loc></url>
-	<url><loc>https://example.com/on-view/mallory-blackwell-disc-onnect/</loc></url>
-	<url><loc>https://example.com/on-view/play-by-the-rules/</loc></url>
-	<url><loc>https://example.com/on-view/rhiannon-alarie-codex/</loc></url>
-	<url><loc>https://example.com/on-view/this-house-is-not-a-home/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/mission-vision-and-values/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/leadership/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/blog/2025-sandbox-scholars-showcase/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/blog/2026-open-call-for-residency-applications/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/blog/oriel-gallery-east-expansion/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/on-view/2025-sandbox-scholars-showcase/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/on-view/anneliese-blackwell-the-heart-swims-in-sorrow/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/on-view/camila-lucia-munoz-protocols-of-play/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/on-view/chloe-braun-a-sky-that-stretches-into-infinity/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/on-view/gisella-breihan-seeing-beyond-belief/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/on-view/mallory-blackwell-disc-onnect/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/on-view/play-by-the-rules/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/on-view/rhiannon-alarie-codex/</loc></url>
+	<url><loc>https://museum-of-play.workers.dev/on-view/this-house-is-not-a-home/</loc></url>
 </urlset>

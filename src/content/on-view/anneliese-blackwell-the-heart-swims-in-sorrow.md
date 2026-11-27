@@ -3,6 +3,8 @@ title: "Anneliese Blackwell: The Heart Swims in Sorrow"
 date: 2024-05-06
 endDate: 2024-11-18
 category: "Exhibit"
+ageGroups: ["18 – 24", "25+"]
+keywords: ["painting", "film", "sculpture", "nightmares"]
 images:
   - src: ../../assets/images/on_view_anneliese-blackwell-the-heart-swims-in-sorrow.png
     alt: "A forest background with blurry light emanating from lamp posts"

@@ -50,7 +50,7 @@
 		grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
 		column-gap: $spacing_grid; // horizontal space between image and other content
 		row-gap: 0;
-		align-items: start; // text block sits at the top, beside the image
+		align-items: center; // text block is vertically centered with the headshot
 		text-align: left;
 		justify-content: center;
 	}

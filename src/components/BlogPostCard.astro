@@ -2,10 +2,10 @@
 import { Image } from 'astro:assets';
 
 // Link: where the card goes when clicked (the blog post's page)
-const { Title, Img, ImgAltText, Date, Link } = Astro.props;
+const { Title, Img, ImgAltText, Date, Link, ...attrs } = Astro.props; // attrs: extra attributes (e.g. data-*) for the card link
 ---
 
-<a class="blog-post-card-link" href={Link}>
+<a class="blog-post-card-link" href={Link} {...attrs}>
 	<div class="blog-post-card">
 		<h2>{Title}</h2>
 		<p class="date">

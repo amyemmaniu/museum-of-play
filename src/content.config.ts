@@ -10,7 +10,8 @@ const blog = defineCollection({
 			title: z.string(),
 			date: z.coerce.date(),
 			author: z.string(), // shown as "By: <author>" under the date, e.g. "Jane Doe, Contributor"
-			category: z.string().optional(),
+			category: z.string().optional(), // drives the Category filter
+			keywords: z.array(z.string()).default([]), // extra words the search box matches, besides the title
 			// At least one image is required; the first one is the BlogPostCard image
 			images: z.array(z.object({ src: image(), alt: z.string() })).min(1),
 		}),
@@ -25,7 +26,9 @@ const onView = defineCollection({
 			date: z.coerce.date(), // start date (used to order the page, newest first)
 			endDate: z.coerce.date().optional(), // leave out for a single day
 			permanent: z.boolean().default(false), // permanent installations show "Permanent Installation"
-			category: z.enum(['Exhibit', 'Event']).default('Exhibit'), // shown as the card's badge
+			category: z.enum(['Exhibit', 'Event']).default('Exhibit'), // shown as the card's badge; drives the Type filter
+			ageGroups: z.array(z.string()).default([]), // drives the Age Group filter: "25+", "18 – 24", "12 – 17", "3 – 11"
+			keywords: z.array(z.string()).default([]), // extra words the search box matches, besides the title
 			// At least one image is required; the first one is the ViewCard image
 			images: z.array(z.object({ src: image(), alt: z.string() })).min(1),
 			// Optional: the image shown at the top of this item's own page.
