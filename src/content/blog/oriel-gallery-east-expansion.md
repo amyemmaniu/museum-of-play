@@ -1,7 +1,7 @@
 ---
 title: "Oriel Gallery East Expansion"
 date: 2025-11-14
-author: "Placeholder Author, Contributor"
+author: "Roselyn Scott, Contributor"
 category: "Expansion"
 keywords: ["gallery", "building", "donors", "support", "new space"]
 images:

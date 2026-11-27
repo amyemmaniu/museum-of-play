@@ -1,9 +1,9 @@
 ---
 title: "2026 Open Call for Residency Applications"
 date: 2026-09-05
-author: "Placeholder Author, Contributor"
+author: "Roselyn Scott, Contributor"
 category: "Residency"
-keywords: ["residency", "apply", "artists", "application"]
+keywords: ["residency", "apply", "artists", "artist-in-residence", "application"]
 images:
   - src: ../../assets/images/learn_page_residencies.jpg
     alt: "A painter's studio with stained wood accents"

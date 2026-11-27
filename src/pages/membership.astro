@@ -1,14 +1,8 @@
 ---
 import '../styles/global.scss';
 import favicon from '../assets/favicon.svg';
-import '@fontsource/rubik/400.css';
-import '@fontsource/rubik/400-italic.css';
-import '@fontsource/rubik/700.css';
-import '@fontsource/kode-mono/400.css';
-import '@fontsource/kode-mono/700.css';
 import '../styles/membership.scss';
 import Navbar from '../components/navigation/Navbar.astro';
-import FontPreload from '../components/FontPreload.astro';
 import MembershipCard from '../components/MembershipCard.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { Image } from 'astro:assets';
@@ -38,8 +32,7 @@ const comparisonRows: { Benefit: string; Values: (boolean | string)[] }[] = [
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Membership | Museum of Play</title>
 		<link rel="icon" type="image/svg+xml" href={favicon.src} />
-		<FontPreload />
-		<Navbar></Navbar>
+		<Navbar />
 	</head>
 	<body>
 		<h1>Membership</h1>

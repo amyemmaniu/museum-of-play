@@ -1,7 +1,7 @@
 ---
 title: "Sable Sparrow Café Now Open!"
 date: 2024-03-21
-author: "Placeholder Author, Contributor"
+author: "Roselyn Scott, Contributor"
 category: "Dining"
 keywords: ["café", "food", "coffee", "dining", "eat"]
 images:

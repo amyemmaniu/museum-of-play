@@ -1,4 +1,4 @@
-// Intro text, donation chart, and statistics: stacked on mobile, side by side on browser
+// Intro text, donation chart, and statistics: stacked on mobile, side by side on desktop
 .frontmatter {
 	display: flex;
 	flex-direction: column;
@@ -15,7 +15,7 @@
 	height: auto;
 }
 
-// Carousel sections: a heading, then the cards with their arrows and indicator
+// Carousels: a heading, then the cards with arrow buttons on either side and a slide indicator in the middle
 .areas-that-benefit,
 .gifts-in-action {
 	display: flex;
@@ -35,7 +35,7 @@
 	.frontmatter {
 		flex-direction: row;
 		align-items: flex-start;
-		gap: $spacing_large; // horizontal on browser
+		gap: $spacing_large; // horizontal on desktop
 	}
 
 	.frontmatter > * {

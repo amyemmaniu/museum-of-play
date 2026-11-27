@@ -1,4 +1,4 @@
-// Filters + search bar: stacked on mobile, spread across the row (search on the far right) on browser
+// Filters + search bar: stacked on mobile, spread across the row (search on the far right) on desktop
 .on-view-controls {
 	display: flex;
 	flex-direction: column;
@@ -70,7 +70,7 @@
 	}
 }
 
-// ViewCards: one column on mobile, rows of 3 on browser
+// ViewCards: one column on mobile, rows of 3 on desktop
 .on-view-cards {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr); // one column; minmax(0, …) stops wide content from stretching it

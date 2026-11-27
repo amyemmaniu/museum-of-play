@@ -40,7 +40,7 @@ const { Cards = [] } = Astro.props;
 
 		// Phone: swiping never hits an end. A copy of the last card sits before the first card and a copy of
 		// the first card sits after the last. Once a swipe settles on a copy, the track jumps to the real card.
-		const isBrowser = window.matchMedia('(min-width: 768px)');
+		const isDesktop = window.matchMedia('(min-width: 768px)');
 		let clones: HTMLElement[] = [];
 
 		function makeClone(card: HTMLElement) {
@@ -75,7 +75,7 @@ const { Cards = [] } = Astro.props;
 
 		function update() {
 			const position = Math.round(track.scrollLeft / step());
-			const index = clones.length ? (position - 1 + count) % count : Math.min(position, Math.max(count - 2, 0)); // browser: the last two cards share the final stop
+			const index = clones.length ? (position - 1 + count) % count : Math.min(position, Math.max(count - 2, 0)); // desktop: the last two cards share the final stop
 			dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
 			prev.disabled = track.scrollLeft <= 1;
 			next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
@@ -91,7 +91,7 @@ const { Cards = [] } = Astro.props;
 		}
 
 		function applyLayout() {
-			if (isBrowser.matches) disableLoop();
+			if (isDesktop.matches) disableLoop();
 			else enableLoop();
 			update();
 		}
@@ -104,7 +104,7 @@ const { Cards = [] } = Astro.props;
 			settleTimer = window.setTimeout(settle, 120);
 		}, { passive: true });
 		window.addEventListener('resize', update);
-		isBrowser.addEventListener('change', applyLayout);
+		isDesktop.addEventListener('change', applyLayout);
 		applyLayout();
 	});
 </script>
@@ -145,7 +145,7 @@ const { Cards = [] } = Astro.props;
 		scroll-snap-align: start;
 	}
 
-	// Arrows only on browser (phones swipe)
+	// Arrows only on desktop (phones swipe)
 	.arrow {
 		display: none;
 		flex-shrink: 0;
@@ -186,13 +186,13 @@ const { Cards = [] } = Astro.props;
 			display: flex;
 		}
 
-		// Browser: two cards show at once and each arrow press moves one card, so the last card is never the
+		// Desktop: two cards show at once and each arrow press moves one card, so the last card is never the
 			// left-most one. That leaves one fewer stop than cards, and so one fewer dot.
 			.news-carousel :global(.dot:last-child) {
 				display: none;
 			}
 
-			// Browser: two cards side by side
+			// Desktop: two cards side by side
 		.track > :global(.news-card) {
 			flex-basis: calc((100% - #{$spacing_small}) / 2);
 		}

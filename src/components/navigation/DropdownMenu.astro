@@ -117,7 +117,7 @@ const { Label, Link, Items = [] } = Astro.props;
 		display: flex;
 	}
 
-	// Browser: the menu shrinks to its label (no caret) and its items drop down over the page on hover/focus
+	// Desktop: the menu shrinks to its label (no caret) and its items drop down over the page on hover/focus
 	@media (min-width: 768px) {
 		.dropdown-menu {
 			position: relative;
@@ -136,7 +136,7 @@ const { Label, Link, Items = [] } = Astro.props;
 			display: none;
 		}
 
-		// Browser: items open on hover, so no caret button; the row shrinks to the link
+		// Desktop: items open on hover, so no caret button; the row shrinks to the link
 		.navbar-caret {
 			display: none;
 		}

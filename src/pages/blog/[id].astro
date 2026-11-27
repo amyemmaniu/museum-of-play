@@ -1,14 +1,8 @@
 ---
 import '../../styles/global.scss';
 import favicon from '../../assets/favicon.svg';
-import '@fontsource/rubik/400.css';
-import '@fontsource/rubik/400-italic.css';
-import '@fontsource/rubik/700.css';
-import '@fontsource/kode-mono/400.css';
-import '@fontsource/kode-mono/700.css';
 import '../../styles/blog-post.scss';
 import Navbar from '../../components/navigation/Navbar.astro';
-import FontPreload from '../../components/FontPreload.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
@@ -40,9 +34,8 @@ const crumbs = [
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href={favicon.src} />
-		<FontPreload />
 		<title>{post.data.title} | Museum of Play</title>
-		<Navbar></Navbar>
+		<Navbar />
 	</head>
 	<h1>{post.data.title}</h1>
 	<body>
