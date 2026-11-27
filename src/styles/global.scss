@@ -1,3 +1,10 @@
+// Fonts: register Rubik and Kode Mono with the browser. Vite copies the font files into the build.
+@import "@fontsource/rubik/400.css";
+@import "@fontsource/rubik/400-italic.css";
+@import "@fontsource/rubik/700.css";
+@import "@fontsource/kode-mono/400.css";
+@import "@fontsource/kode-mono/700.css";
+
 :root {
 	body {
 		box-sizing: border-box;
@@ -14,7 +21,7 @@
 		font-weight: normal;
 	}
 
-	// Gap between a page's h1 and the breadcrumb trail right below it
+	// Gap between a page's H1 and the breadcrumb trail right below it
 	h1:has(+ nav[aria-label="Breadcrumb"]) {
 		margin-bottom: $spacing_small;
 	}

@@ -1,8 +1,28 @@
+// Full-screen black opening panel: fills exactly what is left of the screen below the navbar
+.rainbow-reveal {
+	--header-height: 68px; // phone navbar: 10px padding above and below the 48px logo
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	margin: 0; // cancels the 35px page side margins, which would push a full-width panel off the right edge
+	height: calc(100vh - var(--header-height)); // fallback for browsers without the dynamic viewport units
+	height: calc(100dvh - var(--header-height)); // on phones, follows the visible screen as the address bar shows and hides
+	background-color: $color_black;
+}
+
+.rainbow-reveal h1 {
+	margin: 0;
+	color: $color_white; // override the global H1 color, black
+	text-align: center;
+	justify-content: center;
+}
+
 .call-to-action {
 	display: flex;
 	flex-direction: column;
 	align-items: center; // mobile: both centered
-	gap: $spacing_small; // space between the h3 and the link
+	gap: $spacing_small; // space between the H3 and the link
 	padding-top: $spacing_small;
 	text-align: center;
 }
@@ -136,7 +156,11 @@
 }
 
 @media (min-width: 768px) {
-	// Browser: the call to action sits on the far right, with the link just below it
+	.rainbow-reveal {
+		--header-height: 70px; // navbar height for desktop
+	}
+
+	// Desktop: the call to action sits on the far right, with the link just below it
 	.call-to-action {
 		align-items: flex-end;
 		text-align: right;
@@ -146,7 +170,7 @@
 		width: 12.5vw; // 1/8 of the viewport width
 	}
 
-	// Browser: the view cards sit in a single row
+	// Desktop: the view cards sit in a single row
 	.view-cards {
 		flex-direction: row;
 		flex-wrap: nowrap;
@@ -166,7 +190,7 @@
 		padding: 0 5vw;
 	}
 
-	// Browser: all collection cards sit in a single row
+	// Desktop: all collection cards sit in a single row
 	.collection-cards {
 		flex-direction: row;
 		flex-wrap: nowrap;
@@ -190,7 +214,7 @@
 		padding: $spacing_small;
 	}
 
-	// Browser: slideshow on the left, text block (with the button) on the right
+	// Desktop: slideshow on the left, text block (with the button) on the right
 	.membership-promo .promo-content {
 		display: flex;
 		flex-direction: column;

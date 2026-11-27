@@ -1,9 +1,0 @@
----
-// Starts downloading the body fonts right away. Without this, the browser only requests a font
-// after it has laid out text that uses it, so headings (bold, h2) show in the sans-serif fallback first.
-import rubik400 from '@fontsource/rubik/files/rubik-latin-400-normal.woff2?url';
-import rubik700 from '@fontsource/rubik/files/rubik-latin-700-normal.woff2?url';
----
-
-<link rel="preload" as="font" type="font/woff2" href={rubik400} crossorigin />
-<link rel="preload" as="font" type="font/woff2" href={rubik700} crossorigin />

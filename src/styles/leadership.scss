@@ -44,7 +44,7 @@
 	margin-bottom: $spacing_small; // space between the title and the paragraph after it
 }
 
-// Browser: image on the left, text on the right; cards stay in one column
+// Desktop: image on the left, text on the right; cards stay in one column
 @media (min-width: 768px) {
 	.leadership-cards {
 		padding: 0 12vw;

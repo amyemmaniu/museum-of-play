@@ -1,4 +1,4 @@
-// Filter + search bar: stacked on mobile, side by side (search on the far right) on browser
+// Filter + search bar: stacked on mobile, side by side (search on the far right) on desktop
 .blog-controls {
 	display: flex;
 	flex-direction: column;
@@ -35,7 +35,7 @@
 	justify-content: center;
 }
 
-// Blog post cards: one column on mobile, rows of 3 on browser
+// Blog post cards: one column on mobile, rows of 3 on desktop
 .blog-post-cards {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr); // one column; minmax(0, …) stops wide content from stretching it

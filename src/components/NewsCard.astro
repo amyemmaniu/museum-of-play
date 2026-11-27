@@ -93,8 +93,8 @@ const withItalics = (text: string) =>
 	}
 
 	.read-more:hover {
-		background-color: $color_accent; // the text color stays white
-		text-decoration: underline;
+		background-color: $color_accent;
+		color: $color_white; // overrides global a:hover (accent), which would match the new background and hide the text
 	}
 
 	// Right column: portrait image that sets the card's height

@@ -3,7 +3,7 @@ title: "2025 Sandbox Scholars Showcase"
 date: 2025-06-13
 author: "Oliver Peretti, Contributor"
 category: "Exhibit"
-keywords: ["sandbox", "scholars", "research", "showcase", "presentation"]
+keywords: ["sandbox", "scholars", "fellowship", "research"]
 images:
   - src: ../../assets/images/sandbox-scholars.jpg
     alt: "A presentation in a dimly lit room"
