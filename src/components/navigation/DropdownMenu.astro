@@ -156,6 +156,10 @@ const { Label, Link, Items = [] } = Astro.props;
 			left: 0;
 			width: 250px;
 			z-index: 10;
+			// The header has 10px of bottom padding below the 50px menu row. This transparent padding pushes
+			// the visible items past it, so they start right below the black bar. Being part of the
+			// dropdown, it also keeps the hover alive while the pointer crosses that gap.
+			padding-top: 10px;
 		}
 	}
 </style>
