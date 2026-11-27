@@ -8,6 +8,7 @@ import '@fontsource/kode-mono/400.css';
 import '@fontsource/kode-mono/700.css';
 import '../styles/landing-page.scss';
 import Navbar from '../components/navigation/Navbar.astro';
+import FontPreload from '../components/FontPreload.astro';
 import ViewCard from '../components/ViewCard.astro';
 import CollectionCard from '../components/CollectionCard.astro';
 import { Image } from 'astro:assets';
@@ -37,6 +38,7 @@ const promoSlides = [
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href={favicon.src} />
+		<FontPreload />
 		<Navbar></Navbar>
 	</head>
 	<body>
@@ -45,32 +47,35 @@ const promoSlides = [
 			<a href="/plan-your-visit">Plan your visit today &gt;</a>
 		</div>
 
-		<h1>Check Out What's New</h1>
+		<h1 class="whats-new-heading">Check Out What's New</h1>
 
 		<div class="view-cards">
-		<ViewCard Type="Exhibition"
-			Title="Play by the Rules: Politics, Society, and Board Games"
-			Img={playByTheRulesImage}
-			ImgAltText="Playing cards and game pieces on a yellow background"
-			Date="November 18, 2026–March 7, 2027">
-		</ViewCard>
+			<ViewCard Type="Exhibition"
+				Title="Play by the Rules: Politics, Society, and Board Games"
+				Img={playByTheRulesImage}
+				ImgAltText="Playing cards and game pieces on a yellow background"
+				Date="November 18, 2026–March 7, 2027"
+				Link="/on-view/play-by-the-rules/">
+			</ViewCard>
 
-		<ViewCard Type="Exhibition"
-			Title="Chloë Braun: a sky that stretches into infinity"
-			Img={chloeBraunImage}
-			ImgAltText="A black and white photograph of a domed ceiling with a circular skylight"
-			Date="Permanent Installation">
-		</ViewCard>
+			<ViewCard Type="Exhibition"
+				Title="Chloë Braun: a sky that stretches into infinity"
+				Img={chloeBraunImage}
+				ImgAltText="A black and white photograph of a domed ceiling with a circular skylight"
+				Date="Permanent Installation"
+				Link="/on-view/chloe-braun-a-sky-that-stretches-into-infinity/">
+			</ViewCard>
 
-		<ViewCard Type="Exhibition"
-			Title="Mallory Blackwell: DISC/ONNECT"
-			Img={malloryBlackwellImage}
-			ImgAltText="A photograph of a vintage console in a blue-painted room"
-			Date="Permanent Installation">
-		</ViewCard>
+			<ViewCard Type="Exhibition"
+				Title="Mallory Blackwell: DISC/ONNECT"
+				Img={malloryBlackwellImage}
+				ImgAltText="A photograph of a vintage console in a blue-painted room"
+				Date="Permanent Installation"
+				Link="/on-view/mallory-blackwell-disc-onnect/">
+			</ViewCard>
 		</div>
 
-		<a href="#">See what else is on view &gt;</a>
+		<a class="view-more-link" href="/on-view">See what else is on view &gt;</a>
 
 		<section class="explore-collections">
 			<h1>Explore Our Collections</h1>

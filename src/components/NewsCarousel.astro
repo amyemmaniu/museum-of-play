@@ -1,0 +1,137 @@
+---
+import NewsCard from './NewsCard.astro';
+import SlideIndicator from './SlideIndicator.astro';
+
+// Cards: list of { Title, Snippet, Img, ImgAltText, Link } (the same props as NewsCard)
+const { Cards = [] } = Astro.props;
+---
+
+<div class="news-carousel">
+	<div class="carousel-row">
+		<button class="arrow arrow-prev" type="button" aria-label="Previous" disabled>
+			<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 5l-7 7 7 7" /></svg>
+		</button>
+
+		<div class="track">
+			{Cards.map((card: { Title: string; Snippet: string | string[]; Img?: ImageMetadata; ImgAltText?: string; Link?: string }) => (
+				<NewsCard Title={card.Title} Snippet={card.Snippet} Img={card.Img} ImgAltText={card.ImgAltText} Link={card.Link} />
+			))}
+		</div>
+
+		<button class="arrow arrow-next" type="button" aria-label="Next">
+			<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7" /></svg>
+		</button>
+	</div>
+
+	<SlideIndicator Count={Cards.length} />
+</div>
+
+<script>
+	document.querySelectorAll<HTMLElement>('.news-carousel').forEach((carousel) => {
+		const track = carousel.querySelector<HTMLElement>('.track')!;
+		const prev = carousel.querySelector<HTMLButtonElement>('.arrow-prev')!;
+		const next = carousel.querySelector<HTMLButtonElement>('.arrow-next')!;
+		const dots = Array.from(carousel.querySelectorAll<HTMLElement>('.dot'));
+		const cards = Array.from(track.children) as HTMLElement[];
+
+		// Distance from one card to the next (card width + the gap between cards)
+		const step = () => (cards[1] ? cards[1].offsetLeft - cards[0].offsetLeft : track.clientWidth);
+
+		function update() {
+			const index = Math.round(track.scrollLeft / step());
+			dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+			prev.disabled = track.scrollLeft <= 1;
+			next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
+		}
+
+		prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+		next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+		track.addEventListener('scroll', update, { passive: true });
+		window.addEventListener('resize', update);
+		update();
+	});
+</script>
+
+<style lang="scss">
+	.news-carousel {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: $spacing_extra-small; // between the cards and the indicator
+	}
+
+	.carousel-row {
+		display: flex;
+		align-items: center;
+		gap: $spacing_small; // between the arrows and the cards
+		width: 100%;
+	}
+
+	// Cards sit side by side; scroll-snap makes swiping (mobile) land on one card at a time
+	.track {
+		display: flex;
+		flex: 1;
+		gap: $spacing_small;
+		min-width: 0;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: none;
+	}
+
+	.track::-webkit-scrollbar {
+		display: none;
+	}
+
+	// Mobile: one card at a time
+	.track > :global(.news-card) {
+		flex: 0 0 100%;
+		scroll-snap-align: start;
+	}
+
+	// Arrows only on browser (phones swipe)
+	.arrow {
+		display: none;
+		flex-shrink: 0;
+		align-items: center;
+		justify-content: center;
+		width: 3rem;
+		height: 3rem;
+		padding: 0;
+		border: none;
+		border-radius: 50%;
+		background-color: $color_primary;
+		color: $color_white;
+		cursor: pointer;
+	}
+
+	.arrow:hover:not(:disabled) {
+		background-color: $color_primary; // overrides global button:hover (accent)
+	}
+
+	.arrow:disabled {
+		background-color: $color_gray;
+		color: $color_dark-gray;
+		cursor: default;
+	}
+
+	.arrow svg {
+		width: 1.75rem;
+		height: 1.75rem;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+
+	@media (min-width: 768px) {
+		.arrow {
+			display: flex;
+		}
+
+		// Browser: two cards side by side
+		.track > :global(.news-card) {
+			flex-basis: calc((100% - #{$spacing_small}) / 2);
+		}
+	}
+</style>

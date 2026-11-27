@@ -1,0 +1,68 @@
+// Paragraph spacing
+.forward p,
+.amenities p,
+.application-process p {
+	margin: 0;
+}
+
+.forward p + p,
+.amenities p + p,
+.application-process p + p {
+	margin-top: $spacing_small;
+}
+
+// Space between a paragraph and the list that follows it
+p + ul {
+	margin-top: $spacing_small;
+}
+
+// Application process: numbered steps
+.application-process {
+	display: flex;
+	flex-direction: column;
+	gap: $spacing_large; // between steps
+	margin-top: $spacing_extra-large; // between this section and the content above it
+	counter-reset: step;
+}
+
+.application-step {
+	counter-increment: step; // 1st step -> 1, 2nd -> 2, ...
+}
+
+// Step heading row: the number circle and the h3 sit on one line, vertically centered together
+.application-step h3 {
+	display: flex;
+	align-items: center;
+	gap: $spacing_small; // horizontal space between the number and the h3 text
+	min-height: 64px;
+	margin: 0;
+}
+
+// Step number: centered in a black circle
+.application-step h3::before {
+	content: counter(step);
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	background-color: $color_black;
+	color: $color_white;
+	font-family: $font_family_body;
+	font-size: $font_size_h2;
+	font-weight: normal;
+	line-height: 1;
+}
+
+// Step text lines up under the h3 text, beside (not under) the number
+.application-step > p,
+.application-step > ul {
+	margin-left: calc(64px + #{$spacing_small});
+}
+
+.application-step h3 + p,
+.application-step h3 + ul {
+	margin-top: $spacing_small;
+}

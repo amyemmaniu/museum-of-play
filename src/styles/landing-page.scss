@@ -11,9 +11,18 @@
 	margin: 0;
 }
 
+.whats-new-heading {
+	font-weight: normal;
+}
+
 .h1 {
 	font-family: $font_family_heading;
 	font-size: $font_size_h1-mobile;
+}
+
+.view-more-link {
+	display: block; // so the top margin applies
+	margin-top: $spacing_small; // space below the view cards
 }
 
 .view-cards {

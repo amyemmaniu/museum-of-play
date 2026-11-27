@@ -7,6 +7,7 @@ import '@fontsource/rubik/700.css';
 import '@fontsource/kode-mono/400.css';
 import '@fontsource/kode-mono/700.css';
 import Navbar from '../components/navigation/Navbar.astro';
+import FontPreload from '../components/FontPreload.astro';
 ---
 
 <!DOCTYPE html>
@@ -14,6 +15,7 @@ import Navbar from '../components/navigation/Navbar.astro';
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href={favicon.src} />
+		<FontPreload />
 		<Navbar></Navbar>
 	</head>
 	<body>

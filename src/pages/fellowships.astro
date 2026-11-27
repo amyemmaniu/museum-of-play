@@ -1,0 +1,99 @@
+---
+import '../styles/global.scss';
+import favicon from '../assets/favicon.svg';
+import '@fontsource/rubik/400.css';
+import '@fontsource/rubik/400-italic.css';
+import '@fontsource/rubik/700.css';
+import '@fontsource/kode-mono/400.css';
+import '@fontsource/kode-mono/700.css';
+import '../styles/fellowships.scss';
+import Navbar from '../components/navigation/Navbar.astro';
+import FontPreload from '../components/FontPreload.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const crumbs = [
+	{ Title: "Home", Link: "/" },
+	{ Title: "Learn", Link: "/learn" },
+	{ Title: "Fellowships", Link: "" },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={favicon.src} />
+		<FontPreload />
+		<Navbar></Navbar>
+	</head>
+	<h1>Fellowships</h1>
+	<body>
+		<Breadcrumbs Crumbs={crumbs} />
+
+		<div class="forward">
+			<p>
+			Fellowships empower academic researchers in the fields of ludology, art history, design, and digital media.
+			Three different kinds of fellowships are available.
+			</p>
+			<ul>
+				<li>
+					<b>Homo Ludens Fellowship: </b>A two year-long postdoctoral and early-career (&lt;3 years of work experience) program
+					in which fellows pursue an independent research project and contribute to
+					an exhibition, lecture series, or book-length manuscript.
+				</li>
+
+				<li>
+					<b>Magic Circle Fellowship: </b>A year-long program for master's and doctoral candidates whoses theses or dissertations
+					engage play, games, or toys through a critical lens.
+				</li>
+
+				<li>
+					<b>Sandbox Scholars Fellowship: </b>A year-long program for undergraduate college students studying HCI, digital humanities,
+					anthropology, and related fields. Each fellow is paired with a mentor who guides an independent research project.
+					At the end of the program, Sandbox Scholars present their work to curatorial staff and the public.
+				</li>
+			</ul>
+		</div>
+
+		<div class="application-process">
+			<div class="application-step">
+				<h2>Application Process</h2>
+				<h3>Cover Letter</h3>
+				<p>Draft a cover letter (less than 1,500 words total) that includes:</p>
+				<ul>
+					<li>Your full name, email, phone number, and address</li>
+					<li>Your current professional affiliation(s)</li>
+					<li>A brief description of your practice</li>
+					<li>An explanation of how being a resident at the Museum of Play will impact your practice</li>
+				</ul>
+			</div>
+
+			<div class="application-step">
+				<h3>Supplemental Materials</h3>
+				<p>You may include the following materials to support your application:</p>
+				<ul>
+					<li>Curriculum vitae</li>
+					<li>Up to 2 letters of reference, submitted separately via email by the references</li>
+				</ul>
+			</div>
+
+			<div class="application-step">
+				<h3>Deadlines</h3>
+				<ul>
+					<li><b>Homo Ludens Fellowship: </b>September 20</li>
+					<li><b>Magic Circle Fellowship: </b>November 15</li>
+					<li><b>Sandbox Scholars Fellowship: </b>November 15</li>
+				</ul>
+			</div>
+
+			<div class="application-step">
+				<h3>Application Review</h3>
+				<p>
+					Your application will be reviewed by our Research Team, a dedicated, interdisciplinary team of
+					scholars, curators, and scientists. Successful fellowship applicants will be notified by January 20
+					for the Magic Circle and Sandbox Scholars fellowships, and by December 12 for the Homo Ludens Fellowship.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

@@ -8,6 +8,7 @@ import '@fontsource/kode-mono/400.css';
 import '@fontsource/kode-mono/700.css';
 import '../styles/plan-your-visit.scss';
 import Navbar from '../components/navigation/Navbar.astro';
+import FontPreload from '../components/FontPreload.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 
 const crumbs = [
@@ -22,10 +23,80 @@ const crumbs = [
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href={favicon.src} />
+		<FontPreload />
 		<Navbar></Navbar>
 	</head>
 	<h1>Plan Your Visit</h1>
 	<body>
 		<Breadcrumbs Crumbs={crumbs} />
+
+		<div class="visit-sections">
+			<div class="location">
+				<h2>Location</h2>
+				<p>108 Sablecrest Avenue</p>
+				<p>Seattle, WA 98105</p>
+			</div>
+
+			<div class="hours">
+				<h2>Hours</h2>
+				<p>Monday to Friday: 9am – 6pm</p>
+				<p>Saturday to Sunday: 10am – 5pm</p>
+			</div>
+
+			<div class="ticket-prices">
+				<h2>Ticket Prices</h2>
+				<p>Children under 6: FREE</p>
+				<p>Students (upon presentation of valid student ID): FREE</p>
+				<p>Youth (6 – 24, non-student): $5</p>
+				<p>Adults (25 – 64, non-student): $15</p>
+				<p>Seniors (65+): $12</p>
+			</div>
+
+			<div class="accessibility">
+				<h2>Accessibility</h2>
+
+				<div class="accessibility-group">
+					<h3>Sensory Needs</h3>
+					<p>
+						We are committed to ensuring all guests enjoy an enriching and fun time at the Museum of Play.
+						Sensory-Friendly Spaces provide environments with low lighting and reduced sound. To locate
+						Sensory-Friendly Spaces throughout the museum, please refer to the directories at the first and second floor entrances.
+						Noise-canceling headphones are available upon request at the admissions desk.
+						When borrowing headphones, guests are asked to leave a driver’s license or state ID as collateral.
+					</p>
+				</div>
+				<div class="accessibility-group">
+					<h3>Multilingual Needs</h3>
+					<p>
+						The Museum of Play app, available for Android and iOS, provides audio guides and written exhibit
+						descriptions in multiple different languages.
+					</p>
+				</div>
+				<div class="accessibility-group">
+					<h3>Mobility Needs</h3>
+					<p>
+						All public entrances are accessible via wheelchair, walker, and stroller. There are five wheelchair-accessible
+						seats in the Auditorium.
+						There are four elevators that allow guests entry to the second floor. They can be located via the
+						directories at the first and second floor entrances, as well as by following the overhead signage.
+						The museum provides an ample number of benches along the corridors outside exhibition room.
+					</p>
+				</div>
+				<div class="accessibility-group">
+					<h3>Pets and Service Animals</h3>
+					<p>
+						The Museum of Play welcomes service animals. A visitor may be asked to remove their service animal
+						from the premises if: (1) the animal is disturbing other patrons and the visitor does not take effective actions to
+						control it; or (2) the animal is not housebroken.
+					</p>
+					<p>
+						The Museum’s unofficial mascot, a cat named Peanut, roams the offices that are inaccessible to visitors.
+						On special events, Peanut is permitted to roam the public gallery areas under supervision by museum staff.
+						Guests with pet allergies are advised to refer to the pages for individual exhibits or events to check
+						whether Peanut will be present.
+					</p>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

@@ -1,0 +1,28 @@
+// All of the page's sections, stacked with space between them
+.visit-sections {
+	display: flex;
+	flex-direction: column;
+	gap: $spacing_extra-large;
+}
+
+// Sub-sections inside Accessibility get the same space between them
+.accessibility-group + .accessibility-group {
+	margin-top: $spacing_extra-large;
+}
+
+.visit-sections h2,
+.visit-sections h3,
+.visit-sections p {
+	margin: 0;
+}
+
+// Space below each heading, before its text
+.visit-sections h2,
+.visit-sections h3 {
+	margin-bottom: $spacing_medium;
+}
+
+// Space between consecutive paragraphs
+.visit-sections p + p {
+	margin-top: $spacing_small;
+}

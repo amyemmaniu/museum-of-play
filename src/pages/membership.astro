@@ -8,6 +8,7 @@ import '@fontsource/kode-mono/400.css';
 import '@fontsource/kode-mono/700.css';
 import '../styles/membership.scss';
 import Navbar from '../components/navigation/Navbar.astro';
+import FontPreload from '../components/FontPreload.astro';
 import MembershipCard from '../components/MembershipCard.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { Image } from 'astro:assets';
@@ -35,6 +36,7 @@ const comparisonRows: { Benefit: string; Values: (boolean | string)[] }[] = [
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href={favicon.src} />
+		<FontPreload />
 		<Navbar></Navbar>
 	</head>
 	<body>

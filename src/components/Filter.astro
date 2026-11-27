@@ -1,0 +1,94 @@
+---
+import DropdownItem from "../components/navigation/DropdownItem.astro";
+const { Label, Link, Items = [] } = Astro.props;
+---
+
+<div class="filter">
+	{Link
+		? <a class="filter-button" href={Link}>{Label}</a>
+		: <button class="filter-button" type="button" aria-expanded="false">{Label}</button>}
+	<div class="dropdown-items">
+		{Items.map((Item: string | { Text: string; Link?: string; Checkbox?: boolean; Checked?: boolean }) =>
+			typeof Item === "string"
+				? <DropdownItem Text={Item} />
+				: <DropdownItem Text={Item.Text} Link={Item.Link} Checkbox={Item.Checkbox} Checked={Item.Checked} />
+		)}
+	</div>
+</div>
+
+<script>
+	// Phone layout has no hover: tapping a toggle button expands/collapses its menu
+	document.querySelectorAll<HTMLButtonElement>("button.filter-button").forEach((button) => {
+		button.addEventListener("click", () => {
+			const menu = button.closest(".filter");
+			const isOpen = menu?.classList.toggle("open") ?? false;
+			button.setAttribute("aria-expanded", String(isOpen));
+		});
+	});
+</script>
+
+<style lang="scss">
+	.filter {
+		width: 250px;
+		max-width: 100%;
+	}
+
+	.filter-button {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		min-height: 50px; // grows taller when a long label wraps onto more lines
+		width: 100%;
+		padding: $spacing_extra-small;
+		overflow-wrap: anywhere;
+		border: none;
+		box-sizing: border-box;
+		background-color: $color_black;
+		color: $color_white;
+		font-family: $font_family_body;
+		font-size: $font_size_h3;
+		font-weight: bold;
+		text-align: left;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	.filter-button:hover {
+		color: $color_white; // overrides global a:hover (accent) so only the underline changes
+		background-color: $color_black; // overrides global button:hover so the background stays put
+	}
+
+	// Caret (toggle buttons only): downward triangle when closed, upward triangle when open
+	button.filter-button::after {
+		content: "";
+		flex-shrink: 0;
+		width: 0;
+		height: 0;
+		margin-right: 0.1rem;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-top: 18px solid $color_white;
+	}
+
+	.filter.open button.filter-button::after {
+		border-top: none;
+		border-bottom: 18px solid $color_white;
+	}
+
+	.dropdown-items {
+		display: none;
+		flex-direction: column;
+		width: 250px;
+		max-width: 100%;
+	}
+
+	// every item is 250px wide (on any screen size) and grows taller for longer labels
+	.dropdown-items :global(.dropdown-item) {
+		width: 250px;
+		max-width: 100%;
+	}
+
+	.filter.open .dropdown-items {
+		display: flex;
+	}
+</style>

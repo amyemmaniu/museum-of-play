@@ -1,0 +1,102 @@
+---
+import '../styles/global.scss';
+import favicon from '../assets/favicon.svg';
+import '@fontsource/rubik/400.css';
+import '@fontsource/rubik/400-italic.css';
+import '@fontsource/rubik/700.css';
+import '@fontsource/kode-mono/400.css';
+import '@fontsource/kode-mono/700.css';
+import '../styles/on-view.scss';
+import Navbar from '../components/navigation/Navbar.astro';
+import FontPreload from '../components/FontPreload.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Filter from "../components/Filter.astro";
+import ViewCard from "../components/ViewCard.astro";
+import { getCollection } from 'astro:content';
+
+// The 9 most recent exhibits and events, newest first
+const recentItems = (await getCollection('on-view'))
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+	.slice(0, 9);
+
+// Month spelled out, e.g. "November 18, 2026" (UTC, so the day never shifts with the user's time zone)
+const formatDate = (date: Date) =>
+	date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+
+// Filter choices (each one is shown with a checkbox)
+const toItems = (labels: string[]) => labels.map((Text) => ({ Text, Checkbox: true }));
+const ageGroups = toItems(["25+", "18 – 24", "12 – 17", "3 – 11"]);
+const types = toItems(["Exhibit", "Event"]);
+const times = toItems(["Current", "Upcoming", "Past"]);
+
+// YYYY-MM-DD, which the Time filter compares with today's date
+const isoDate = (date: Date) => date.toISOString().slice(0, 10);
+
+// Card date line: "Permanent Installation", a date range, or a single date
+const dateLine = (item: { date: Date; endDate?: Date; permanent: boolean }) =>
+	item.permanent
+		? 'Permanent Installation'
+		: item.endDate
+			? `${formatDate(item.date)} – ${formatDate(item.endDate)}`
+			: formatDate(item.date);
+
+const crumbs = [
+	{ Title: "Home", Link: "/" },
+	{ Title: "Explore", Link: "/explore" },
+	{ Title: "On View", Link: "" },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={favicon.src} />
+		<FontPreload />
+		<Navbar></Navbar>
+	</head>
+	<h1>On View</h1>
+	<body>
+		<Breadcrumbs Crumbs={crumbs} />
+		<div class="on-view-controls">
+			<div class="on-view-filters">
+				<div class="on-view-filter">
+					<Filter Label="Age Group" Items={ageGroups} />
+				</div>
+				<div class="on-view-filter">
+					<Filter Label="Type" Items={types} />
+				</div>
+				<div class="on-view-filter">
+					<Filter Label="Time" Items={times} />
+				</div>
+			</div>
+			<input class="on-view-search" type="search" placeholder="Search by keyword or name" aria-label="Search by keyword or name" />
+		</div>
+
+		<div class="on-view-cards">
+			{recentItems.map((item) => (
+				<ViewCard
+					Type={item.data.category}
+					Title={item.data.title}
+					Img={item.data.images[0].src}
+					ImgAltText={item.data.images[0].alt}
+					Date={dateLine(item.data)}
+					Link={`/on-view/${item.id}/`}
+					data-title={item.data.title}
+					data-category={item.data.category}
+					data-age-groups={item.data.ageGroups.join('|')}
+					data-keywords={item.data.keywords.join(' ')}
+					data-start={isoDate(item.data.date)}
+					data-end={item.data.endDate ? isoDate(item.data.endDate) : ''}
+					data-permanent={String(item.data.permanent)}
+				/>
+			))}
+		</div>
+		<p class="no-results" hidden>Nothing on view matches your search or filters.</p>
+	</body>
+</html>
+
+<script>
+	import { setupCardFilter } from '../scripts/filter-cards';
+	setupCardFilter('.on-view-cards', '.on-view-search');
+</script>

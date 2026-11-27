@@ -1,0 +1,21 @@
+// Post images fit on screen (mobile and browser) and are downscaled proportionally, never distorted
+.post-image {
+	display: block;
+	// the page's side margins are on the image itself, so subtract them to keep it on screen
+	max-width: calc(100% - 2 * #{$spacing_page-margin});
+	height: auto;
+	margin-top: 0; // the page layout already puts $spacing_grid above it
+	margin-bottom: $spacing_grid;
+}
+
+// Date and author, right below the image(s): $spacing_grid under the image (its bottom margin), $spacing_small between the two lines
+.post-meta {
+	display: flex;
+	flex-direction: column;
+	gap: $spacing_small;
+	margin-bottom: $spacing_grid;
+}
+
+.post-meta p {
+	margin: 0;
+}

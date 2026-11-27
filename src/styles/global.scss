@@ -11,6 +11,7 @@
 	h1 {
 		font-size: $font_size_h1-mobile;
 		font-family: $font_family_heading;
+		font-weight: normal;
 	}
 
 	// Gap between a page's h1 and the breadcrumb trail right below it
@@ -70,4 +71,9 @@
 :where(body > :not(header)) {
 	margin-left: $spacing_page-margin;
 	margin-right: $spacing_page-margin;
+}
+
+// Cards filtered out by a page's filters/search are hidden, even where a component sets its own display
+[hidden] {
+	display: none !important;
 }

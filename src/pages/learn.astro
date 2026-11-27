@@ -8,6 +8,7 @@ import '@fontsource/kode-mono/400.css';
 import '@fontsource/kode-mono/700.css';
 import '../styles/learn.scss';
 import Navbar from '../components/navigation/Navbar.astro';
+import FontPreload from '../components/FontPreload.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { Image } from 'astro:assets';
 import residenciesImage from '../assets/images/learn_page_residencies.jpg';
@@ -25,6 +26,7 @@ const crumbs = [
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href={favicon.src} />
+		<FontPreload />
 		<Navbar></Navbar>
 	</head>
 	<h1>Learn</h1>
@@ -34,7 +36,7 @@ const crumbs = [
 
 		<div class="learn-sections">
 			<div class="residencies-section">
-				<Image src={residenciesImage} alt="A painter's studio with stained wood accents"></Image>
+				<Image src={residenciesImage} alt="A painter's studio with stained wood accents" width={1200}></Image>
 				<div class="section-content">
 				<p>
 					We're dedicated to supporting the next generation of artists and designers.
@@ -48,7 +50,7 @@ const crumbs = [
 			</div>
 
 			<div class="fellowships-section">
-				<Image src={fellowshipsImage} alt="People sitting around a display panel in a wide-open atrium"></Image>
+				<Image src={fellowshipsImage} alt="People sitting around a display panel in a wide-open atrium" width={1200}></Image>
 				<div class="section-content">
 				<p>
 					Fellowships empower academic researchers in the fields of ludology, art history, design, and digital media.
@@ -75,7 +77,7 @@ const crumbs = [
 				</div>
 			</div>
 			<div class="blog-section">
-				<Image src={blogImage} alt="People working at their desks in an open-concept office space"></Image>
+				<Image src={blogImage} alt="People working at their desks in an open-concept office space" width={1200}></Image>
 				<div class="section-content">
 				<p>
 					The Museum of Play's blog offers an inside look into new and upcoming exhibitions, insight into the history

@@ -10,10 +10,10 @@ const { Label, Link, Items = [] } = Astro.props;
 		? <a class="navbar-button" href={Link}>{Label}</a>
 		: <button class="navbar-button" type="button" aria-expanded="false">{Label}</button>}
 	<div class="dropdown-items">
-		{Items.map((Item: string | { Text: string; Link?: string }) =>
+		{Items.map((Item: string | { Text: string; Link?: string; Checkbox?: boolean; Checked?: boolean }) =>
 			typeof Item === "string"
 				? <DropdownItem Text={Item} />
-				: <DropdownItem Text={Item.Text} Link={Item.Link} />
+				: <DropdownItem Text={Item.Text} Link={Item.Link} Checkbox={Item.Checkbox} Checked={Item.Checked} />
 		)}
 	</div>
 </div>

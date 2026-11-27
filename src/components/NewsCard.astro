@@ -1,8 +1,124 @@
 ---
-const { Title, Snippet, Img, ImgAltText } = Astro.props;
+import { Image } from 'astro:assets';
+
+// Img must be an imported image (not a string path) so Astro can optimize it
+// Snippet: a string, or a list of strings (one paragraph each)
+// Link (optional): the page the "Read more" button goes to
+const { Title, Snippet, Img, ImgAltText, Link } = Astro.props;
 ---
 
-<h2>{Title}</h2>
-<p>{Snippet}</p>
-<img src=Img alt={ImgAltText}>
-<button class="read-more">Read more</button>
+<div class="news-card">
+	<div class="news-card-content">
+		<h2>{Title}</h2>
+		<div class="snippet">
+			{(Array.isArray(Snippet) ? Snippet : [Snippet]).filter(Boolean).map((paragraph: string) => <p>{paragraph}</p>)}
+		</div>
+		{Link
+			? <a class="read-more" href={Link}>Read more</a>
+			: <button class="read-more" type="button">Read more</button>}
+	</div>
+	{Img && (
+		<div class="news-card-image">
+			<Image src={Img} alt={ImgAltText ?? ""} width={700} />
+		</div>
+	)}
+</div>
+
+<style lang="scss">
+	.news-card {
+		display: flex;
+		flex-direction: row;
+		align-items: stretch; // the text column is as tall as the image
+		gap: $spacing_extra-small; // between the text column and the image
+		box-sizing: border-box;
+		width: 100%;
+		padding: 0.75rem; // 12px
+		border-radius: $border_radius_card;
+		background-color: $color_white;
+		border: 1px solid rgba($color_gray, 0.5);
+	}
+
+	// Left column: title, snippet, and the button pinned to the bottom
+	.news-card-content {
+		display: flex;
+		flex: 1 1 0;
+		flex-direction: column;
+		min-width: 0;
+	}
+
+	.news-card h2 {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0;
+		min-height: 2.4em; // always reserves two lines, so a wrapping title doesn't change the card's height
+		font-family: $font_family_body;
+		font-size: $font_size_h3;
+		font-weight: normal;
+		line-height: 1.2;
+		text-align: center;
+	}
+
+	.snippet {
+		flex: 1; // takes the leftover height, which pushes the button to the bottom
+		margin: $spacing_extra-small 0;
+		text-align: left;
+	}
+
+	.snippet p {
+		margin: 0;
+		font-size: 0.75rem;
+	}
+
+	// $spacing_small between paragraphs
+	.snippet p + p {
+		margin-top: $spacing_small;
+	}
+
+	.read-more {
+		padding: $spacing_extra-small;
+		border: none;
+		border-radius: $border_radius_body;
+		background-color: $color_primary;
+		color: $color_white;
+		font-family: $font_family_body;
+		font-size: $font_size_h3;
+		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
+	}
+
+	.read-more:hover {
+		background-color: $color_primary; // overrides global button:hover (accent); only the text underlines
+		text-decoration: underline;
+	}
+
+	// Right column: portrait image that sets the card's height
+	.news-card-image {
+		flex: 1 1 0;
+		min-width: 0;
+		aspect-ratio: 551 / 666;
+	}
+
+	.news-card-image :global(img) {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	@media (min-width: 768px) {
+		.news-card {
+			padding: $spacing_extra-large;
+		}
+
+		.news-card h2,
+		.read-more {
+			font-size: $font_size_h2;
+		}
+
+		.snippet p {
+			font-size: $font_size_body;
+		}
+	}
+</style>

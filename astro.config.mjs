@@ -7,6 +7,7 @@ const variablesPath = fileURLToPath(new URL('./src/styles/variables.scss', impor
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://museum-of-play.workers.dev',
 	vite: {
 		css: {
 			preprocessorOptions: {
