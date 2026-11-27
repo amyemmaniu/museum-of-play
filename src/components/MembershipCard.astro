@@ -66,6 +66,14 @@ const { PlanName, Price, BorderColor, Description } = Astro.props;
 		text-align: center;
 	}
 
+	// Mobile: cards stack in one column and scale with the screen, keeping the desktop card's proportions (448 x 432)
+	@media (max-width: 767px) {
+		.membership-card {
+			min-height: 0;
+			aspect-ratio: 448 / 432;
+		}
+	}
+
 	@media (min-width: 768px) {
 		.price {
 			font-size: clamp(1.75rem, 4vw, 4rem); // up to 64px

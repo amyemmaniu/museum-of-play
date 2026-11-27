@@ -2,6 +2,7 @@
 .blog-controls {
 	display: flex;
 	flex-direction: column;
+	align-items: center; // mobile: the filter is centered
 	gap: $spacing_small;
 	margin-bottom: $spacing_grid;
 }
@@ -37,7 +38,7 @@
 // Blog post cards: one column on mobile, rows of 3 on browser
 .blog-post-cards {
 	display: grid;
-	grid-template-columns: 1fr;
+	grid-template-columns: minmax(0, 1fr); // one column; minmax(0, …) stops wide content from stretching it
 	gap: $spacing_grid; // vertical spacing between cards
 }
 

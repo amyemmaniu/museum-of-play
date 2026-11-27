@@ -7,7 +7,10 @@ const { Label, Link, Items = [] } = Astro.props;
 
 <div class="dropdown-menu">
 	{Link
-		? <a class="navbar-button" href={Link}>{Label}</a>
+		? <div class="menu-row">
+			<a class="navbar-button" href={Link}>{Label}</a>
+			{Items.length > 0 && <button class="navbar-caret" type="button" aria-label={`Show ${Label} menu`} aria-expanded="false"></button>}
+		</div>
 		: <button class="navbar-button" type="button" aria-expanded="false">{Label}</button>}
 	<div class="dropdown-items">
 		{Items.map((Item: string | { Text: string; Link?: string; Checkbox?: boolean; Checked?: boolean }) =>
@@ -19,8 +22,8 @@ const { Label, Link, Items = [] } = Astro.props;
 </div>
 
 <script>
-	// Phone layout has no hover: tapping a toggle button expands/collapses its menu
-	document.querySelectorAll<HTMLButtonElement>("button.navbar-button").forEach((button) => {
+	// Phone layout has no hover: tapping a toggle button (or the caret beside a linked label) expands/collapses its menu
+	document.querySelectorAll<HTMLButtonElement>("button.navbar-button, button.navbar-caret").forEach((button) => {
 		button.addEventListener("click", () => {
 			const menu = button.closest(".dropdown-menu");
 			const isOpen = menu?.classList.toggle("open") ?? false;
@@ -59,8 +62,35 @@ const { Label, Link, Items = [] } = Astro.props;
 		text-decoration: underline;
 	}
 
-	// Caret (toggle buttons only): downward triangle when closed, upward triangle when open
-	button.navbar-button::after {
+	// A label that is also a link (e.g. "Learn"): the link fills the row, with a separate caret button beside it
+	.menu-row {
+		display: flex;
+	}
+
+	.menu-row .navbar-button {
+		flex: 1;
+	}
+
+	.navbar-caret {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		width: 50px;
+		height: 50px;
+		padding: 0;
+		border: none;
+		background-color: $color_black;
+		cursor: pointer;
+	}
+
+	.navbar-caret:hover {
+		background-color: $color_black; // overrides global button:hover (accent)
+	}
+
+	// Caret: downward triangle when closed, upward triangle when open
+	button.navbar-button::after,
+	.navbar-caret::after {
 		content: "";
 		flex-shrink: 0;
 		width: 0;
@@ -71,7 +101,8 @@ const { Label, Link, Items = [] } = Astro.props;
 		border-top: 18px solid $color_white;
 	}
 
-	.dropdown-menu.open button.navbar-button::after {
+	.dropdown-menu.open button.navbar-button::after,
+	.dropdown-menu.open .navbar-caret::after {
 		border-top: none;
 		border-bottom: 18px solid $color_white;
 	}
@@ -103,6 +134,15 @@ const { Label, Link, Items = [] } = Astro.props;
 
 		.navbar-button::after {
 			display: none;
+		}
+
+		// Browser: items open on hover, so no caret button; the row shrinks to the link
+		.navbar-caret {
+			display: none;
+		}
+
+		.menu-row {
+			display: contents;
 		}
 
 		.dropdown-menu:hover .dropdown-items,
