@@ -1,0 +1,10 @@
+{
+	"name": "museum-of-play",
+	"compatibility_date": "2026-11-27",
+	// Astro's static build output; Workers serves these files as static assets
+	"assets": {
+		"directory": "./dist"
+	},
+	// Required by `wrangler preview` (non-production branch builds); can stay empty
+	"previews": {}
+}

@@ -25,7 +25,7 @@ On the ten thousandth night, the moon wept. And as her ashen light shone down th
 
 It was then that I realized I had been sleeping under the light of ten thousand different moons.”
 
-— Shatter My Mirror dir. Annelise Blackwell (2021)
+— _Shatter My Mirror_ dir. Annelise Blackwell (2021)
 
 ## Description
 
@@ -33,6 +33,6 @@ Multidisciplinary artist Anneliese Helen Blackwell (b. 1988, Salcombe, South Wes
 
 Her works demand to be seen. There is a strong presence of rhythm from her hypertext poems, “Beasts of the Old Country” and “The Ties that Bind are the Ties that Break.” She projects the words onto the left and right walls of the gallery. Upon coming closer, viewers will find that their own shadows obscure portions of text, incorporating them into the poems.
 
-The Heart Swims in Sorrow includes Blackwell’s 2021 directorial debut, Shatter My Mirror, as well as two more recent short films, Urban Angels Under Street Lamp Halos (2023) and Judith and the Siren (2024). In all three films, Blackwell deconstructs the psychosocial aspects of imaginative, social, and ritual play while exploring themes of family, abuse, revenge, and resilience. The artist views collective, generational, and identity-based traumas through the perspective of young female protagonists, inviting audiences to question how women continue to be socialized into strict roles with limited autonomy and painful consequences.
+_The Heart Swims in Sorrow_ includes Blackwell’s 2021 directorial debut, _Shatter My Mirror_, as well as two more recent short films, _Urban Angels Under Street Lamp Halos_ (2023) and _Judith and the Siren_ (2024). In all three films, Blackwell deconstructs the psychosocial aspects of imaginative, social, and ritual play while exploring themes of family, abuse, revenge, and resilience. The artist views collective, generational, and identity-based traumas through the perspective of young female protagonists, inviting audiences to question how women continue to be socialized into strict roles with limited autonomy and painful consequences.
 
-Students from the Pacific Northwest Ballet School will perform Blackwell’s original choreography, Echo Scream Anguish, each Wednesday, Friday, and Saturday every half an hour from 11 am to 3 pm. The piece runs roughly six minutes and 35 seconds in length.
+Students from the Pacific Northwest Ballet School will perform Blackwell’s original choreography, _Echo Scream Anguish_, each Wednesday, Friday, and Saturday every half an hour from 11 am to 3 pm. The piece runs roughly six minutes and 35 seconds in length.
