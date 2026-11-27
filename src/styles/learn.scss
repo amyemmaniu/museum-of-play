@@ -1,7 +1,22 @@
+// Mobile (default): everything stacks in one column; images are centered, body text is left-aligned
 .learn-sections {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	gap: $spacing_grid; // vertical spacing between sections
 	margin-top: $spacing_grid;
+	text-align: left;
+}
+
+// Each section: image on top (centered), text below
+.residencies-section,
+.fellowships-section,
+.blog-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: $spacing_small; // between the image and the text
+	width: 100%;
 }
 
 .learn-sections img {
@@ -10,15 +25,20 @@
 	height: auto;
 }
 
+.section-content {
+	width: 100%;
+}
+
+
 @media (min-width: 768px) {
 	.learn-sections {
-		gap: $spacing_grid; // Vertical spacing between sections
+		align-items: stretch;
 	}
 
 	.residencies-section,
 	.fellowships-section,
 	.blog-section {
-		display: flex;
+		flex-direction: row;
 		align-items: flex-start;
 		gap: $spacing_grid; // Horizontal spacing between image and content
 	}

@@ -68,11 +68,17 @@
 	background-color: $color_black;
 }
 
+// Mobile: one column. The text block's children join the promo's own column (display: contents),
+// so the order can be: heading, description, benefits, slideshow, then the button.
 .membership-promo .promo-content {
-	display: flex;
-	flex-direction: column;
-	gap: $spacing_extra-small;
+	display: contents;
 }
+
+.membership-promo h1 { order: 1; }
+.membership-promo p { order: 2; }
+.membership-promo ul { order: 3; }
+.membership-promo .promo-slideshow { order: 4; }
+.membership-promo .purchase-membership-button { order: 5; }
 
 .membership-promo h1 {
 	margin: 0;
@@ -184,7 +190,10 @@
 		padding: $spacing_small;
 	}
 
+	// Browser: slideshow on the left, text block (with the button) on the right
 	.membership-promo .promo-content {
+		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		gap: 1rem;
 	}
@@ -211,6 +220,7 @@
 	}
 
 	.membership-promo .promo-slideshow {
+		order: 0; // back to DOM order: the slideshow is the left column
 		height: 100%;
 	}
 

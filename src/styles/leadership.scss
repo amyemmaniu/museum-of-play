@@ -31,6 +31,11 @@
 	margin: 0;
 }
 
+// Mobile: the name and title stay centered; the bio paragraph is left-aligned
+.leadership-card p:not(.title) {
+	text-align: left;
+}
+
 .leadership-card h3 {
 	margin-bottom: $spacing_extra-small; // space between the heading and the title
 }

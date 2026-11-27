@@ -66,3 +66,17 @@ p + ul {
 .application-step h3 + ul {
 	margin-top: $spacing_small;
 }
+
+// Mobile: the step number and the h3 sit on one row, vertically centered with each other,
+// with $spacing_extra-small between them; the step text lines up under the h3
+@media (max-width: 767px) {
+	.application-step h3 {
+		align-items: center;
+		gap: $spacing_extra-small;
+	}
+
+	.application-step > p,
+	.application-step > ul {
+		margin-left: calc(64px + #{$spacing_extra-small});
+	}
+}
