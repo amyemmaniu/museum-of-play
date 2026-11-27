@@ -5,13 +5,17 @@ import { Image } from 'astro:assets';
 // Snippet: a string, or a list of strings (one paragraph each)
 // Link (optional): the page the "Read more" button goes to
 const { Title, Snippet, Img, ImgAltText, Link } = Astro.props;
+
+// Text wrapped in *asterisks* is italicized (e.g. exhibit titles). Returns alternating plain/italic pieces.
+const withItalics = (text: string) =>
+	text.split(/\*(.+?)\*/).map((part, i) => ({ part, italic: i % 2 === 1 }));
 ---
 
 <div class="news-card">
 	<div class="news-card-content">
-		<h2>{Title}</h2>
+		<h2>{withItalics(Title).map(({ part, italic }) => italic ? <em>{part}</em> : part)}</h2>
 		<div class="snippet">
-			{(Array.isArray(Snippet) ? Snippet : [Snippet]).filter(Boolean).map((paragraph: string) => <p>{paragraph}</p>)}
+			{(Array.isArray(Snippet) ? Snippet : [Snippet]).filter(Boolean).map((paragraph: string) => <p>{withItalics(paragraph).map(({ part, italic }) => italic ? <em>{part}</em> : part)}</p>)}
 		</div>
 		{Link
 			? <a class="read-more" href={Link}>Read more</a>
@@ -89,7 +93,7 @@ const { Title, Snippet, Img, ImgAltText, Link } = Astro.props;
 	}
 
 	.read-more:hover {
-		background-color: $color_primary; // overrides global button:hover (accent); only the text underlines
+		background-color: $color_accent; // the text color stays white
 		text-decoration: underline;
 	}
 
@@ -114,7 +118,7 @@ const { Title, Snippet, Img, ImgAltText, Link } = Astro.props;
 
 		.news-card h2,
 		.read-more {
-			font-size: $font_size_h2;
+			font-size: $font_size_h3;
 		}
 
 		.snippet p {

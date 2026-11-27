@@ -13,10 +13,13 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { Image } from 'astro:assets';
 import donationChart from '../assets/images/donation-chart.png';
 import NewsCarousel from '../components/NewsCarousel.astro';
-import collectionsImage from '../assets/images/explore_collections_toys.jpg'; // placeholder: swap in the real collections photo
+import collectionsImage from '../assets/images/gift-shop.jpg';
 import educationImage from '../assets/images/sandbox-scholars.jpg';
 import expansionImage from '../assets/images/news_cover_expansion.jpg';
 import lectureImage from '../assets/images/lecture.jpg';
+import exhibitionsImage from '../assets/images/on_view_mallory-blackwell.jpg';
+import communityImage from '../assets/images/learn_page_fellowships.jpg';
+import diningImage from '../assets/images/blog_cover_sable-sparrow.jpg';
 
 const areasThatBenefit = [
 	{
@@ -27,6 +30,7 @@ const areasThatBenefit = [
 		],
 		Img: collectionsImage,
 		ImgAltText: "Brown backlit shelves stacked with small toys",
+			Link: "/404.html",
 	},
 	{
 		Title: "Education and Public Outreach",
@@ -36,6 +40,27 @@ const areasThatBenefit = [
 		],
 		Img: educationImage,
 		ImgAltText: "A presentation in a dimly lit room",
+			Link: "/404.html",
+		},
+		{
+			Title: "Exhibitions and New Commissions",
+			Snippet: [
+				"Each year, the Museum of Play presents new exhibitions and commissions works from emerging and established artists exploring play in all its forms.",
+				"By dedicating your donation to our exhibitions, you can help bring bold, original work to the galleries.",
+			],
+			Img: exhibitionsImage,
+			ImgAltText: "A photograph of a vintage console in a blue-painted room",
+			Link: "/404.html",
+		},
+		{
+			Title: "Community and Accessibility",
+			Snippet: [
+				"From free admission days to low-stimulation visits and large-print guides, the Museum works tirelessly to make play welcoming to everyone.",
+				"By dedicating your donation to community programs, you can help remove barriers for visitors of all ages and abilities.",
+			],
+			Img: communityImage,
+			ImgAltText: "People sitting around a display panel in a wide-open atrium",
+			Link: "/404.html",
 	},
 ];
 
@@ -56,6 +81,23 @@ const giftsInAction = [
 		Img: lectureImage,
 		ImgAltText: "A crowd seated in a tiered lecture hall facing a projection screen",
 		Link: "/on-view/this-house-is-not-a-home/",
+		},
+		{
+			Title: "Sable Sparrow Takes the Stage!",
+			Snippet: "Donor support helped give visitors a delicious new option for food nearby: Sable Sparrow, a café located on the museum's first floor.",
+			Img: diningImage,
+			ImgAltText: "Steaming plates of food placed on a circular wooden table",
+			Link: "blog/sable-sparrow/",
+		},
+		{
+			Title: "Refurbishing Permanent Installations",
+			Snippet: [
+				"Thanks to our donors, one of the Museum's permanent installations, *Mallory Blackwell: DISC/ONNECT*, has been refurbished with new hardware, projectors, and audio equipment.",
+				"The installation invites visitors to press buttons and turn dials to reshape the projections and soundscape around them.",
+			],
+			Img: exhibitionsImage,
+			ImgAltText: "A photograph of a vintage console in a blue-painted room",
+			Link: "/on-view/mallory-blackwell-disc-onnect/",
 	},
 ];
 
@@ -70,6 +112,7 @@ const crumbs = [
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Support | Museum of Play</title>
 		<link rel="icon" type="image/svg+xml" href={favicon.src} />
 		<FontPreload />
 		<Navbar></Navbar>
