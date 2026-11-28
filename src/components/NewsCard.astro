@@ -1,9 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 
-// Img must be an imported image (not a string path) so Astro can optimize it
-// Snippet: a string, or a list of strings (one paragraph each)
-// Link (optional): the page the "Read more" button goes to
+/* Img must be an imported image (not a string path) so Astro can optimize it
+Snippet: a string, or a list of strings (one paragraph each)
+Link (optional): the page the "Read more" button goes to */
 const { Title, Snippet, Img, ImgAltText, Link } = Astro.props;
 
 // Text wrapped in *asterisks* is italicized (e.g. exhibit titles). Returns alternating plain/italic pieces.
@@ -31,9 +31,9 @@ const withItalics = (text: string) =>
 </div>
 
 <style lang="scss">
-	// Desktop is the default. On phones, the card is a scaled-down copy of it: each size in the phone block below is its
-	// desktop value as a share of the desktop card width (520px), measured against the card's own width (cqw), so the
-	// proportions match.
+	/* Phone is the default: the card is a scaled-down copy of the desktop card. Each size is its desktop value as a share
+	of the desktop card width (520px), measured against the card's own width (cqw), so the proportions match.
+	At 768px and wider, the real desktop sizes take over. */
 	$desktop-card-width: 520;
 	@function scaled($px) {
 		@return calc(#{$px} / #{$desktop-card-width} * 100cqw);
@@ -52,8 +52,8 @@ const withItalics = (text: string) =>
 		display: flex;
 		flex-direction: row;
 		align-items: stretch; // the text column is as tall as the image
-		gap: $spacing_extra-small; // between the text column and the image
-		padding: $spacing_extra-large;
+		gap: scaled(8); // between the text column and the image (desktop: $spacing_extra-small)
+		padding: scaled(32); // desktop: $spacing_extra-large
 	}
 
 	// Left column: title, snippet, and the button pinned to the bottom
@@ -71,7 +71,7 @@ const withItalics = (text: string) =>
 		margin: 0;
 		min-height: 2.4em; // always reserves two lines, so a wrapping title doesn't change the card's height
 		font-family: $font_family_body;
-		font-size: $font_size_h3;
+		font-size: scaled(24); // desktop: $font_size_h3
 		font-weight: normal;
 		line-height: 1.2;
 		text-align: center;
@@ -79,28 +79,28 @@ const withItalics = (text: string) =>
 
 	.snippet {
 		flex: 1; // takes the leftover height, which pushes the button to the bottom
-		margin: $spacing_extra-small 0;
+		margin: scaled(8) 0; // desktop: $spacing_extra-small
 		text-align: left;
 	}
 
 	.snippet p {
 		margin: 0;
-		font-size: $font_size_body;
+		font-size: scaled(16); // desktop: $font_size_body
 	}
 
-	// $spacing_small between paragraphs
+	// Space between paragraphs (desktop: $spacing_small)
 	.snippet p + p {
-		margin-top: $spacing_small;
+		margin-top: scaled(20);
 	}
 
 	.read-more {
-		padding: $spacing_extra-small;
+		padding: scaled(8); // desktop: $spacing_extra-small
 		border: none;
-		border-radius: $border_radius_body;
+		border-radius: scaled(8); // desktop: $border_radius_body
 		background-color: $color_primary;
 		color: $color_white;
 		font-family: $font_family_body;
-		font-size: $font_size_h3;
+		font-size: scaled(24); // desktop: $font_size_h3
 		cursor: pointer;
 		text-align: center;
 		text-decoration: none;
@@ -108,7 +108,7 @@ const withItalics = (text: string) =>
 
 	.read-more:hover {
 		background-color: $color_accent;
-		color: $color_white; // overrides global a:hover (accent), which would match the new background and hide the text
+		color: $color_white; // overrides global a:hover ($color_accent), which would match the new background and hide the text
 	}
 
 	// Right column: portrait image that sets the card's height
@@ -125,33 +125,33 @@ const withItalics = (text: string) =>
 		object-fit: cover;
 	}
 
-	// Phone: every desktop size above, scaled to the card's width
-	@media (max-width: 767px) {
+	// Desktop: the real sizes
+	@media (min-width: 768px) {
 		.news-card-inner {
-			gap: scaled($spacing_extra-small);
-			padding: scaled($spacing_extra-large);
+			gap: $spacing_extra-small;
+			padding: $spacing_extra-large;
 		}
 
 		.news-card h2,
 		.read-more {
-			font-size: scaled($font_size_h3);
+			font-size: $font_size_h3;
 		}
 
 		.snippet {
-			margin: scaled($spacing_extra-small) 0;
+			margin: $spacing_extra-small 0;
 		}
 
 		.snippet p {
-			font-size: scaled($font_size_body);
+			font-size: $font_size_body;
 		}
 
 		.snippet p + p {
-			margin-top: scaled($spacing_small);
+			margin-top: $spacing_small;
 		}
 
 		.read-more {
-			padding: scaled($spacing_extra-small);
-			border-radius: scaled($border_radius_body);
+			padding: $spacing_extra-small;
+			border-radius: $border_radius_body;
 		}
 	}
 </style>
