@@ -88,6 +88,21 @@ const { Label, Link, Items = [] } = Astro.props;
 		max-width: 100%;
 	}
 
+	// Filter items look the same on phone and desktop: DropdownItem switches to this gray, left-aligned style
+	// at 768px (the navbar keeps its black phone style), so these rules apply it at every width
+	.dropdown-items :global(.dropdown-item p) {
+		box-sizing: border-box;
+		overflow-wrap: break-word; // long labels wrap onto more lines instead of widening the item
+		color: $color_black;
+		background-color: $color_gray;
+		text-align: left;
+		padding-left: $spacing_extra-small;
+	}
+
+	.dropdown-items :global(.dropdown-item p:has(.checkbox)) {
+		justify-content: flex-start;
+	}
+
 	.filter.open .dropdown-items {
 		display: flex;
 	}

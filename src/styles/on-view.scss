@@ -1,3 +1,11 @@
+// Phone: the desktop search bar (640px wide, 50px tall, 36px text) scaled to the phone's content width,
+// so the whole placeholder fits. width = 100vw minus the page side margins.
+$search-desktop-width: 640;
+$search-phone-width: calc(100vw - #{2 * $spacing_page-margin});
+@function search-scaled($px) {
+	@return calc(#{$search-phone-width} * #{$px} / #{$search-desktop-width});
+}
+
 // Filters + search bar: stacked on mobile, spread across the row (search on the far right) on desktop
 .on-view-controls {
 	display: flex;
@@ -17,14 +25,14 @@
 .on-view-search {
 	box-sizing: border-box;
 	width: 100%;
-	height: 50px;
-	padding: 0 $spacing_extra-small;
+	height: search-scaled(50);
+	padding: 0 search-scaled(8);
 	border: $border_width_button solid $color_gray; // default outline
-	border-radius: $border_radius_body;
+	border-radius: search-scaled(8);
 	background-color: $color_white;
 	color: $color_black;
 	font-family: $font_family_body;
-	font-size: $font_size_h2; // same size as the placeholder, so the text is centered in the box
+	font-size: search-scaled(36); // same size as the placeholder, so the text is centered in the box
 	line-height: normal;
 	outline: none;
 }
@@ -37,7 +45,7 @@
 	color: $color_black;
 	opacity: 1; // some browsers dim placeholder text by default
 	font-family: $font_family_body;
-	font-size: $font_size_h2;
+	font-size: search-scaled(36);
 	line-height: normal;
 }
 
@@ -63,10 +71,18 @@
 	}
 
 	.on-view-search {
+		height: 50px;
+		padding: 0 $spacing_extra-small;
+		border-radius: $border_radius_body;
+		font-size: $font_size_h2;
 		flex: 1 1 20rem;
 		min-width: 0;
 		max-width: 40rem;
 		margin-left: auto; // against the right edge
+	}
+
+	.on-view-search::placeholder {
+		font-size: $font_size_h2;
 	}
 }
 

@@ -52,6 +52,7 @@
 }
 
 .explore-collections {
+	margin-top: $spacing_grid; // space between the content above and the "Explore Our Collections" heading
 	display: flex;
 	flex-direction: column;
 	align-items: center;
