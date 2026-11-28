@@ -8,7 +8,7 @@ const { Cards = [] } = Astro.props;
 
 <div class="news-carousel">
 	<div class="carousel-row">
-		<button class="arrow arrow-prev" type="button" aria-label="Previous" disabled>
+		<button class="arrow arrow-prev" type="button" aria-label="Previous">
 			<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 5l-7 7 7 7" /></svg>
 		</button>
 
@@ -38,10 +38,12 @@ const { Cards = [] } = Astro.props;
 		// Distance from one card to the next (card width + the gap between cards)
 		const step = () => (cards[1] ? cards[1].offsetLeft - cards[0].offsetLeft : track.clientWidth);
 
-		// Phone: swiping never hits an end. A copy of the last card sits before the first card and a copy of
-		// the first card sits after the last. Once a swipe settles on a copy, the track jumps to the real card.
+		// The carousel never hits an end. Copies of the last cards sit before the first card and copies of the
+		// first cards sit after the last, as many as are on screen at once (one on phones, two on desktop).
+		// Once scrolling settles on a copy, the track jumps to the identical real card.
 		const isDesktop = window.matchMedia('(min-width: 768px)');
 		let clones: HTMLElement[] = [];
+		let pad = 0; // number of copies on each side
 
 		function makeClone(card: HTMLElement) {
 			const clone = card.cloneNode(true) as HTMLElement;
@@ -50,20 +52,15 @@ const { Cards = [] } = Astro.props;
 			return clone;
 		}
 
-		function enableLoop() {
-			if (count < 2 || clones.length) return;
-			const before = makeClone(cards[count - 1]);
-			const after = makeClone(cards[0]);
-			track.prepend(before);
-			track.append(after);
-			clones = [before, after];
-			jumpTo(1);
-		}
-
-		function disableLoop() {
+		function buildClones() {
 			clones.forEach((clone) => clone.remove());
-			clones = [];
-			jumpTo(0);
+			pad = count < 2 ? 0 : Math.min(isDesktop.matches ? 2 : 1, count);
+			const before = cards.slice(count - pad).map(makeClone);
+			const after = cards.slice(0, pad).map(makeClone);
+			track.prepend(...before);
+			track.append(...after);
+			clones = [...before, ...after];
+			jumpTo(pad);
 		}
 
 		// Moves instantly (no animation); scroll-snap is switched off so the jump can't be undone by snapping
@@ -75,24 +72,21 @@ const { Cards = [] } = Astro.props;
 
 		function update() {
 			const position = Math.round(track.scrollLeft / step());
-			const index = clones.length ? (position - 1 + count) % count : Math.min(position, Math.max(count - 2, 0)); // desktop: the last two cards share the final stop
+			const index = (position - pad + count) % count;
 			dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-			prev.disabled = track.scrollLeft <= 1;
-			next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
 		}
 
-		// After a swipe comes to rest on a copy, jump to the matching real card
+		// After scrolling comes to rest on a copy, jump to the matching real card
 		let settleTimer: number;
 		function settle() {
-			if (!clones.length) return;
+			if (!pad) return;
 			const position = Math.round(track.scrollLeft / step());
-			if (position === 0) jumpTo(count);
-			else if (position === count + 1) jumpTo(1);
+			if (position < pad) jumpTo(position + count);
+			else if (position >= pad + count) jumpTo(position - count);
 		}
 
 		function applyLayout() {
-			if (isDesktop.matches) disableLoop();
-			else enableLoop();
+			buildClones();
 			update();
 		}
 
@@ -161,14 +155,8 @@ const { Cards = [] } = Astro.props;
 		cursor: pointer;
 	}
 
-	.arrow:hover:not(:disabled) {
+	.arrow:hover {
 		background-color: $color_accent;
-	}
-
-	.arrow:disabled {
-		background-color: $color_gray;
-		color: $color_dark-gray;
-		cursor: default;
 	}
 
 	.arrow svg {
@@ -186,13 +174,7 @@ const { Cards = [] } = Astro.props;
 			display: flex;
 		}
 
-		// Desktop: two cards show at once and each arrow press moves one card, so the last card is never the
-			// left-most one. That leaves one fewer stop than cards, and so one fewer dot.
-			.news-carousel :global(.dot:last-child) {
-				display: none;
-			}
-
-			// Desktop: two cards side by side
+		// Desktop: two cards side by side
 		.track > :global(.news-card) {
 			flex-basis: calc((100% - #{$spacing_small}) / 2);
 		}

@@ -3,10 +3,10 @@ import { Image } from 'astro:assets';
 
 /* Img must be an imported image (not a string path) so Astro can optimize it
 Snippet: a string, or a list of strings (one paragraph each)
-Link (optional): the page the "Read more" button goes to */
+Link: the page the "Read more" button goes to */
 const { Title, Snippet, Img, ImgAltText, Link } = Astro.props;
 
-// Text wrapped in *asterisks* is italicized (e.g. exhibit titles). Returns alternating plain/italic pieces.
+// Text wrapped in *asterisks* is italicized. Returns alternating plain/italic pieces.
 const withItalics = (text: string) =>
 	text.split(/\*(.+?)\*/).map((part, i) => ({ part, italic: i % 2 === 1 }));
 ---
@@ -40,6 +40,8 @@ const withItalics = (text: string) =>
 	}
 
 	.news-card {
+		display: flex; // so the inner row can grow to the card's full height when the carousel stretches the card
+		flex-direction: column;
 		container-type: inline-size; // lets the phone sizes use cqw (1% of this card's width)
 		box-sizing: border-box;
 		width: 100%;
@@ -51,7 +53,8 @@ const withItalics = (text: string) =>
 	.news-card-inner {
 		display: flex;
 		flex-direction: row;
-		align-items: stretch; // the text column is as tall as the image
+		flex: 1; // fills the card's height
+		align-items: stretch; // the text column and the image box are as tall as the card
 		gap: scaled(8); // between the text column and the image (desktop: $spacing_extra-small)
 		padding: scaled(32); // desktop: $spacing_extra-large
 	}
@@ -108,17 +111,21 @@ const withItalics = (text: string) =>
 
 	.read-more:hover {
 		background-color: $color_accent;
-		color: $color_white; // overrides global a:hover ($color_accent), which would match the new background and hide the text
+		color: $color_black;
 	}
 
-	// Right column: portrait image that sets the card's height
+	/* Right column: portrait image that sets the card's height
+	The image box is as tall as the card's content area; the image is taken out of the layout (absolute)
+	so its own size can't change the card, and it is cropped (cover) to fill the box completely */
 	.news-card-image {
+		position: relative;
 		flex: 1 1 0;
 		min-width: 0;
-		aspect-ratio: 551 / 666;
 	}
 
 	.news-card-image :global(img) {
+		position: absolute;
+		inset: 0;
 		display: block;
 		width: 100%;
 		height: 100%;

@@ -22,3 +22,4 @@ The exhibition closes with a table of playable games, where visitors can try the
 
 - Suitable for all ages
 - Playable games are available at the central table throughout the day
+- The installation has been designated as a Sensory-Friendly Space, meaning its light and sound levels are suitable for those with [sensory needs](/plan-your-visit)

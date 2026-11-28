@@ -14,7 +14,7 @@ images:
 
 A blue-painted room, a wall of switches, and a console humming with light: *DISC/ONNECT* turns the control panel into the artwork.
 
-Artist Mallory Blackwell built the installation from the buttons, dials, sliders, and toggles of analog devices, from radios and mixing boards to arcade cabinets and early game consoles. Each control is wired to a digital system that drives the projections on the walls and the soundscape around you. Press a button, turn a dial, or flip a switch, and the room responds: colors shift, images scatter and reassemble, and layers of sound rise and fall.
+Artist Mallory Blackwell built the installation from the buttons, dials, sliders, and toggles of analog devices, from radios and mixing boards to arcade cabinets and early game consoles. Each control is wired to a digital system that drives the projections on the walls and the soundscape around you. Press a button, turn a dial, or flip a switch, and the room responds: colors shift, images scatter and reassemble, and layers of audio fall in and out of the mix.
 
 Blackwell's work interrogates the divide between analog and digital devices. A knob you can feel under your fingers gives way to a signal you can't see, and the connection between action and result is never quite what you expect. Through that gap, *DISC/ONNECT* asks what we gain and what we lose as the things we touch become things we only tap, and how play changes when the controls disappear.
 
