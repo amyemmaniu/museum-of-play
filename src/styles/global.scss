@@ -59,11 +59,12 @@
 	}
 
 	a:hover {
-		color: $color_accent;
+		color: $color_secondary;
 	}
 
 	button:hover {
 		background-color: $color_accent;
+		color: $color_black;
 	}
 
 	@media (min-width: 768px) {

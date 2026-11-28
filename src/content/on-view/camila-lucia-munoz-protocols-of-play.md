@@ -33,5 +33,4 @@ Her work asks who decides what counts as "appropriate" play, and whose comfort t
 - Plan to spend about 30 minutes in the exhibition.
 - Visitors are encouraged to touch, stack, spin, and rearrange the works in *The Correct Table* and *Rewrite the Rules*. There is no wrong way to participate.
 - The exhibition addresses therapy and childhood, and it may bring up personal experiences. A quiet seating area is available just outside the gallery.
-- A low-stimulation visit, with dimmed lights and reduced sound, is available on request. Contact the front desk to arrange one.
-- Large-print labels and a descriptive audio guide are available at the entrance.
+- The installation has been designated as a Sensory-Friendly Space, meaning its light and sound levels are suitable for those with [sensory needs](/plan-your-visit)
