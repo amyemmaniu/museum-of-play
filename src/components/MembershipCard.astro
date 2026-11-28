@@ -19,9 +19,9 @@ const { PlanName, Price, BorderColor, Description } = Astro.props;
 		justify-content: space-between;
 		box-sizing: border-box;
 		width: 100%;
-		max-width: 448px;
-		min-height: 432px;
-		padding: 2rem; // 32px
+		max-width: 28rem; // 448px
+		min-height: 27rem; // 432px
+		padding: $spacing_extra-large;
 		border: $border_radius_card solid;
 		border-color: var(--border-color);
 		border-radius: $border_radius_card;
@@ -52,7 +52,7 @@ const { PlanName, Price, BorderColor, Description } = Astro.props;
 	}
 
 	.per-month {
-		margin: 0 0 0.5rem;
+		margin: 0 0 $spacing_extra-small;
 		color: $color_black;
 		font-size: $font_size_body;
 		font-family: $font_family_body;
@@ -67,14 +67,14 @@ const { PlanName, Price, BorderColor, Description } = Astro.props;
 	}
 
 	// Mobile: cards stack in one column and scale with the screen, keeping the desktop card's proportions (448 x 432)
-	@media (max-width: 767px) {
+	@media (max-width: #{$breakpoint_desktop - 1}) {
 		.membership-card {
 			min-height: 0;
 			aspect-ratio: 448 / 432;
 		}
 	}
 
-	@media (min-width: 768px) {
+	@media (min-width: $breakpoint_desktop) {
 		.price {
 			font-size: clamp(1.75rem, 4vw, 4rem); // up to 64px
 		}

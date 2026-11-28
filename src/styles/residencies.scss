@@ -34,7 +34,7 @@ p + ul {
 	display: flex;
 	align-items: center;
 	gap: $spacing_small; // horizontal space between the number and the H3 text
-	min-height: 64px;
+	min-height: $size_icon_large;
 	margin: 0;
 }
 
@@ -45,8 +45,8 @@ p + ul {
 	flex-shrink: 0;
 	align-items: center;
 	justify-content: center;
-	width: 64px;
-	height: 64px;
+	width: $size_icon_large;
+	height: $size_icon_large;
 	border-radius: 50%;
 	background-color: $color_black;
 	color: $color_white;
@@ -59,7 +59,7 @@ p + ul {
 // Step text lines up under the H3 text, beside (not under) the number
 .application-step > p,
 .application-step > ul {
-	margin-left: calc(64px + #{$spacing_small});
+	margin-left: calc(#{$size_icon_large} + #{$spacing_small});
 }
 
 .application-step h3 + p,
@@ -69,7 +69,7 @@ p + ul {
 
 // Mobile: the step number and the H3 sit on one row, vertically centered with each other,
 // with $spacing_extra-small between them; the step text lines up under the H3
-@media (max-width: 767px) {
+@media (max-width: #{$breakpoint_desktop - 1}) {
 	.application-step h3 {
 		align-items: center;
 		gap: $spacing_extra-small;
@@ -77,6 +77,6 @@ p + ul {
 
 	.application-step > p,
 	.application-step > ul {
-		margin-left: calc(64px + #{$spacing_extra-small});
+		margin-left: calc(#{$size_icon_large} + #{$spacing_extra-small});
 	}
 }

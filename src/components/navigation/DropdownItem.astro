@@ -72,9 +72,9 @@ const { Text, Link, Checkbox = false, Checked = false } = Astro.props;
 		transform: translate(-50%, -50%) rotate(45deg);
 	}
 
-	@media (min-width: 768px) {
+	@media (min-width: $breakpoint_desktop) {
 		.dropdown-item {
-			width: 250px;
+			width: $width_dropdown;
 		}
 
 		// Hover effect on desktop only; phones have no hover

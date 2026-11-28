@@ -33,7 +33,7 @@ const { Title, Img, ImgAltText, Date, Link, ...attrs } = Astro.props; // attrs: 
 		box-sizing: border-box;
 		background-color: $color_white;
 		box-shadow: $box-shadow_card;
-		padding: 16px; // around the whole card
+		padding: 1rem; // around the whole card
 	}
 
 	.blog-post-card h2 {
@@ -56,8 +56,8 @@ const { Title, Img, ImgAltText, Date, Link, ...attrs } = Astro.props; // attrs: 
 
 	.blog-post-card-image {
 		width: 100%; // image fills the card's width, up to the maximums below
-		max-width: 671px;
-		max-height: 447.39px; // same maximum size and proportions, so images line up in a grid
+		max-width: 41.9375rem; // 671px
+		max-height: 27.9619rem; /* 447.39px */  // same maximum size and proportions, so images line up in a grid
 		aspect-ratio: 671 / 447.39;
 		position: relative;
 		overflow: hidden;

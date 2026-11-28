@@ -49,7 +49,7 @@ $search-phone-width: calc(100vw - #{2 * $spacing_page-margin});
 	line-height: normal;
 }
 
-@media (min-width: 768px) {
+@media (min-width: $breakpoint_desktop) {
 	.on-view-controls {
 		flex-direction: row;
 		flex-wrap: wrap; // the search bar drops to its own row when the filters fill the width
@@ -67,11 +67,11 @@ $search-phone-width: calc(100vw - #{2 * $spacing_page-margin});
 
 	.on-view-filter {
 		flex-shrink: 0;
-		width: 250px;
+		width: $width_dropdown;
 	}
 
 	.on-view-search {
-		height: 50px;
+		height: $height_control;
 		padding: 0 $spacing_extra-small;
 		border-radius: $border_radius_body;
 		font-size: $font_size_h2;
@@ -93,7 +93,7 @@ $search-phone-width: calc(100vw - #{2 * $spacing_page-margin});
 	gap: $spacing_grid; // vertical spacing between cards
 }
 
-@media (min-width: 768px) {
+@media (min-width: $breakpoint_desktop) {
 	.on-view-cards {
 		// rows of 3 equal cards; $spacing_grid between them horizontally and vertically
 		grid-template-columns: repeat(3, minmax(0, 1fr));

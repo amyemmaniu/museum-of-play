@@ -1,6 +1,6 @@
 // Full-screen black opening panel: fills exactly what is left of the screen below the navbar
 .rainbow-reveal {
-	--header-height: 68px; // phone navbar: 10px padding above and below the 48px logo
+	--header-height: #{$header_height_mobile}; // phone navbar: 10px padding above and below the 48px logo
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -74,7 +74,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 2rem;
+	gap: $spacing_extra-large;
 	width: 100%;
 }
 
@@ -83,9 +83,9 @@
 	flex-direction: column;
 	gap: $spacing_extra-small;
 	box-sizing: border-box;
-	width: calc(100% - 60.75px);
+	width: calc(100% - 3.796875rem);
 	margin: $spacing_grid auto 0;
-	padding: 10px;
+	padding: 0.625rem;
 	background-color: $color_black;
 }
 
@@ -127,7 +127,7 @@
 .membership-promo li {
 	display: flex;
 	align-items: center;
-	gap: 6px;
+	gap: 0.375rem;
 	color: $color_white;
 	font-family: $font_family_body;
 	font-size: 0.75rem; // 12px
@@ -136,13 +136,13 @@
 
 .membership-promo li img {
 	flex-shrink: 0;
-	width: 22.5px;
+	width: 1.40625rem;
 	height: auto;
 }
 
 .membership-promo .promo-slideshow {
 	width: 100%;
-	height: 207px;
+	height: 12.9375rem;
 }
 
 .purchase-membership-button {
@@ -156,9 +156,9 @@
 	font-size: $font_size_body;
 }
 
-@media (min-width: 768px) {
+@media (min-width: $breakpoint_desktop) {
 	.rainbow-reveal {
-		--header-height: 70px; // navbar height for desktop
+		--header-height: #{$header_height_desktop}; // navbar height for desktop
 	}
 
 	// Desktop: the call to action sits on the far right, with the link just below it
@@ -208,7 +208,7 @@
 
 	.membership-promo {
 		width: calc(100% - 2 * #{$spacing_grid});
-		max-width: 1257px;
+		max-width: 78.5625rem;
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		column-gap: 2.5rem;
@@ -236,12 +236,12 @@
 	}
 
 	.membership-promo li {
-		gap: 12px;
+		gap: 0.75rem;
 		font-size: $font_size_h3;
 	}
 
 	.membership-promo li img {
-		width: 45px;
+		width: 2.8125rem;
 	}
 
 	.membership-promo .promo-slideshow {
