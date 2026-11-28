@@ -74,11 +74,11 @@ const { Label, Link, Items = [] } = Astro.props;
 	.navbar-caret {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-end; // caret against the right edge, like the caret in the other menu rows
 		flex-shrink: 0;
 		width: 50px;
 		height: 50px;
-		padding: 0;
+		padding: 0 $spacing_extra-small; // the same right padding the other rows' buttons have
 		border: none;
 		background-color: $color_black;
 		cursor: pointer;

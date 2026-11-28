@@ -1,3 +1,8 @@
+// The first paragraph sits right under the breadcrumbs' own bottom spacing, with no extra margin above it
+nav[aria-label="Breadcrumb"] + p {
+	margin-top: 0;
+}
+
 // Mobile (default): everything stacks in one column; images are centered, body text is left-aligned
 .learn-sections {
 	display: flex;

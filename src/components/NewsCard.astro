@@ -12,34 +12,48 @@ const withItalics = (text: string) =>
 ---
 
 <div class="news-card">
-	<div class="news-card-content">
-		<h2>{withItalics(Title).map(({ part, italic }) => italic ? <em>{part}</em> : part)}</h2>
-		<div class="snippet">
-			{(Array.isArray(Snippet) ? Snippet : [Snippet]).filter(Boolean).map((paragraph: string) => <p>{withItalics(paragraph).map(({ part, italic }) => italic ? <em>{part}</em> : part)}</p>)}
+	<div class="news-card-inner">
+		<div class="news-card-content">
+			<h2>{withItalics(Title).map(({ part, italic }) => italic ? <em>{part}</em> : part)}</h2>
+			<div class="snippet">
+				{(Array.isArray(Snippet) ? Snippet : [Snippet]).filter(Boolean).map((paragraph: string) => <p>{withItalics(paragraph).map(({ part, italic }) => italic ? <em>{part}</em> : part)}</p>)}
+			</div>
+			{Link
+				? <a class="read-more" href={Link}>Read more</a>
+				: <button class="read-more" type="button">Read more</button>}
 		</div>
-		{Link
-			? <a class="read-more" href={Link}>Read more</a>
-			: <button class="read-more" type="button">Read more</button>}
+		{Img && (
+			<div class="news-card-image">
+				<Image src={Img} alt={ImgAltText ?? ""} width={700} />
+			</div>
+		)}
 	</div>
-	{Img && (
-		<div class="news-card-image">
-			<Image src={Img} alt={ImgAltText ?? ""} width={700} />
-		</div>
-	)}
 </div>
 
 <style lang="scss">
+	// Desktop is the default. On phones, the card is a scaled-down copy of it: each size in the phone block below is its
+	// desktop value as a share of the desktop card width (520px), measured against the card's own width (cqw), so the
+	// proportions match.
+	$desktop-card-width: 520;
+	@function scaled($px) {
+		@return calc(#{$px} / #{$desktop-card-width} * 100cqw);
+	}
+
 	.news-card {
+		container-type: inline-size; // lets the phone sizes use cqw (1% of this card's width)
+		box-sizing: border-box;
+		width: 100%;
+		border-radius: $border_radius_card;
+		background-color: $color_white;
+		border: 1px solid rgba($color_gray, 0.5);
+	}
+
+	.news-card-inner {
 		display: flex;
 		flex-direction: row;
 		align-items: stretch; // the text column is as tall as the image
 		gap: $spacing_extra-small; // between the text column and the image
-		box-sizing: border-box;
-		width: 100%;
-		padding: 0.75rem; // 12px
-		border-radius: $border_radius_card;
-		background-color: $color_white;
-		border: 1px solid rgba($color_gray, 0.5);
+		padding: $spacing_extra-large;
 	}
 
 	// Left column: title, snippet, and the button pinned to the bottom
@@ -71,7 +85,7 @@ const withItalics = (text: string) =>
 
 	.snippet p {
 		margin: 0;
-		font-size: 0.75rem;
+		font-size: $font_size_body;
 	}
 
 	// $spacing_small between paragraphs
@@ -111,18 +125,33 @@ const withItalics = (text: string) =>
 		object-fit: cover;
 	}
 
-	@media (min-width: 768px) {
-		.news-card {
-			padding: $spacing_extra-large;
+	// Phone: every desktop size above, scaled to the card's width
+	@media (max-width: 767px) {
+		.news-card-inner {
+			gap: scaled($spacing_extra-small);
+			padding: scaled($spacing_extra-large);
 		}
 
 		.news-card h2,
 		.read-more {
-			font-size: $font_size_h3;
+			font-size: scaled($font_size_h3);
+		}
+
+		.snippet {
+			margin: scaled($spacing_extra-small) 0;
 		}
 
 		.snippet p {
-			font-size: $font_size_body;
+			font-size: scaled($font_size_body);
+		}
+
+		.snippet p + p {
+			margin-top: scaled($spacing_small);
+		}
+
+		.read-more {
+			padding: scaled($spacing_extra-small);
+			border-radius: scaled($border_radius_body);
 		}
 	}
 </style>

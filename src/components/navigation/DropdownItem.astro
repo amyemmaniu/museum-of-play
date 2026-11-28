@@ -72,13 +72,14 @@ const { Text, Link, Checkbox = false, Checked = false } = Astro.props;
 		transform: translate(-50%, -50%) rotate(45deg);
 	}
 
-	.dropdown-item:hover {
-		text-decoration: underline;
-	}
-
 	@media (min-width: 768px) {
 		.dropdown-item {
 			width: 250px;
+		}
+
+		// Hover effect on desktop only; phones have no hover
+		.dropdown-item:hover {
+			text-decoration: underline;
 		}
 
 		p {
