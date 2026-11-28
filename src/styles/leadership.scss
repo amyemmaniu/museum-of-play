@@ -45,7 +45,7 @@
 }
 
 // Desktop: image on the left, text on the right; cards stay in one column
-@media (min-width: 768px) {
+@media (min-width: $breakpoint_desktop) {
 	.leadership-cards {
 		padding: 0 12vw;
 	}

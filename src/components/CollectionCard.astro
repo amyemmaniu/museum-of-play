@@ -51,7 +51,7 @@ const { Title, Img, ImgAltText } = Astro.props;
 		}
 	}
 
-	@media (min-width: 768px) {
+	@media (min-width: $breakpoint_desktop) {
 		.collection-card {
 			gap: 1.5vh;
 			padding: 1.5vh 1.5vw;

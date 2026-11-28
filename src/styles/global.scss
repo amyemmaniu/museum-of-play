@@ -9,7 +9,7 @@
 	body {
 		box-sizing: border-box;
 		min-height: 100vh; // short pages still fill the screen, with the padding included
-		padding-bottom: 50px; // space at the very bottom of every page
+		padding-bottom: 3.125rem; // space at the very bottom of every page
 		margin: 0; // removes the default gap around the page so the header is flush with the edges
 		background-color: $color_white;
 		color: $color_black;
@@ -67,7 +67,7 @@
 		color: $color_black;
 	}
 
-	@media (min-width: 768px) {
+	@media (min-width: $breakpoint_desktop) {
 		h1 {
 			font-size: $font_size_h1-desktop;
 		}

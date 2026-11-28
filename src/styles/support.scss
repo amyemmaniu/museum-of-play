@@ -31,7 +31,7 @@
 	font-weight: normal;
 }
 
-@media (min-width: 768px) {
+@media (min-width: $breakpoint_desktop) {
 	.frontmatter {
 		flex-direction: row;
 		align-items: flex-start;
@@ -55,7 +55,7 @@
 	flex-direction: column;
 	gap: $spacing_small; // between the stat blocks, and before the last note
 	box-sizing: border-box;
-	padding: 26px;
+	padding: 1.625rem;
 	background-color: $color_neutral;
 }
 
@@ -69,8 +69,8 @@
 	margin-top: $spacing_extra-small;
 }
 
-@media (min-width: 768px) {
+@media (min-width: $breakpoint_desktop) {
 	.statistics {
-		padding: 40px;
+		padding: 2.5rem;
 	}
 }

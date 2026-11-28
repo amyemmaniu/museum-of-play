@@ -21,7 +21,7 @@
 
 .membership-comparison-table table {
 	width: 100%;
-	min-width: 1092px; // four 273px columns
+	min-width: 68.25rem; // four 273px columns
 	border-collapse: collapse;
 	table-layout: fixed;
 	font-family: $font_family_body;
@@ -30,7 +30,7 @@
 
 .membership-comparison-table th,
 .membership-comparison-table td {
-	height: 50px;
+	height: $height_control;
 	box-sizing: border-box;
 	padding: $spacing_extra-small;
 	border: $border_width_button solid $color_black;
@@ -52,12 +52,12 @@
 // Checkmark scaled down to fit the 50px-tall table cell
 .membership-comparison-table td img {
 	display: inline-block;
-	width: 32px;
+	width: 2rem;
 	height: auto;
 	vertical-align: middle;
 }
 
-@media (min-width: 768px) {
+@media (min-width: $breakpoint_desktop) {
 	.membership-card-group {
 		flex-direction: row;
 		align-items: stretch;
@@ -75,7 +75,7 @@
 
 	.membership-comparison-table table {
 		min-width: 0;
-		max-width: 1101px;
+		max-width: 68.8125rem;
 		margin: 0 auto;
 	}
 }

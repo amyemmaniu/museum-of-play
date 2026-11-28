@@ -41,7 +41,7 @@ const { Label, Link, Items = [] } = Astro.props;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		height: 50px;
+		height: $height_control;
 		width: 100%;
 		padding: $spacing_extra-small;
 		border: none;
@@ -76,8 +76,8 @@ const { Label, Link, Items = [] } = Astro.props;
 		align-items: center;
 		justify-content: flex-end; // caret against the right edge, like the caret in the other menu rows
 		flex-shrink: 0;
-		width: 50px;
-		height: 50px;
+		width: $height_control;
+		height: $height_control;
 		padding: 0 $spacing_extra-small; // the same right padding the other rows' buttons have
 		border: none;
 		background-color: $color_black;
@@ -96,15 +96,15 @@ const { Label, Link, Items = [] } = Astro.props;
 		width: 0;
 		height: 0;
 		margin-right: 0.1rem;
-		border-left: 10px solid transparent;
-		border-right: 10px solid transparent;
-		border-top: 18px solid $color_white;
+		border-left: $caret_half-width solid transparent;
+		border-right: $caret_half-width solid transparent;
+		border-top: $caret_height solid $color_white;
 	}
 
 	.dropdown-menu.open button.navbar-button::after,
 	.dropdown-menu.open .navbar-caret::after {
 		border-top: none;
-		border-bottom: 18px solid $color_white;
+		border-bottom: $caret_height solid $color_white;
 	}
 
 	.dropdown-items {
@@ -118,7 +118,7 @@ const { Label, Link, Items = [] } = Astro.props;
 	}
 
 	// Desktop: the menu shrinks to its label (no caret) and its items drop down over the page on hover/focus
-	@media (min-width: 768px) {
+	@media (min-width: $breakpoint_desktop) {
 		.dropdown-menu {
 			position: relative;
 			width: auto;
@@ -154,12 +154,12 @@ const { Label, Link, Items = [] } = Astro.props;
 			position: absolute;
 			top: 100%;
 			left: 0;
-			width: 250px;
+			width: $width_dropdown;
 			z-index: 10;
 			// The header has 10px of bottom padding below the 50px menu row. This transparent padding pushes
 			// the visible items past it, so they start right below the black bar. Being part of the
 			// dropdown, it also keeps the hover alive while the pointer crosses that gap.
-			padding-top: 10px;
+			padding-top: 0.625rem; // 10px
 		}
 	}
 </style>

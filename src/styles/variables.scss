@@ -38,4 +38,18 @@ $border_radius_body: 8px;
 $border_radius_card: 20px;
 
 // Box Shadow for Cards
-$box_shadow_card: 0px 4px 8px rgba(0, 0, 0, 0.2);
+$box_shadow_card: 0px 4px 8px rgba($color_black, 0.2);
+
+// Component sizes
+$width_dropdown: 15.625rem; // 250px
+$height_control: 3.125rem; // 50px: nav buttons, filter buttons, search bars, table rows
+$size_icon_large: 4rem; // 64px
+$caret_half-width: 0.625rem; // 10px
+$caret_height: 1.125rem; // 18px
+
+// Header heights (10px padding above and below the 48px logo on phones)
+$header_height_mobile: 4.25rem; // 68px
+$header_height_desktop: 4.375rem; // 70px
+
+// Breakpoints
+$breakpoint_desktop: 768px;
